@@ -3,54 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会員限定ページ | VIDEO CRAFT</title>
+    <title>DEMO | VIDEO CRAFT</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-theme">
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">VIDEO CRAFT <span class="demo-tag">MEMBER</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html">戻る</a></li>
-            </ul>
+            <div class="logo">VIDEO CRAFT <span class="tag">DEMO</span></div>
+            <a href="index.html" class="nav-link">BACK</a>
         </div>
     </nav>
 
-    <div class="container">
-        <section id="demo-login" class="card reveal">
-            <h3>依頼者ログイン</h3>
-            <p style="font-size:0.8rem; margin-bottom:10px;">IDとパスワードを入力して状況を確認してください。</p>
-            <input type="text" id="d-id" placeholder="会員ID">
-            <input type="password" id="d-pass" placeholder="パスワード">
-            <button onclick="runLogin()" class="btn-main">ログイン</button>
+    <div class="container main-content">
+        <section id="demo-login" class="card login-card reveal">
+            <h2>依頼者ログイン体験</h2>
+            <p>ID: demo001 / PASS: test1234</p>
+            <input type="text" id="d-id" placeholder="ID">
+            <input type="password" id="d-pass" placeholder="PASSWORD">
+            <button onclick="runLogin()" class="btn-primary">ログインして体験</button>
         </section>
 
         <div id="demo-content" style="display:none;">
-            <section class="card reveal">
-                <h2 id="user-name">読み込み中...</h2>
-                <div class="progress-container">
-                    <div id="d-bar" class="progress-bar"></div>
-                </div>
-                <p id="d-msg" style="font-weight:bold; color:var(--main);"></p>
-                <p id="d-delivery" style="font-size:0.8rem; color:#666;"></p>
-            </section>
-
-            <section class="card reveal">
-                <h4>制作者からのメッセージ</h4>
-                <div id="d-message" style="background:#f1f5f9; padding:15px; border-radius:8px; font-size:0.9rem;"></div>
-            </section>
-
-            <section class="card reveal">
-                <h4>納品ファイル・確認用リンク</h4>
-                <div id="d-download" style="text-align:center; padding:10px;"></div>
-            </section>
-
-            <section class="card reveal">
-                <h4>写真補正シミュレーター</h4>
-                <div class="img-preview"><img id="demo-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"></div>
-                <label>明るさ：<input type="range" id="bright" min="50" max="150" value="100" oninput="applyFilter()"></label>
-                <label>鮮やかさ：<input type="range" id="saturate" min="0" max="200" value="100" oninput="applyFilter()"></label>
-            </section>
+            <div class="grid">
+                <section class="card reveal">
+                    <h3>写真加工体験</h3>
+                    <div class="img-preview"><img id="demo-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"></div>
+                    <input type="range" id="bright" min="50" max="150" value="100" oninput="applyFilter()">
+                    <p class="label">明るさを調整してみてください</p>
+                </section>
+                <section class="card reveal">
+                    <h3>システムの特徴</h3>
+                    <p>このページのように、依頼後もリアルタイムで進捗を確認したり、指示を送ったりできる専用画面を提供します。</p>
+                </section>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
