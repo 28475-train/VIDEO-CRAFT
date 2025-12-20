@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLIENT LOGIN | VIDEO CRAFT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">VIDEO CRAFT</div>
+            <a href="index.html" class="btn-sub" style="padding: 8px 20px;">HOME</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="login-form-area" style="max-width:500px; margin: 0 auto;">
+            <div class="card-btn reveal active" style="cursor: default;">
+                <span class="num">CLIENT ONLY</span>
+                <h2>依頼者ログイン</h2>
+                <p style="margin-bottom:30px; font-size:0.9rem; color:#888;">発行された専用IDで進捗を確認できます</p>
+                
+                <input type="text" id="d-id" placeholder="IDを入力">
+                <input type="password" id="d-pass" placeholder="パスワードを入力">
+                
+                <button onclick="runLogin()" class="btn-main" style="width: 100%;">ログインして進捗を見る</button>
+            </div>
+        </div>
+
+        <div id="member-area" style="display:none;">
+            <div class="card-btn reveal active" style="cursor: default; text-align: left;">
+                <h2 id="user-name">Welcome</h2>
+                <div class="progress-wrap">
+                    <div id="d-bar" class="progress-bar"></div>
+                </div>
+                <p id="d-msg" style="font-weight:bold; color:#0066cc;"></p>
+                <p id="d-delivery" style="font-size:0.8rem; color:#888; margin-bottom:20px;"></p>
+                
+                <div style="background:#fff; padding:20px; border-radius:15px; border:1px solid #eee;">
+                    <h4 style="margin-bottom:10px;">制作者からの最新メッセージ</h4>
+                    <p id="d-message" style="font-size:0.9rem;"></p>
+                </div>
+
+                <div id="d-download" style="margin-top:30px; text-align:center;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
