@@ -1,64 +1,101 @@
 <!DOCTYPE html>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>KIZUNA VIDEO</title> <link rel="stylesheet" href="style.css"> </head> <body>
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>KIZUNA VIDEO | 映像制作ボランティア</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; }
 
-<div id="loader" style="position:fixed; inset:0; background:#fff; z-index:10000; display:flex; flex-direction:column; justify-content:center; align-items:center; transition:opacity 1s ease;">
-    <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.3em; margin-bottom: 10px; color: #86868b;">SYSTEM INITIALIZING</div>
-    <div id="loader-clock" style="font-size: 3.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; font-variant-numeric: tabular-nums;">00:00:00</div>
-    <div style="width: 200px; height: 2px; background: #eee; border-radius: 2px; overflow: hidden;">
-        <div id="loader-bar" style="width: 0%; height: 100%; background: #1d1d1f; transition: width 1.5s ease-in-out;"></div>
-    </div>
-</div>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<div class="container">
-    <header class="reveal" style="text-align: center; margin-bottom: 100px;">
-        <h1 style="font-size: 5rem; font-weight: 800; letter-spacing: -0.06em;">KIZUNA VIDEO</h1>
-        <p id="header-time" style="font-size: 1.1rem; color: #86868b; margin-top: 10px; font-weight: 600;"></p>
-    </header>
-
-    <main>
-        <a href="about.html" class="tile-link reveal">
-            <span class="category-tag">Vision</span>
-            <h2>ABOUT</h2>
-            <p>映像制作への想いと哲学</p>
-        </a>
-
-        <a href="login.html" class="tile-link reveal">
-            <span class="category-tag">Client</span>
-            <h2>LOGIN</h2>
-            <p>進捗確認・完成動画のダウンロード</p>
-        </a>
-
-        <a href="[https://line.me/R/oaMessage/@494zixmx/](https://line.me/R/oaMessage/@494zixmx/)?【相談】制作の依頼を検討しています。" class="tile-link reveal" style="border: 2px solid #06C755; background: #fff;">
-            <h2 style="color: #06C755;">Contact on LINE</h2>
-            <p style="color: #06C755;">ご相談・お見積もりはこちら</p>
-        </a>
-    </main>
-</div>
-
-<script>
-    function updateTime() {
-        const now = new Date();
-        const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
-                        now.getMinutes().toString().padStart(2, '0') + ":" + 
-                        now.getSeconds().toString().padStart(2, '0');
-        document.getElementById('loader-clock').innerText = timeStr;
-        document.getElementById('header-time').innerText = "CURRENT TIME: " + timeStr;
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
     }
-    setInterval(updateTime, 1000);
-    updateTime();
 
-    window.addEventListener('load', () => {
-        const bar = document.getElementById('loader-bar');
-        const loader = document.getElementById('loader');
-        setTimeout(() => { bar.style.width = '100%'; }, 100);
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            setTimeout(() => { 
-                loader.style.display = 'none';
-                document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-            }, 1000);
-        }, 2000);
-    });
-</script>
-</body> </html>
+    #loader {
+        position: fixed;
+        inset: 0;
+        background: #fff;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.8s ease;
+    }
+
+    .loader-clock {
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .pr-msg {
+        font-size: 0.9rem;
+        color: var(--sub);
+        margin-top: 20px;
+        font-weight: 500;
+        opacity: 0;
+        transition: 0.5s;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 60px 20px;
+    }
+
+    .tile-link {
+        display: block;
+        width: 100%;
+        background-color: var(--card);
+        border-radius: 28px;
+        padding: 50px 30px;
+        text-decoration: none;
+        color: var(--text);
+        margin-bottom: 24px;
+        transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        text-align: center;
+        border: 1px solid transparent;
+    }
+
+    .tile-link:hover {
+        transform: scale(1.02);
+        background: #fff;
+        border-color: var(--border);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    }
+
+    .category-tag {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    .tile-link h2 {
+        font-size: clamp(1.8rem, 5vw, 3.5rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 12px;
+    }
+
+    .tile-link p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: var(--sub);
+    }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    @media (min-width: 768px) {
+        .container { padding: 120px 24px; }
+        .tile-link { padding: 80px 48px; }
+    }
+</style>
+</head> <body>
