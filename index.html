@@ -7,41 +7,68 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="loader" style="position:fixed; inset:0; background:#fff; z-index:10000; display:flex; justify-content:center; align-items:center; transition:0.8s; pointer-events:none;">
+        <div style="font-weight:700; letter-spacing:0.4em; color:var(--text); animation: pulse 2s infinite;">KIZUNA VIDEO</div>
+    </div>
+
+    <style>
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+    </style>
+
     <div class="container">
-        <header class="reveal" style="text-align: center; margin-bottom: 120px;">
-            <h1 style="font-size: 5.5rem; font-weight: 800; letter-spacing: -0.06em;">KIZUNA VIDEO</h1>
+        <header class="reveal active" style="text-align: center; margin-bottom: 120px;">
+            <span style="font-weight:700; color:var(--accent); letter-spacing:0.3em; display:block; margin-bottom:20px;">PREMIUM VIDEO CRAFT</span>
+            <h1 style="font-size: 5.5rem; font-weight: 800; letter-spacing: -0.06em; line-height: 1.1;">KIZUNA VIDEO</h1>
             <p style="font-size: 1.8rem; color: var(--sub); margin-top: 20px;">一生、残るものを。</p>
         </header>
 
         <main>
-            <a href="about.html" class="tile-link reveal">
+            <a href="about.html" class="tile-link reveal active">
                 <span class="category-tag">Our Vision</span>
                 <h2>ABOUT</h2>
-                <p>私たちがボランティアとして映像を作る理由と、大切にしている3つの哲学について。</p>
+                <p>ボランティアとして映像を作る理由と、大切にしている3つの哲学。</p>
             </a>
 
-            <a href="login.html" class="tile-link reveal">
+            <a href="flow.html" class="tile-link reveal active">
+                <span class="category-tag">Service Guide</span>
+                <h2>FLOW</h2>
+                <p>LINEでの申し込みから、ID発行、納品までのスムーズな流れをご確認ください。</p>
+            </a>
+
+            <a href="login.html" class="tile-link reveal active">
                 <span class="category-tag">Client Service</span>
                 <h2>LOGIN</h2>
-                <p>ご依頼主様専用のポータル。現在の制作進捗の確認や、完成した動画の受け取りはこちら。</p>
+                <p>ご依頼主様専用。現在の制作状況確認と、完成動画のダウンロードはこちら。</p>
             </a>
 
-            <a href="https://lin.ee/VslEkmd" class="tile-link reveal" style="border: 2px solid var(--line); background: #ffffff;">
-                <img src="https://qr-official.line.me/gs/M_494zixmx_GW.png?oat_content=qr" alt="LINE QR" style="width: 150px; margin-bottom: 24px; border-radius: 24px;">
+            <a href="https://lin.ee/VslEkmd" class="tile-link reveal active" style="border: 2px solid var(--line); background: #ffffff; margin-top: 40px;">
+                <img src="https://qr-official.line.me/gs/M_494zixmx_GW.png?oat_content=qr" alt="LINE QR" style="width: 140px; margin-bottom: 24px; border-radius: 24px;">
                 <h2 style="color: var(--line);">Request on LINE</h2>
-                <p style="color: var(--line); font-weight: 700;">制作のご依頼、ご相談、ご質問は公式LINEにて承っております。まずは気軽にお話ししましょう。</p>
+                <p style="color: var(--line); font-weight: 700;">新規依頼・相談はこちら。申し込み後、マイページ用のIDを発行します。</p>
             </a>
         </main>
 
         <footer>
             <div class="footer-btn-container">
                 <a href="policy.html" class="footer-tile">プライバシーポリシー</a>
-                <a href="about.html" class="footer-tile">サイトについて</a>
+                <a href="flow.html" class="footer-tile">依頼の仕方</a>
+                <a href="about.html" class="footer-tile">制作への想い</a>
             </div>
             <p style="font-size: 1.1rem; color: var(--text); font-weight: 700; margin-bottom: 10px;">KIZUNA VIDEO</p>
-            <p>Copyright &copy; 2025 KIZUNA VIDEO All Rights Reserved.</p>
+            <p>&copy; 2025 KIZUNA VIDEO All Rights Reserved.</p>
         </footer>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 800);
+        });
+    </script>
 </body>
 </html>
