@@ -1,63 +1,71 @@
 <!DOCTYPE html>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>LOGIN | KIZUNA VIDEO</title> <link rel="stylesheet" href="style.css"> <style> .login-box { max-width: 450px; margin: 0 auto; } #member-area { display: none; opacity: 0; transition: 1s; } #member-area.show { display: block; opacity: 1; } .input-item { width: 100%; padding: 20px; border-radius: 15px; border: 1px solid #d2d2d7; margin-bottom: 15px; font-size: 1rem; outline: none; } .input-item:focus { border-color: #0071e3; } </style> </head> <body> <div class="container login-box">
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>LOGIN | KIZUNA VIDEO</title> <link rel="stylesheet" href="style.css"> <style> .login-box { max-width: 480px; margin: 0 auto; } .input-group { width: 100%; margin-bottom: 15px; position: relative; } input { width: 100%; padding: 20px; border-radius: 16px; border: 1px solid var(--border); background: #fff; font-size: 16px; outline: none; transition: 0.3s; } input:focus { border-color: var(--accent); } .pass-toggle { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--sub); font-weight: 600; cursor: pointer; } #member-area { display: none; opacity: 0; transform: translateY(20px); transition: 1s ease; } #member-area.show { display: block; opacity: 1; transform: translateY(0); } .btn-action { width: 100%; padding: 20px; background: var(--text); color: #fff; border-radius: 16px; font-size: 1.1rem; font-weight: 700; border: none; cursor: pointer; } </style> </head> <body> <div class="container login-box"> <div id="login-form" class="reveal active"> <div class="tile-link" style="cursor: default; background: var(--card);"> <span class="category-tag">CLIENT ACCESS</span> <h2 style="margin-bottom: 30px;">Login</h2>
 
-    <div id="login-form" class="reveal active">
-        <div class="tile-link" style="cursor: default; background: #f5f5f7;">
-            <span class="category-tag">AUTHENTICATION</span>
-            <h2 style="margin-bottom: 30px;">Client Login</h2>
+            <div class="input-group">
+                <input type="text" id="id-input" placeholder="Client ID">
+            </div>
+            <div class="input-group">
+                <input type="password" id="pass-input" placeholder="Password">
+                <button class="pass-toggle" onclick="togglePass()">表示</button>
+            </div>
             
-            <input type="text" id="user-id" class="input-item" placeholder="Client ID">
-            <input type="password" id="user-pass" class="input-item" placeholder="Password">
+            <button onclick="handleLogin()" class="btn-action">Continue</button>
+            <p id="error" style="color: #ff3b30; margin-top: 15px; font-weight: 600; display: none;">IDまたはパスワードが正しくありません</p>
             
-            <button onclick="checkAuth()" class="btn-action" style="width: 100%;">Sign In</button>
-            <p id="error-msg" style="color: #ff3b30; margin-top: 15px; font-weight: 600; display: none;">IDまたはパスワードが違います</p>
+            <p style="margin-top: 30px; font-size: 0.9rem; color: var(--sub);">
+                IDをお持ちでない方はLINEよりお問い合わせください。
+            </p>
         </div>
     </div>
 
     <div id="member-area">
         <div class="tile-link" style="text-align: left; cursor: default;">
-            <span class="category-tag">PROGRESS</span>
-            <h2 id="display-name">Welcome</h2>
-            <div style="width: 100%; height: 6px; background: #eee; border-radius: 3px; margin: 25px 0;">
-                <div id="bar" style="width: 0%; height: 100%; background: #0071e3; transition: 2s ease;"></div>
+            <span class="category-tag">YOUR PROGRESS</span>
+            <h2 id="client-name">Welcome</h2>
+            <div style="width: 100%; height: 8px; background: #eee; border-radius: 4px; margin: 30px 0; overflow: hidden;">
+                <div id="progress-bar" style="width: 0%; height: 100%; background: var(--accent); transition: 2s cubic-bezier(0.2, 1, 0.3, 1);"></div>
             </div>
-            <p id="status-text" style="font-weight: 700;"></p>
-            <div style="margin-top: 30px; padding: 20px; background: #fff; border-radius: 15px;">
-                <p id="status-detail"></p>
+            <p id="status-msg" style="font-weight: 700; font-size: 1.2rem; color: var(--accent);"></p>
+            <div style="margin-top: 25px; padding: 20px; background: #fff; border-radius: 18px; border: 1px solid var(--border);">
+                <p id="status-detail" style="font-size: 1rem; color: var(--text);"></p>
             </div>
-            <a href="login.html" style="display: block; text-align: center; margin-top: 30px; color: #86868b; text-decoration: none;">Logout</a>
+            <a href="login.html" style="display: block; text-align: center; margin-top: 40px; color: var(--sub); text-decoration: none; font-size: 0.9rem;">ログアウト</a>
         </div>
     </div>
-
 </div>
 
 <script>
-    const CLIENTS = {
-        "KIZUNA01": { pass: "2025video", name: "KIZUNA様", progress: "75%", msg: "編集完了・色調整中", detail: "全てのカットを繋ぎ終えました。現在はシネマティックな色付け作業を行っています。" },
-        "GUEST": { pass: "test", name: "テストユーザー様", progress: "30%", msg: "素材確認中", detail: "お送りいただいた素材のチェックが完了しました。これから構成を作成します。" }
+    function togglePass() {
+        const p = document.getElementById('pass-input');
+        p.type = p.type === 'password' ? 'text' : 'password';
+    }
+
+    const DATABASE = {
+        "KIZUNA01": { pass: "video2025", name: "KIZUNA様", p: "80%", msg: "最終レンダリング中", detail: "現在、最高画質での書き出しを行っております。間もなく納品可能です。" },
+        "WELCOME": { pass: "video", name: "ゲスト様", p: "20%", msg: "ヒアリング完了", detail: "ご希望の構成案を作成中です。どなたでも歓迎しております。" }
     };
 
-    function checkAuth() {
-        const id = document.getElementById('user-id').value;
-        const pass = document.getElementById('user-pass').value;
-        const error = document.getElementById('error-msg');
+    function handleLogin() {
+        const id = document.getElementById('id-input').value;
+        const pass = document.getElementById('pass-input').value;
+        const err = document.getElementById('error');
 
-        if (CLIENTS[id] && CLIENTS[id].pass === pass) {
+        if (DATABASE[id] && DATABASE[id].pass === pass) {
             document.getElementById('login-form').style.display = 'none';
-            const member = document.getElementById('member-area');
-            member.classList.add('show');
+            const area = document.getElementById('member-area');
+            area.classList.add('show');
             
-            const data = CLIENTS[id];
-            document.getElementById('display-name').innerText = "Welcome, " + data.name;
-            document.getElementById('status-text').innerText = data.msg;
-            document.getElementById('status-detail').innerText = data.detail;
+            const user = DATABASE[id];
+            document.getElementById('client-name').innerText = "Welcome, " + user.name;
+            document.getElementById('status-msg').innerText = user.msg;
+            document.getElementById('status-detail').innerText = user.detail;
             
             setTimeout(() => {
-                document.getElementById('bar').style.width = data.progress;
+                document.getElementById('progress-bar').style.width = user.p;
             }, 500);
         } else {
-            error.style.display = 'block';
+            err.style.display = 'block';
         }
     }
 </script>
