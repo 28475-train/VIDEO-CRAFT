@@ -1,30 +1,90 @@
-:root { --main: #2563eb; --dark: #0f172a; --white: #ffffff; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: sans-serif; background: #f8fafc; color: var(--dark); overflow-x: hidden; }
+:root {
+    --bg: #050505;
+    --card: #111111;
+    --accent: #3b82f6;
+    --text: #ffffff;
+    --text-sub: #a1a1aa;
+}
 
-#navbar { position: fixed; width: 100%; top: 0; background: rgba(255,255,255,0.9); z-index: 1000; padding: 15px 0; backdrop-filter: blur(5px); }
-.nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-.nav-links { display: flex; list-style: none; gap: 15px; }
-.nav-links a { text-decoration: none; color: var(--dark); font-weight: bold; font-size: 0.9rem; }
-.demo-btn { background: var(--main); color: white !important; padding: 5px 12px; border-radius: 5px; }
+body.dark-theme {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+}
 
-.video-hero { height: 100vh; background: var(--dark); display: flex; align-items: center; justify-content: center; position: relative; }
-.hero-overlay { text-align: center; color: white; padding: 20px; }
-.hero-content h1 { font-size: clamp(2rem, 8vw, 4rem); margin-bottom: 20px; }
+/* ヌルヌル動くグラデーションテキスト */
+.gradient-text {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
 
-.container { max-width: 800px; margin: 100px auto 50px; padding: 0 20px; }
-.card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 20px; }
+/* ヒーローエリアの改良 */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
 
-.btn-main { background: var(--main); color: white; padding: 15px; border-radius: 8px; width: 100%; cursor: pointer; border: none; font-weight: bold; display: block; text-decoration: none; }
-input, range { width: 100%; margin: 10px 0; }
-input[type="text"], input[type="password"] { padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+.hero-text {
+    max-width: 800px;
+    text-align: center;
+}
 
-.progress-container { background: #e2e8f0; height: 20px; border-radius: 10px; overflow: hidden; margin: 15px 0; }
-.progress-bar { width: 0%; height: 100%; background: var(--main); transition: 1.5s; }
-.img-preview { background: #000; border-radius: 8px; overflow: hidden; margin: 10px 0; text-align: center; }
-.img-preview img { max-width: 100%; }
+.hero-text h1 {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
 
-.reveal { opacity: 0; transform: translateY(30px); transition: 1s; }
-.reveal.active { opacity: 1; transform: translateY(0); }
+.hero-text p {
+    font-size: 1.1rem;
+    color: var(--text-sub);
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
 
-@media (max-width: 600px) { .nav-links { display: none; } }
+/* ボタンの高級化 */
+.btn-primary {
+    background: var(--text);
+    color: var(--bg);
+    padding: 18px 35px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+.btn-outline {
+    border: 1px solid #333;
+    color: var(--text);
+    padding: 18px 35px;
+    border-radius: 100px;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: #ffffff10;
+}
+
+/* ミッションセクション */
+.mission { padding: 100px 0; }
+.mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+.mission-item { background: var(--card); padding: 40px; border-radius: 24px; border: 1px solid #222; }
+.num { color: var(--accent); font-size: 1.5rem; font-weight: bold; display: block; margin-bottom: 15px; }
+
+/* スマホ対応の微調整 */
+@media (max-width: 768px) {
+    .mission-grid { grid-template-columns: 1fr; }
+    .btn-outline { margin-left: 0; margin-top: 15px; display: block; }
+}
