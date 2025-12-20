@@ -1,23 +1,177 @@
-<div class="container" style="max-width: 500px;">
-    <div id="login-form-area" class="tile-btn reveal active" style="background: var(--card); cursor: default;">
-        <h2 style="margin-bottom: 40px; font-size: 2.5rem;">LOGIN</h2>
-        <input type="text" id="d-id" placeholder="ID">
-        <input type="password" id="d-pass" placeholder="Password">
-        <button onclick="runLogin()" class="tile-btn" style="width:100%; background:var(--text); color:#fff; padding:22px; border-radius:18px; border:none; margin-top:20px; font-weight:700; font-size:1.2rem;">ENTER</button>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN | KIZUNA VIDEO</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ログイン画面専用の追加スタイル */
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* 入力エリアのフェードアウト用 */
+        #login-form-area {
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        #login-form-area.hide {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+            display: none;
+        }
+
+        /* 進捗エリアのフェードイン用 */
+        #member-area {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+        }
+        #member-area.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* パスワード表示切り替えボタン */
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--sub);
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* LINEボタン（ID未発行の方向け） */
+        .line-notice-btn {
+            margin-top: 40px;
+            padding: 30px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+        }
+        .line-notice-btn:hover {
+            background: #f0fff4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container login-container">
+        
+        <div id="login-form-area" class="reveal active">
+            <div class="tile-link" style="cursor: default; background: var(--card);">
+                <span class="category-tag">CLIENT PORTAL</span>
+                <h2>Sign In</h2>
+                <p style="margin-bottom: 40px;">制作状況を確認するためにIDを入力してください</p>
+                
+                <div class="input-group">
+                    <input type="text" id="d-id" placeholder="Client ID">
+                </div>
+
+                <div class="password-wrapper">
+                    <input type="password" id="d-pass" placeholder="Password" style="margin-bottom: 0;">
+                    <button type="button" class="toggle-password" onclick="togglePass()">表示</button>
+                </div>
+
+                <button onclick="runLogin()" class="btn-action" style="margin-top: 20px;">
+                    Continue
+                </button>
+
+                <a href="https://lin.ee/VslEkmd" class="line-notice-btn">
+                    <span style="color: var(--line); font-weight: 700; display: block; margin-bottom: 5px;">IDをお持ちでない方</span>
+                    <p style="font-size: 0.9rem; color: var(--sub);">公式LINEでの申込み後、IDとパスワードをお渡しします</p>
+                </a>
+            </div>
+        </div>
+
+        <div id="member-area">
+            <div class="tile-link" style="text-align: left; cursor: default;">
+                <span class="category-tag" id="d-status-label">CURRENT STATUS</span>
+                <h2 id="user-name" style="font-size: 2.5rem;">Welcome</h2>
+                
+                <div class="progress-container">
+                    <div id="d-bar" class="progress-bar"></div>
+                </div>
+                
+                <p id="d-msg" style="color: var(--accent); font-weight: 700; margin-bottom: 10px;"></p>
+                <p id="d-delivery" style="font-size: 0.9rem; margin-bottom: 30px;"></p>
+                
+                <div style="background: #fff; padding: 25px; border-radius: 20px; border: 1px solid var(--border);">
+                    <p id="d-message" style="color: var(--text); font-size: 1.1rem;"></p>
+                </div>
+
+                <div id="d-download" style="margin-top: 40px; text-align: center;"></div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="login.html" style="color: var(--sub); text-decoration: none; font-size: 0.9rem;">ログアウト</a>
+            </div>
+        </div>
+
+        <footer>
+            <a href="index.html" class="footer-tile">HOMEに戻る</a>
+            <p style="margin-top: 20px;">&copy; 2025 KIZUNA VIDEO</p>
+        </footer>
     </div>
 
-    <div id="member-area" style="display:none;">
-        <div class="tile-btn active" style="text-align:left; cursor:default;">
-            <h2 id="user-name" style="font-size:2rem;">Welcome</h2>
-            <div style="background:#e5e5e7; height:8px; border-radius:10px; margin:30px 0; overflow:hidden;">
-                <div id="d-bar" style="background:var(--accent); height:100%; width:0%; transition:1.5s;"></div>
-            </div>
-            <p id="d-msg" style="color:var(--accent); font-weight:700; margin-bottom:10px;"></p>
-            <p id="d-delivery" style="font-size:0.9rem; margin-bottom:20px;"></p>
-            <div style="background:#fff; padding:30px; border-radius:20px;">
-                <p id="d-message" style="color:var(--text); font-size:1.1rem; min-height:1.5em;"></p>
-            </div>
-            <div id="d-download" style="margin-top:30px; text-align:center;"></div>
-        </div>
-    </div>
-</div>
+    <script>
+        // パスワード表示切り替え
+        function togglePass() {
+            const passInput = document.getElementById('d-pass');
+            const btn = document.querySelector('.toggle-password');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                btn.innerText = '非表示';
+            } else {
+                passInput.type = 'password';
+                btn.innerText = '表示';
+            }
+        }
+
+        // ログイン実行とアニメーション
+        function runLogin() {
+            const formArea = document.getElementById('login-form-area');
+            const memberArea = document.getElementById('member-area');
+            
+            // 本来はここでID照合を行いますが、まずは演出のみ実装します
+            // IDが入力されているかチェック
+            if (document.getElementById('d-id').value === "") {
+                alert("IDを入力してください");
+                return;
+            }
+
+            // 1. フォームをフェードアウト
+            formArea.classList.add('hide');
+
+            // 2. 少し遅れて進捗エリアをフェードイン
+            setTimeout(() => {
+                memberArea.classList.add('show');
+                // 進捗バーを伸ばすアニメーション（例: 70%）
+                setTimeout(() => {
+                    document.getElementById('d-bar').style.width = "70%";
+                    document.getElementById('d-msg').innerText = "現在、最終書き出し中です";
+                    document.getElementById('d-delivery').innerText = "お届け予定：12月25日";
+                    document.getElementById('d-message').innerText = "大変お待たせしております。最高のクオリティで仕上げておりますので、完成まで今しばらくお待ちください。";
+                }, 500);
+            }, 800);
+        }
+    </script>
+</body>
+</html>
