@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>KIZUNA VIDEO | 映像制作ボランティア</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; }
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>KIZUNA VIDEO | 映像制作</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; --loader-bg: #ffffff; }
+
+    /* ダークモード設定 */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #000000;
+            --card: #1c1c1e;
+            --text: #f5f5f7;
+            --sub: #a1a1a6;
+            --accent: #0a84ff;
+            --border: #38383a;
+            --loader-bg: #000000;
+        }
+    }
+
+    /* 手動ダークモードクラス（JavaScriptで時間判定用） */
+    .dark-theme {
+        --bg: #000000;
+        --card: #1c1c1e;
+        --text: #f5f5f7;
+        --sub: #a1a1a6;
+        --accent: #0a84ff;
+        --border: #38383a;
+        --loader-bg: #000000;
+    }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -11,13 +35,13 @@
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        transition: background-color 0.5s, color 0.5s;
     }
 
-    /* ローディング画面 */
     #loader {
         position: fixed;
         inset: 0;
-        background: #fff;
+        background: var(--loader-bg);
         z-index: 10000;
         display: flex;
         flex-direction: column;
@@ -37,7 +61,7 @@
     .loader-bar-bg {
         width: 200px;
         height: 2px;
-        background: #eee;
+        background: var(--border);
         border-radius: 2px;
         overflow: hidden;
     }
@@ -46,7 +70,7 @@
         width: 0%;
         height: 100%;
         background: var(--text);
-        transition: width 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+        transition: width 1s cubic-bezier(0.65, 0, 0.35, 1);
     }
 
     .pr-msg {
@@ -58,7 +82,6 @@
         transition: 0.5s;
     }
 
-    /* メインコンテンツ */
     .container {
         max-width: 1000px;
         margin: 0 auto;
@@ -86,9 +109,9 @@
 
     .tile-link:hover {
         transform: scale(1.02);
-        background: #fff;
+        background: var(--bg);
         border-color: var(--border);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
 
     .category-tag {
@@ -118,10 +141,11 @@
 
     footer {
         text-align: center;
-        margin-top: 100px;
+        margin-top: 80px;
         padding: 40px 0;
-        border-top: 1px solid #eee;
+        border-top: 1px solid var(--border);
         color: var(--sub);
+        font-size: 0.85rem;
     }
 
     @media (min-width: 768px) {
@@ -136,18 +160,18 @@
     <div class="loader-bar-bg">
         <div id="loader-bar" class="loader-bar-fill"></div>
     </div>
-    <div id="pr-msg" class="pr-msg">Welcome to KIZUNA</div>
+    <div id="pr-msg" class="pr-msg">Welcome</div>
 </div>
 
 <div class="container">
-    <header id="header-reveal" class="reveal">
+    <header class="reveal">
         <h1 style="font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: -0.06em;">KIZUNA VIDEO</h1>
         <p id="header-time" style="font-size: 1rem; color: var(--sub); margin-top: 15px; font-weight: 600;"></p>
     </header>
 
     <main>
         <a href="about.html" class="tile-link reveal">
-            <span class="category-tag">Our Philosophy</span>
+            <span class="category-tag">Production</span>
             <h2>ABOUT</h2>
             <p>誰でも歓迎。映像で想い出を資産に変える、私たちの制作紹介。</p>
         </a>
@@ -155,23 +179,32 @@
         <a href="login.html" class="tile-link reveal">
             <span class="category-tag">Client Portal</span>
             <h2>LOGIN</h2>
-            <p>制作状況の確認と完成動画のダウンロードはこちら。</p>
+            <p>スプレッドシート連携。制作状況の確認と納品動画の視聴はこちら。</p>
         </a>
 
-        <a href="[https://line.me/R/oaMessage/@494zixmx/](https://line.me/R/oaMessage/@494zixmx/)?【相談】映像制作について相談したいです。" class="tile-link reveal" style="border: 2px solid var(--line); background: #ffffff;">
+        <a href="contact.html" class="tile-link reveal" style="border: 2px solid var(--line); background: transparent;">
             <span class="category-tag" style="color: var(--line);">Contact</span>
-            <h2 style="color: var(--line);">LINEで相談・見積もり</h2>
-            <p style="color: var(--line); font-weight: 700;">お申し込み後、マイページIDを発行いたします。</p>
+            <h2 style="color: var(--line);">LINE相談・見積もり</h2>
+            <p style="color: var(--line); font-weight: 700;">公式LINEでどなたでもお気軽にご相談いただけます。</p>
         </a>
     </main>
 
     <footer>
-        <p>&copy; 2025 KIZUNA VIDEO All Rights Reserved.</p>
+        <p>&copy; 2025 KIZUNA VIDEO</p>
     </footer>
 </div>
 
 <script>
-    // 時計の更新
+    // ダークモード判定（18時以降または6時前ならダーク）
+    function checkTheme() {
+        const hour = new Date().getHours();
+        if (hour >= 18 || hour < 6) {
+            document.body.classList.add('dark-theme');
+        } else {
+            document.body.classList.remove('dark-theme');
+        }
+    }
+
     function updateTime() {
         const now = new Date();
         const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
@@ -182,42 +215,37 @@
         if (lClock) lClock.innerText = timeStr;
         if (hTime) hTime.innerText = "SYSTEM TIME: " + timeStr;
     }
+    
     setInterval(updateTime, 1000);
     updateTime();
+    checkTheme();
 
-    // ローディングアニメーション
     const prMessages = [
         "誰でも歓迎。あなたの物語を。",
         "一瞬を、一生の宝物に。",
-        "想いを形にする、映像制作。",
+        "夜の編集も、最高の一本のために。",
         "お気軽にご相談ください。"
     ];
 
-    window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('load', () => {
         const bar = document.getElementById('loader-bar');
         const loader = document.getElementById('loader');
         const pr = document.getElementById('pr-msg');
         
-        // PRメッセージのセット
         pr.innerText = prMessages[Math.floor(Math.random() * prMessages.length)];
         
-        // アニメーション開始
         setTimeout(() => { 
             bar.style.width = '100%'; 
             pr.style.opacity = '1';
         }, 100);
 
-        // 読み込み完了後の処理
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => { 
-                    loader.style.display = 'none';
-                    // コンテンツをふわっと出す
-                    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-                }, 800);
-            }, 1800);
-        });
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => { 
+                loader.style.display = 'none';
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+            }, 800);
+        }, 1500);
     });
 </script>
 </body> </html>
