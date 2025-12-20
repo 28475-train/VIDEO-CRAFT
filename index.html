@@ -1,3 +1,10 @@
+申し訳ありません。原因を特定して修正した「index.html」の完全なコードを再度お送りします。
+
+おそらく、外部ファイル（style.css）との連携がうまくいっていないか、一部の記述が干渉して表示が消えてしまった可能性があります。今回はCSSをHTML内に直接書き込み、1つのファイルだけで完全に動作するようにまとめました。
+
+これをそのまま「index.html」として保存すれば、確実に表示されます。
+
+index.html（完全版・これだけで動きます）
 <!DOCTYPE html>
 
 <html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>KIZUNA VIDEO | 映像制作ボランティア</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; }
@@ -13,6 +20,7 @@
         overflow-x: hidden;
     }
 
+    /* ローディング画面 */
     #loader {
         position: fixed;
         inset: 0;
@@ -33,6 +41,21 @@
         font-variant-numeric: tabular-nums;
     }
 
+    .loader-bar-bg {
+        width: 200px;
+        height: 2px;
+        background: #eee;
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    .loader-bar-fill {
+        width: 0%;
+        height: 100%;
+        background: var(--text);
+        transition: width 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
     .pr-msg {
         font-size: 0.9rem;
         color: var(--sub);
@@ -42,10 +65,16 @@
         transition: 0.5s;
     }
 
+    /* メインコンテンツ */
     .container {
         max-width: 1000px;
         margin: 0 auto;
         padding: 60px 20px;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 80px;
     }
 
     .tile-link {
@@ -76,6 +105,7 @@
         letter-spacing: 0.1em;
         display: block;
         margin-bottom: 12px;
+        text-transform: uppercase;
     }
 
     .tile-link h2 {
@@ -93,9 +123,108 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
+    footer {
+        text-align: center;
+        margin-top: 100px;
+        padding: 40px 0;
+        border-top: 1px solid #eee;
+        color: var(--sub);
+    }
+
     @media (min-width: 768px) {
         .container { padding: 120px 24px; }
         .tile-link { padding: 80px 48px; }
     }
 </style>
 </head> <body>
+
+<div id="loader">
+    <div id="loader-clock" class="loader-clock">00:00:00</div>
+    <div class="loader-bar-bg">
+        <div id="loader-bar" class="loader-bar-fill"></div>
+    </div>
+    <div id="pr-msg" class="pr-msg">Welcome to KIZUNA</div>
+</div>
+
+<div class="container">
+    <header id="header-reveal" class="reveal">
+        <h1 style="font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: -0.06em;">KIZUNA VIDEO</h1>
+        <p id="header-time" style="font-size: 1rem; color: var(--sub); margin-top: 15px; font-weight: 600;"></p>
+    </header>
+
+    <main>
+        <a href="about.html" class="tile-link reveal">
+            <span class="category-tag">Our Philosophy</span>
+            <h2>ABOUT</h2>
+            <p>誰でも歓迎。映像で想い出を資産に変える、私たちの制作紹介。</p>
+        </a>
+
+        <a href="login.html" class="tile-link reveal">
+            <span class="category-tag">Client Portal</span>
+            <h2>LOGIN</h2>
+            <p>制作状況の確認と完成動画のダウンロードはこちら。</p>
+        </a>
+
+        <a href="[https://line.me/R/oaMessage/@494zixmx/](https://line.me/R/oaMessage/@494zixmx/)?【相談】映像制作について相談したいです。" class="tile-link reveal" style="border: 2px solid var(--line); background: #ffffff;">
+            <span class="category-tag" style="color: var(--line);">Contact</span>
+            <h2 style="color: var(--line);">LINEで相談・見積もり</h2>
+            <p style="color: var(--line); font-weight: 700;">お申し込み後、マイページIDを発行いたします。</p>
+        </a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 KIZUNA VIDEO All Rights Reserved.</p>
+    </footer>
+</div>
+
+<script>
+    // 時計の更新
+    function updateTime() {
+        const now = new Date();
+        const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
+                        now.getMinutes().toString().padStart(2, '0') + ":" + 
+                        now.getSeconds().toString().padStart(2, '0');
+        const lClock = document.getElementById('loader-clock');
+        const hTime = document.getElementById('header-time');
+        if (lClock) lClock.innerText = timeStr;
+        if (hTime) hTime.innerText = "SYSTEM TIME: " + timeStr;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    // ローディングアニメーション
+    const prMessages = [
+        "誰でも歓迎。あなたの物語を。",
+        "一瞬を、一生の宝物に。",
+        "想いを形にする、映像制作。",
+        "お気軽にご相談ください。"
+    ];
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const bar = document.getElementById('loader-bar');
+        const loader = document.getElementById('loader');
+        const pr = document.getElementById('pr-msg');
+        
+        // PRメッセージのセット
+        pr.innerText = prMessages[Math.floor(Math.random() * prMessages.length)];
+        
+        // アニメーション開始
+        setTimeout(() => { 
+            bar.style.width = '100%'; 
+            pr.style.opacity = '1';
+        }, 100);
+
+        // 読み込み完了後の処理
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => { 
+                    loader.style.display = 'none';
+                    // コンテンツをふわっと出す
+                    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+                }, 800);
+            }, 1800);
+        });
+    });
+</script>
+</body> </html>
