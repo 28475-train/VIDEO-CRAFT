@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>依頼者限定マイページ | VIDEO CRAFT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="member-bg">
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">VIDEO CRAFT <span>MEMBER ONLY</span></div>
+            <button onclick="logout()" class="btn-sub" style="padding: 5px 10px;">ログアウト</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="member-header reveal">
+            <h2>こんにちは、<span id="user-display-name">お客様</span> 様</h2>
+            <p>あなたのプロジェクトの最新状況をご案内します。</p>
+        </header>
+
+        <div class="grid">
+            <section class="card reveal">
+                <h3>現在の進捗</h3>
+                <div class="progress-container" style="background:#e2e8f0; height:25px; border-radius:15px; margin:15px 0; overflow:hidden;">
+                    <div id="m-bar" style="width:0%; height:100%; background:linear-gradient(90deg, #2563eb, #60a5fa); transition: 2s ease-out;"></div>
+                </div>
+                <p id="m-status" style="font-weight:bold; color:var(--main);">ステータス：確認中</p>
+                <p id="m-delivery" style="font-size:0.9rem; color:#64748b; margin-top:5px;"></p>
+            </section>
+
+            <section class="card reveal">
+                <h3>制作チームからの伝言</h3>
+                <div id="m-message" style="background:#f8fafc; padding:15px; border-radius:10px; border-left:4px solid var(--main); font-size:0.9rem;">
+                    メッセージを読み込み中...
+                </div>
+            </section>
+        </div>
+
+        <section class="card reveal" style="margin-top:20px; text-align:center;">
+            <h3>プレビュー・納品</h3>
+            <p style="font-size:0.8rem; margin-bottom:15px;">※確認用動画はプライバシー保護のためパスワードがかかっている場合があります。</p>
+            <div id="m-download">
+                <p style="color:#94a3b8;">現在、確認用データは準備中です。</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
