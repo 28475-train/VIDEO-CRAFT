@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>GUIDE | KIZUNA VIDEO</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #000000;
+            --card: #1c1c1e;
+            --text: #f5f5f7;
+            --sub: #a1a1a6;
+            --border: #38383a;
+        }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 60px 20px;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        margin-bottom: 10px;
+    }
+
+    .guide-step {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: var(--card);
+        border-radius: 24px;
+        position: relative;
+    }
+
+    .step-number {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 1rem;
+        color: var(--sub);
+        margin-bottom: 10px;
+    }
+
+    .btn-home {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 15px 30px;
+        background: var(--text);
+        color: var(--bg);
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 60px;
+        color: var(--sub);
+        font-size: 0.8rem;
+    }
+</style>
+</head> <body>
+
+<div class="container">
+    <header>
+        <h1>使い方</h1>
+        <p>ご相談から納品までのステップをご案内します。</p>
+    </header>
+
+    <main>
+        <section class="guide-step">
+            <span class="step-number">Step 01</span>
+            <h2>LINEで無料相談</h2>
+            <p>まずはコンタクトページから公式LINEを友だち追加してください。制作したい映像のイメージや納期について、メッセージをお送りください。</p>
+        </section>
+
+        <section class="guide-step">
+            <span class="step-number">Step 02</span>
+            <h2>お見積もりとID発行</h2>
+            <p>内容を確認し、制作費（またはボランティア範囲）のお見積もりを提示します。合意いただけましたら、当サイトのログイン用IDとパスワードを発行します。</p>
+        </section>
+
+        <section class="guide-step">
+            <span class="step-number">Step 03</span>
+            <h2>制作開始・進捗確認</h2>
+            <p>ログインページから発行されたIDでサインインすると、現在の制作状況がバー形式でリアルタイムに確認できます。</p>
+        </section>
+
+        <section class="guide-step">
+            <span class="step-number">Step 04</span>
+            <h2>プレビューと修正</h2>
+            <p>映像が形になりましたら、マイページ上でプレビュー動画を公開します。修正のご希望があればLINEまたはメッセージ機能でお伝えください。</p>
+        </section>
+
+        <section class="guide-step">
+            <span class="step-number">Step 05</span>
+            <h2>最終納品</h2>
+            <p>完成した映像のダウンロードURLをマイページに掲載します。高画質な映像資産として、大切に保管・ご活用ください。</p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="btn-home">ホームに戻る</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 KIZUNA VIDEO</p>
+    </footer>
+</div>
+</body> </html>
