@@ -3,39 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEMO | VIDEO CRAFT</title>
+    <title>LOGIN | VIDEO CRAFT</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">VIDEO CRAFT <span class="tag">DEMO</span></div>
-            <a href="index.html" class="nav-link">BACK</a>
-        </div>
-    </nav>
-
-    <div class="container main-content">
-        <section id="demo-login" class="card login-card reveal">
-            <h2>依頼者ログイン体験</h2>
-            <p>ID: demo001 / PASS: test1234</p>
-            <input type="text" id="d-id" placeholder="ID">
-            <input type="password" id="d-pass" placeholder="PASSWORD">
-            <button onclick="runLogin()" class="btn-primary">ログインして体験</button>
-        </section>
-
-        <div id="demo-content" style="display:none;">
-            <div class="grid">
-                <section class="card reveal">
-                    <h3>写真加工体験</h3>
-                    <div class="img-preview"><img id="demo-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"></div>
-                    <input type="range" id="bright" min="50" max="150" value="100" oninput="applyFilter()">
-                    <p class="label">明るさを調整してみてください</p>
-                </section>
-                <section class="card reveal">
-                    <h3>システムの特徴</h3>
-                    <p>このページのように、依頼後もリアルタイムで進捗を確認したり、指示を送ったりできる専用画面を提供します。</p>
-                </section>
-            </div>
+<body>
+    <div class="container login-wrapper">
+        <div class="card-btn login-card reveal active">
+            <div class="logo" style="margin-bottom: 30px;">VIDEO CRAFT</div>
+            <h2>CLIENT LOGIN</h2>
+            <p style="margin-bottom: 30px; font-size: 0.8rem; color: #888;">発行されたIDとパスワードを入力してください</p>
+            
+            <input type="text" id="d-id" placeholder="依頼者ID">
+            <input type="password" id="d-pass" placeholder="パスワード">
+            
+            <button onclick="runLogin()" class="btn-main" style="width: 100%; margin-top: 10px;">ログインする</button>
+            <a href="index.html" class="btn-sub" style="display: block; margin-top: 20px; text-decoration: none;">ホームへ戻る</a>
         </div>
     </div>
     <script src="script.js"></script>
