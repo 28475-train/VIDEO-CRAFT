@@ -3,21 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN | VIDEO CRAFT</title>
+    <title>DEMO EXPERIENCE | VIDEO CRAFT</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container login-wrapper">
-        <div class="card-btn login-card reveal active">
-            <div class="logo" style="margin-bottom: 30px;">VIDEO CRAFT</div>
-            <h2>CLIENT LOGIN</h2>
-            <p style="margin-bottom: 30px; font-size: 0.8rem; color: #888;">発行されたIDとパスワードを入力してください</p>
-            
-            <input type="text" id="d-id" placeholder="依頼者ID">
-            <input type="password" id="d-pass" placeholder="パスワード">
-            
-            <button onclick="runLogin()" class="btn-main" style="width: 100%; margin-top: 10px;">ログインする</button>
-            <a href="index.html" class="btn-sub" style="display: block; margin-top: 20px; text-decoration: none;">ホームへ戻る</a>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">VIDEO CRAFT <span style="font-size:0.7rem; color:#0066cc;">DEMO</span></div>
+            <a href="index.html" class="btn-sub" style="padding: 8px 20px;">HOME</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card-btn reveal">
+                <span class="num">STEP 01</span>
+                <h3>管理システム体験</h3>
+                <p>ID: <strong>demo001</strong> / PASS: <strong>test1234</strong></p>
+                <button onclick="location.href='login.html'" class="btn-main" style="margin-top:20px;">ログイン画面を試す</button>
+            </div>
+
+            <div class="card-btn reveal">
+                <span class="num">STEP 02</span>
+                <h3>補正シミュレーター</h3>
+                <div class="img-preview" style="margin:15px 0; border-radius:10px; overflow:hidden;">
+                    <img id="demo-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" style="width:100%;">
+                </div>
+                <input type="range" id="bright" min="50" max="150" value="100" oninput="applyFilter()" style="width:100%;">
+                <p style="font-size:0.7rem; color:#888;">スライダーで明るさを変えられます</p>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
