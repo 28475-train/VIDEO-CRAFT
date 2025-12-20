@@ -2,7 +2,6 @@
 
 <html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>KIZUNA VIDEO | 映像制作</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; --loader-bg: #ffffff; }
 
-    /* ダークモード設定 */
     @media (prefers-color-scheme: dark) {
         :root {
             --bg: #000000;
@@ -15,7 +14,6 @@
         }
     }
 
-    /* 手動ダークモードクラス（JavaScriptで時間判定用） */
     .dark-theme {
         --bg: #000000;
         --card: #1c1c1e;
@@ -142,10 +140,29 @@
     footer {
         text-align: center;
         margin-top: 80px;
-        padding: 40px 0;
+        padding: 40px 0 60px;
         border-top: 1px solid var(--border);
+    }
+
+    .footer-nav {
+        margin-bottom: 20px;
+    }
+
+    .footer-nav a {
         color: var(--sub);
-        font-size: 0.85rem;
+        text-decoration: none;
+        font-size: 0.8rem;
+        margin: 0 10px;
+        transition: color 0.3s;
+    }
+
+    .footer-nav a:hover {
+        color: var(--text);
+    }
+
+    .copyright {
+        color: var(--sub);
+        font-size: 0.75rem;
     }
 
     @media (min-width: 768px) {
@@ -185,17 +202,20 @@
         <a href="contact.html" class="tile-link reveal" style="border: 2px solid var(--line); background: transparent;">
             <span class="category-tag" style="color: var(--line);">Contact</span>
             <h2 style="color: var(--line);">LINE相談・見積もり</h2>
-            <p style="color: var(--line); font-weight: 700;">公式LINEでどなたでもお気軽にご相談いただけます。</p>
+            <p style="color: var(--line); font-weight: 700;">お申し込み後、マイページIDを発行いたします。</p>
         </a>
     </main>
 
-    <footer>
-        <p>&copy; 2025 KIZUNA VIDEO</p>
+    <footer class="reveal">
+        <nav class="footer-nav">
+            <a href="guide.html">使い方</a>
+            <a href="privacy.html">プライバシーポリシー</a>
+        </nav>
+        <p class="copyright">&copy; 2025 KIZUNA VIDEO All Rights Reserved.</p>
     </footer>
 </div>
 
 <script>
-    // ダークモード判定（18時以降または6時前ならダーク）
     function checkTheme() {
         const hour = new Date().getHours();
         if (hour >= 18 || hour < 6) {
