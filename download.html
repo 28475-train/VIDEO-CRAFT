@@ -9,7 +9,7 @@
         .box { background: rgba(128,128,128,0.05); padding: 40px 20px; border-radius: 25px; border: 1px solid var(--border); max-width: 400px; margin: 0 auto; }
         input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; text-align: center; background: var(--bg); color: var(--text); }
         .btn-auth { width: 100%; padding: 15px; border-radius: 12px; background: var(--text); color: var(--bg); border: none; font-weight: 800; cursor: pointer; }
-        .btn-dl { width: 100%; padding: 15px; border-radius: 12px; background: var(--accent); color: white; text-decoration: none; font-weight: 800; display: none; }
+        .btn-dl { width: 100%; padding: 15px; border-radius: 12px; background: var(--accent); color: white; text-decoration: none; font-weight: 800; display: none; text-align: center; }
     </style>
 </head>
 <body>
@@ -19,17 +19,44 @@
         <main class="container">
             <h1 style="font-size:2.5rem; font-weight:900; margin-bottom:40px;">DOWNLOAD</h1>
             <div class="box">
-                <div id="ui"><input type="password" id="pw" placeholder="パスワード"><button onclick="ck()" class="btn-auth">認証</button></div>
+                <div id="ui">
+                    <input type="password" id="pw" placeholder="パスワードを入力">
+                    <button onclick="checkPassword()" class="btn-auth">認証する</button>
+                </div>
                 <a id="dl" href="#" class="btn-dl">動画を保存する</a>
             </div>
             <div class="translate-area"><div id="google_translate_element"></div></div>
         </main>
     </div>
-    <script>
-        const c={"2025":{p:"kizuna2025",i:"1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm"}};
-        function ck(){ const p=document.getElementById('pw').value; if(p===c["2025"].p){ document.getElementById('ui').style.display='none'; const d=document.getElementById('dl'); d.href="https://drive.google.com/uc?export=download&id="+c["2025"].i; d.style.display='block'; }else{alert("パスワードが違います");}}
-    </script>
+
     <script src="script.js"></script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        // パスワード「kizuna2025」をSHA-256でハッシュ化した値
+        // これを見ても元のパスワードはわかりません
+        const targetHash = "9d71c48067468696773562e646279f5835698b6710777553530f2c4224021584";
+        const fileId = "1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm";
+
+        async function checkPassword() {
+            const password = document.getElementById('pw').value;
+            
+            // 入力されたパスワードをハッシュ化
+            const msgUint8 = new TextEncoder().encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            // 比較
+            if (hashHex === targetHash) {
+                document.getElementById('ui').style.display = 'none';
+                const dlLink = document.getElementById('dl');
+                dlLink.href = "https://drive.google.com/uc?export=download&id=" + fileId;
+                dlLink.style.display = 'block';
+            } else {
+                alert("パスワードが正しくありません。");
+            }
+        }
+    </script>
 </body>
 </html>
