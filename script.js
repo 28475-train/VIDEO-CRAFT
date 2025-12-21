@@ -1,3 +1,4 @@
+// よみがな切り替え機能
 function toggleRuby() {
     document.body.classList.toggle('show-ruby');
     const isActive = document.body.classList.contains('show-ruby');
@@ -8,6 +9,7 @@ function toggleRuby() {
     });
 }
 
+// Google翻訳の初期化
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
         pageLanguage: 'ja',
@@ -16,13 +18,13 @@ function googleTranslateElementInit() {
     }, 'google_translate_element');
 }
 
-// 共通メニューの生成（どのページでも同じメニューが出るようにする）
+// 全ページ共通の2段メニューを自動生成
 document.addEventListener('DOMContentLoaded', () => {
     const navHTML = `
     <div class="nav-inner">
         <div class="nav-top">
             <a href="index.html" class="nav-logo">KIZUNA video</a>
-            <button class="btn-toggle btn-toggle-ruby" onclick="toggleRuby()">よみがな：OFF</button>
+            <button class="btn-toggle-ruby" onclick="toggleRuby()">よみがな：OFF</button>
         </div>
         <div class="nav-bottom">
             <a href="about.html" class="nav-btn">ABOUT</a>
@@ -32,6 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="download.html" class="nav-btn">DOWNLOAD</a>
         </div>
     </div>`;
-    const nav = document.querySelector('nav');
-    if (nav) nav.innerHTML = navHTML;
+    
+    const navElement = document.querySelector('nav');
+    if (navElement) navElement.innerHTML = navHTML;
+
+    // ローディング解除
+    setTimeout(() => {
+        document.body.classList.add('ready');
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+            if (loader) loader.style.display = 'none';
+        }, 1000);
+    }, 3500);
 });
