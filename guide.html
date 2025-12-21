@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GUIDE - KIZUNA video</title>
-    <style>
-        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
-        @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.8; }
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--border); }
-        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
-        .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.7rem; font-weight: 700; }
-        .container { max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .box { background: rgba(128,128,128,0.05); padding: 35px; border-radius: 25px; border: 1px solid var(--border); margin-bottom: 30px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav><div class="nav-inner"><a href="index.html" style="font-weight:900;text-decoration:none;color:var(--text);">KIZUNA video</a><div class="nav-links"><a href="about.html">ABOUT</a><a href="works.html">WORKS</a><a href="guide.html">GUIDE</a><a href="reserve.html">RESERVE</a><a href="download.html">DOWNLOAD</a><div id="google_translate_element"></div></div></div></nav>
-    <div class="container">
-        <h1 style="font-size:3rem;font-weight:800;margin-bottom:40px;">GUIDE</h1>
-        <div class="box"><h3>ギガファイル便の活用</h3><p>大容量の動画素材は、ギガファイル便で「保持期間100日」に設定してアップロードし、発行されたURLをLINEへ送信してください。</p></div>
-        <div class="box"><h3>修正無制限</h3><p>私たちは技術向上のために活動しています。お客様が100%満足されるまで、何度でも無料で修正を承ります。</p></div>
+    <div id="loader"><svg width="100%" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" class="drawing-text">KIZUNA video</text></svg></div>
+    <div id="content">
+        <nav></nav>
+        <main class="container">
+            <h1 style="font-size:2.5rem; font-weight:900; margin-bottom:40px;">GUIDE</h1>
+            <div style="text-align:left; display: flex; flex-direction: column; gap: 20px;">
+                <div style="background:rgba(128,128,128,0.05); padding:20px; border-radius:20px;">
+                    <h3 style="margin-bottom:10px;">1. 素材の送付</h3>
+                    <p>ギガファイル<ruby>便<rt>びん</rt></ruby>などを<ruby>利用<rt>りよう</rt></ruby>して、動画や写真をアップロードしてください。</p>
+                </div>
+                <div style="background:rgba(128,128,128,0.05); padding:20px; border-radius:20px;">
+                    <h3 style="margin-bottom:10px;">2. ヒアリング</h3>
+                    <p>LINEにて、どのような雰囲気にしたいか<ruby>詳細<rt>しょうさい</rt></ruby>をお聞きします。</p>
+                </div>
+            </div>
+            <div class="translate-area"><div id="google_translate_element"></div></div>
+        </main>
     </div>
-    <script type="text/javascript">function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'ja',includedLanguages:'ja,en,ko,zh-CN',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}</script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="script.js"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
