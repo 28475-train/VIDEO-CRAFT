@@ -9,49 +9,85 @@
         :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.6; }
+        
         nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 100; }
-        .nav-inner { max-width: 1000px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; }
+        @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.8); } }
+        .nav-inner { max-width: 1000px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .back-link { text-decoration: none; color: var(--accent); font-weight: 700; font-size: 0.85rem; }
+
         .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .work-card { background: rgba(128,128,128,0.05); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: 0.3s; }
-        .work-card:hover { transform: translateY(-5px); }
-        .work-img { width: 100%; height: 180px; background: #333; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; }
-        .work-info { padding: 20px; }
-        .tag { font-size: 0.7rem; background: var(--accent); color: white; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; display: inline-block; }
+        h1 { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 10px; }
+        .sub-title { text-align: center; color: var(--sub); margin-bottom: 60px; font-size: 1rem; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .card { background: rgba(128,128,128,0.05); border-radius: 24px; border: 1px solid var(--border); overflow: hidden; transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-8px); }
+        .card-img { width: 100%; height: 200px; background: #222; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; position: relative; }
+        .card-img::after { content: "SAMPLE VIDEO"; font-size: 0.7rem; opacity: 0.4; }
+        
+        .card-body { padding: 25px; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; background: var(--accent); color: #fff; margin-bottom: 12px; }
+        h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        p { font-size: 0.85rem; color: var(--sub); line-height: 1.7; }
+
+        footer { text-align: center; padding: 100px 0 60px; color: var(--sub); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 80px; }
     </style>
 </head>
 <body>
-    <nav><div class="nav-inner"><a href="index.html" style="text-decoration:none;color:var(--text);font-weight:800;">KIZUNA video</a><a href="index.html" style="text-decoration:none;color:var(--accent);font-size:0.8rem;">TOP</a></div></nav>
+    <nav>
+        <div class="nav-inner">
+            <div style="font-weight: 800;">KIZUNA video</div>
+            <a href="index.html" class="back-link">TOPに戻る</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1 style="text-align:center;">WORKS</h1>
-        <p style="text-align:center;color:var(--sub);margin-top:10px;">これまでの制作事例（ジャンル不問）</p>
+        <h1>WORKS</h1>
+        <p class="sub-title">私たちの技術を注ぎ込んだ、制作実績の一部をご紹介します。</p>
+
         <div class="grid">
-            <div class="work-card">
-                <div class="work-img">Coming Soon</div>
-                <div class="work-info">
-                    <span class="tag">Memorial</span>
-                    <h3>三送会メモリアルムービー</h3>
-                    <p style="font-size:0.85rem;color:var(--sub);margin-top:5px;">思い出の写真をエモーショナルに演出。</p>
+            <div class="card">
+                <div class="card-img">Coming Soon</div>
+                <div class="card-body">
+                    <span class="tag">三送会動画</span>
+                    <h3>三送会メモリアル</h3>
+                    <p>先輩方への感謝を込めたダイジェスト映像。共に歩んだ日々をドラマチックな構成で振り返ります。</p>
                 </div>
             </div>
-            <div class="work-card">
-                <div class="work-img">Coming Soon</div>
-                <div class="work-info">
-                    <span class="tag">Event</span>
-                    <h3>式典オープニング映像</h3>
-                    <p style="font-size:0.85rem;color:var(--sub);margin-top:5px;">期待感を高めるダイナミックな演出。</p>
+
+            <div class="card">
+                <div class="card-img">Coming Soon</div>
+                <div class="card-body">
+                    <span class="tag">シーン別動画</span>
+                    <h3>ハイライトセレクション</h3>
+                    <p>特定の大会や合宿、練習風景など、印象的なシーンを切り取ったショートムービー制作。</p>
                 </div>
             </div>
-            <div class="work-card">
-                <div class="work-img">Coming Soon</div>
-                <div class="work-info">
-                    <span class="tag">Promotion</span>
-                    <h3>技術紹介ショート動画</h3>
-                    <p style="font-size:0.85rem;color:var(--sub);margin-top:5px;">視覚効果を多用した最新の編集技術。</p>
+
+            <div class="card">
+                <div class="card-img">Coming Soon</div>
+                <div class="card-body">
+                    <span class="tag">思い出ムービー</span>
+                    <h3>絆 - Memories</h3>
+                    <p>日常のオフショットや笑顔を繋ぎ、温かい雰囲気で仕上げるドキュメンタリースタイルの映像作品。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">Coming Soon</div>
+                <div class="card-body">
+                    <span class="tag">卒団式動画</span>
+                    <h3>卒団記念オープニング</h3>
+                    <p>式典の始まりを告げる、インパクト重視の映像。旅立つ者たちの決意と成長を力強く表現します。</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer>
+        &copy; 2025 KIZUNA video
+    </footer>
 </body>
 </html>
