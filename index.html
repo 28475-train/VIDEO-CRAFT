@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIZUNA VIDEO - メモリアルムービー制作</title>
+    <title>KIZUNA video - メモリアルムービー制作</title>
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
         :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
@@ -11,28 +11,25 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.6; overflow-x: hidden; }
 
-        /* オープニングアニメーション：手書き風 ＆ バー */
+        /* オープニング：手書き風 & スリットバー */
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center; z-index: 9999; }
-        .drawing-text { fill: none; stroke: #fff; stroke-width: 1; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw 2.5s forwards ease-in-out; font-size: 60px; font-weight: 800; font-family: sans-serif; letter-spacing: 5px; }
+        .drawing-text { fill: none; stroke: #fff; stroke-width: 0.8; stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: draw 2.8s forwards ease-in-out; font-size: 45px; font-weight: 800; font-family: sans-serif; letter-spacing: 2px; }
         @keyframes draw { to { stroke-dashoffset: 0; fill: #fff; stroke-width: 0; } }
-        
-        .opening-bar { position: absolute; top: 50%; left: -100%; width: 100%; height: 2px; background: #fff; z-index: 10000; animation: slide-bar 1.2s 2.3s forwards cubic-bezier(0.7, 0, 0.3, 1); }
+        .opening-bar { position: absolute; top: 50%; left: -100%; width: 100%; height: 2px; background: #fff; z-index: 10000; animation: slide-bar 1.2s 2.5s forwards cubic-bezier(0.7, 0, 0.3, 1); }
         @keyframes slide-bar { 0% { left: -100%; } 50% { left: 0; } 100% { left: 100%; } }
-        
-        #content { opacity: 0; transition: opacity 1s 2.8s; }
+        #content { opacity: 0; transition: opacity 1s 3.2s; }
         .ready #content { opacity: 1; }
 
         /* ナビゲーション */
         nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--border); }
         @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.8); } }
         .nav-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
-        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 600; margin-left: 20px; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.8rem; font-weight: 700; margin-left: 15px; }
 
         .container { max-width: 1000px; margin: 0 auto; padding: 120px 20px 60px; }
         .fade-in { opacity: 0; transform: translateY(30px); transition: 1.2s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* セクションデザイン */
         header { height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
         .hero-img { width: 100px; height: 100px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 25px; }
         h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; }
@@ -40,85 +37,59 @@
         .download-box { background: rgba(128,128,128,0.05); border: 1px solid var(--border); border-radius: 40px; padding: 60px 20px; text-align: center; margin: 40px 0; }
         .btn-dl { display: inline-block; padding: 18px 40px; background: var(--accent); color: white; text-decoration: none; border-radius: 30px; font-weight: 700; margin-top: 20px; }
 
-        /* フッター */
-        footer { background: rgba(128,128,128,0.05); padding: 80px 20px; border-top: 1px solid var(--border); }
-        .footer-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
-        .footer-intro { margin-bottom: 40px; font-size: 0.9rem; color: var(--sub); max-width: 600px; margin: 0 auto 40px; }
+        footer { background: rgba(128,128,128,0.05); padding: 80px 20px; border-top: 1px solid var(--border); text-align: center; }
     </style>
 </head>
 <body>
-
     <div id="loader">
-        <svg width="400" height="100" viewBox="0 0 400 100">
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" class="drawing-text">KIZUNA</text>
+        <svg width="600" height="100" viewBox="0 0 600 100">
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" class="drawing-text">KIZUNA video</text>
         </svg>
         <div class="opening-bar"></div>
     </div>
-
     <div id="content">
         <nav>
             <div class="nav-inner">
-                <div style="font-weight: 800;">KIZUNA VIDEO</div>
+                <div style="font-weight: 800;">KIZUNA video</div>
                 <div class="nav-links">
-                    <a href="download.html">DOWNLOAD</a>
-                    <a href="reserve.html">RESERVE</a>
+                    <a href="guide.html">利用ガイド</a>
+                    <a href="download.html">ダウンロード</a>
+                    <a href="reserve.html">予約</a>
                 </div>
             </div>
         </nav>
-
         <div class="container">
             <header class="fade-in">
                 <img src="logo.jpg" alt="Logo" class="hero-img">
-                <h1>KIZUNA VIDEO</h1>
+                <h1>KIZUNA video</h1>
                 <p style="color: var(--sub); font-size: 1.2rem;">一生に残る、最高の三送会ムービーを。</p>
             </header>
-
             <section class="fade-in">
                 <div class="download-box">
                     <h2>動画の配布・保存</h2>
-                    <p style="color: var(--sub); font-size: 0.9rem; margin-top: 10px;">
-                        制作完了した動画はこちらから。<br>
-                        パスワードは管理者よりお受け取りください。
-                    </p>
-                    <a href="download.html" class="btn-dl">動画ダウンロードはこちら</a>
+                    <p style="color: var(--sub); font-size: 0.9rem; margin-top: 10px;">パスワードは管理者よりお受け取りください。</p>
+                    <a href="download.html" class="btn-dl">ダウンロードページへ</a>
                 </div>
             </section>
         </div>
-
         <footer>
-            <div class="footer-inner fade-in">
-                <div class="footer-intro">
-                    <h3 style="color: var(--text); margin-bottom: 10px;">ABOUT US</h3>
-                    <p>スポーツチームの感動をカタチにする。三送会や卒団式に特化したメモリアルムービー制作ユニット「KIZUNA VIDEO」です。</p>
-                </div>
-                
-                <div style="margin-bottom: 40px;">
-                    <p style="font-size: 0.85rem; font-weight: 700; margin-bottom: 15px;">ご依頼・お問い合わせは公式LINEまで</p>
-                    <a href="https://lin.ee/K6TBvW6"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
-                </div>
-
-                <p style="font-size: 0.7rem; color: var(--sub);">&copy; 2025 KIZUNA VIDEO</p>
+            <div style="margin-bottom: 30px;">
+                <p style="font-size: 0.85rem; font-weight: 700; margin-bottom: 15px;">公式LINEでお問い合わせ</p>
+                <a href="https://lin.ee/K6TBvW6"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
             </div>
+            <p style="font-size: 0.7rem; color: var(--sub);">&copy; 2025 KIZUNA video</p>
         </footer>
     </div>
-
     <script>
-        // アニメーション完了後にクラスを付与
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.body.classList.add('ready');
                 document.getElementById('loader').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loader').style.display = 'none';
-                }, 1000);
-            }, 3000); // 3秒後にメインコンテンツを表示
+                setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 1000);
+            }, 3500);
         });
-
-        // スクロールアニメーション
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
