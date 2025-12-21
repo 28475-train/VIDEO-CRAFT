@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>KIZUNA video - 更新情報</title>
+    <link>https://28475-train.github.io/VIDEO-CRAFT/</link>
+    <description>技術を磨き、最高の感動を形にする映像制作ユニット「KIZUNA video」の最新情報をお届けします。</description>
+    <language>ja</language>
+    <copyright>Copyright 2025 KIZUNA video</copyright>
+    <lastBuildDate>Sun, 21 Dec 2025 23:50:00 +0900</lastBuildDate>
+    <atom:link href="https://28475-train.github.io/VIDEO-CRAFT/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+        <title>公式ウェブサイトをフルリニューアルしました</title>
+        <link>https://28475-train.github.io/VIDEO-CRAFT/index.html</link>
+        <guid>https://28475-train.github.io/VIDEO-CRAFT/index.html?v=1</guid>
+        <description>ABOUT、WORKS、GUIDE、RESERVEの各ページを新設し、より使いやすく感動を伝えやすいサイトに生まれ変わりました。</description>
+        <pubDate>Sun, 21 Dec 2025 23:50:00 +0900</pubDate>
+    </item>
+
+    <item>
+        <title>制作実績（WORKS）に新しいカテゴリーを追加</title>
+        <link>https://28475-train.github.io/VIDEO-CRAFT/works.html</link>
+        <guid>https://28475-train.github.io/VIDEO-CRAFT/works.html?v=1</guid>
+        <description>三送会、卒団式、思い出ムービーなど、シーン別の制作実績をご紹介しています。</description>
+        <pubDate>Sun, 21 Dec 2025 20:00:00 +0900</pubDate>
+    </item>
+</channel>
+</rss>
