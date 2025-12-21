@@ -10,107 +10,62 @@
         :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, sans-serif; overflow-x: hidden; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; overflow-x: hidden; }
 
-        /* 手書き風オープニングアニメーション */
+        /* 手書き風イントロ */
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 1s; }
-        .drawing-text { fill: none; stroke: #fff; stroke-width: 0.8; stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: draw 2.8s forwards ease-in-out; font-size: 45px; font-weight: 800; letter-spacing: 2px; }
+        .drawing-text { fill: none; stroke: #fff; stroke-width: 0.8; stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: draw 2.8s forwards ease-in-out; font-size: 45px; font-weight: 800; }
         @keyframes draw { to { stroke-dashoffset: 0; fill: #fff; stroke-width: 0; } }
         .opening-bar { position: absolute; top: 50%; left: -100%; width: 100%; height: 2px; background: #fff; z-index: 10000; animation: slide-bar 1.2s 2.5s forwards cubic-bezier(0.7, 0, 0.3, 1); }
         @keyframes slide-bar { 0% { left: -100%; } 50% { left: 0; } 100% { left: 100%; } }
-        
-        /* コンテンツ表示 */
         #content { opacity: 0; visibility: hidden; transition: opacity 1.5s 3.2s, visibility 1.5s 3.2s; }
         .ready #content { opacity: 1; visibility: visible; }
 
-        /* 洗練されたナビゲーション */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.7); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        /* ナビゲーション */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--border); }
         @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.7); } }
-        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; }
-        .nav-logo { font-weight: 900; font-size: 1.2rem; text-decoration: none; color: var(--text); letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 700; opacity: 0.6; transition: 0.3s; }
-        .nav-links a:hover { opacity: 1; color: var(--accent); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 700; }
+
+        /* 多言語UI */
+        .goog-te-gadget-simple { background: transparent !important; border: 1px solid var(--border) !important; padding: 5px 8px !important; border-radius: 12px !important; font-size: 0.7rem !important; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
 
         /* メインビジュアル */
-        .hero { max-width: 1100px; margin: 0 auto; padding: 160px 25px 100px; text-align: center; }
-        .hero-img { width: 130px; height: 130px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 35px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        h1 { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 800; letter-spacing: -0.05em; line-height: 1.05; margin-bottom: 25px; }
-        .hero-sub { color: var(--sub); font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 500; max-width: 700px; margin: 0 auto 50px; line-height: 1.4; }
-
-        /* 申し込みボックス */
-        .cta-box { background: rgba(128,128,128,0.05); border: 1px solid var(--border); border-radius: 45px; padding: 80px 40px; margin-bottom: 60px; transition: transform 0.4s; }
-        .cta-box:hover { transform: scale(1.01); }
-        .cta-box h2 { font-size: 2.2rem; margin-bottom: 15px; letter-spacing: -0.02em; }
-        .cta-box p { color: var(--sub); margin-bottom: 40px; font-size: 1rem; }
-
-        /* ボタンデザイン */
-        .btn-main { display: inline-block; padding: 22px 60px; background: var(--text); color: var(--bg); text-decoration: none; border-radius: 40px; font-weight: 800; font-size: 1.2rem; transition: 0.3s; }
-        .btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
-        
-        /* フッター */
-        footer { padding: 100px 25px 60px; border-top: 1px solid var(--border); text-align: center; }
-        .line-button { transition: 0.3s; }
-        .line-button:hover { opacity: 0.8; transform: scale(1.05); }
-        .copyright { font-size: 0.75rem; color: var(--sub); margin-top: 30px; letter-spacing: 0.05em; }
+        .hero { max-width: 1100px; margin: 0 auto; padding: 160px 20px 80px; text-align: center; }
+        .hero-img { width: 120px; height: 120px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 30px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; }
+        .btn-main { display: inline-block; padding: 20px 50px; background: var(--accent); color: white; text-decoration: none; border-radius: 40px; font-weight: 800; margin-top: 40px; }
     </style>
 </head>
 <body>
     <div id="loader">
-        <svg width="600" height="100" viewBox="0 0 600 100">
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" class="drawing-text">KIZUNA video</text>
-        </svg>
+        <svg width="600" height="100" viewBox="0 0 600 100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" class="drawing-text">KIZUNA video</text></svg>
         <div class="opening-bar"></div>
     </div>
-
     <div id="content">
-        <nav>
-            <div class="nav-inner">
-                <a href="index.html" class="nav-logo">KIZUNA video</a>
-                <div class="nav-links">
-                    <a href="about.html">ABOUT</a>
-                    <a href="works.html">WORKS</a>
-                    <a href="guide.html">GUIDE</a>
-                    <a href="reserve.html">RESERVE</a>
-                    <a href="download.html">DOWNLOAD</a>
-                </div>
-            </div>
-        </nav>
-
+        <nav><div class="nav-inner"><a href="index.html" style="font-weight:900;text-decoration:none;color:var(--text);">KIZUNA video</a>
+        <div class="nav-links">
+            <a href="about.html">ABOUT</a><a href="works.html">WORKS</a><a href="guide.html">GUIDE</a><a href="reserve.html">RESERVE</a><a href="download.html">DOWNLOAD</a>
+            <div id="google_translate_element"></div>
+        </div></div></nav>
         <div class="hero">
-            <header>
-                <img src="logo.jpg" alt="KIZUNA Logo" class="hero-img">
-                <h1>KIZUNA<br>video</h1>
-                <p class="hero-sub">圧倒的な映像美と、技術の粋を。あなたの記憶を、色褪せない感動へ昇華させます。</p>
-            </header>
-
-            <section class="cta-box">
-                <h2>感動のその先へ。</h2>
-                <p>三送会、卒団式、大切な日々の記録。技術を、無料で提供しています。</p>
-                <a href="reserve.html" class="btn-main">制作依頼を開始する</a>
-            </section>
+            <img src="logo.jpg" alt="Logo" class="hero-img">
+            <h1>Memories into<br>Masterpieces.</h1>
+            <p style="color:var(--sub);margin-top:20px;font-size:1.2rem;">技術を磨き、最高の感動を形にする。</p>
+            <a href="reserve.html" class="btn-main">制作依頼を開始する</a>
         </div>
-
-        <footer>
-            <a href="https://lin.ee/K6TBvW6" class="line-button">
-                <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="LINE" height="50">
-            </a>
-            <p class="copyright">&copy; 2025 KIZUNA video. PRODUCED BY KIZUNA.</p>
+        <footer style="text-align:center;padding:100px 0;border-top:1px solid var(--border);">
+            <a href="https://lin.ee/K6TBvW6"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="LINE" height="44"></a>
+            <p style="font-size:0.7rem;color:var(--sub);margin-top:20px;">&copy; 2025 KIZUNA video</p>
         </footer>
     </div>
-
-    <script>
-        // ロード完了時のアニメーション制御
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.body.classList.add('ready');
-                const loader = document.getElementById('loader');
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 1000);
-            }, 3500);
-        });
+    <script type="text/javascript">
+        function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'ja', includedLanguages: 'ja,en,ko,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element'); }
     </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>window.addEventListener('load',()=>{setTimeout(()=>{document.body.classList.add('ready');setTimeout(()=>{document.getElementById('loader').style.display='none';},1000);},3500);});</script>
 </body>
 </html>
