@@ -6,22 +6,24 @@
     <title>素材送付ガイド - KIZUNA VIDEO</title>
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
-        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --border: #d2d2d7; --accent: #0071e3; }
+        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --border: #d2d2d7; --accent: #0071e3; --line: #06C755; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.8; padding: 40px 20px; display: flex; justify-content: center; opacity: 0; transition: opacity 0.5s; }
-        .guide-container { width: 100%; max-width: 600px; }
-        .header { text-align: center; margin-bottom: 50px; }
-        .header img { height: 60px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 20px; }
-        h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; }
-        .step { margin-bottom: 40px; position: relative; padding-left: 20px; border-left: 2px solid var(--border); }
-        .step-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; }
-        .step-num { color: var(--sub); font-size: 0.8rem; margin-right: 10px; border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; }
-        ul { list-style: none; padding-left: 10px; }
-        li { margin-bottom: 10px; font-size: 0.95rem; color: var(--text); }
-        li strong { color: var(--accent); }
-        .gigafile-btn { display: inline-block; background: var(--text); color: var(--bg); text-decoration: none; padding: 12px 25px; border-radius: 12px; font-weight: 600; margin-top: 15px; font-size: 0.9rem; }
-        .important { background: rgba(255, 0, 0, 0.05); border: 1px solid rgba(255, 0, 0, 0.1); padding: 20px; border-radius: 15px; margin-top: 30px; font-size: 0.85rem; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.8; padding: 20px; display: flex; justify-content: center; opacity: 0; transition: opacity 0.5s; }
+        .guide-container { width: 100%; max-width: 500px; padding-bottom: 100px; }
+        .nav-header { display: flex; justify-content: flex-start; margin-bottom: 30px; }
+        .back-link { text-decoration: none; color: var(--sub); font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header img { height: 50px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 15px; }
+        h1 { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; }
+        .step { margin-bottom: 35px; border-left: 2px solid var(--border); padding-left: 15px; }
+        .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+        ul { list-style: none; font-size: 0.9rem; }
+        li { margin-bottom: 8px; color: var(--text); }
+        .giga-box { background: rgba(128,128,128,0.05); padding: 20px; border-radius: 15px; margin-top: 10px; text-align: center; }
+        .giga-btn { display: inline-block; background: var(--text); color: var(--bg); text-decoration: none; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; }
+        .line-report-box { margin-top: 40px; border: 1px solid var(--border); padding: 20px; border-radius: 15px; }
+        .line-btn { display: block; background: var(--line); color: white; text-decoration: none; padding: 15px; border-radius: 12px; text-align: center; font-weight: 700; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -39,41 +41,37 @@
     </script>
 
     <div class="guide-container">
+        <div class="nav-header">
+            <a href="index.html" class="back-link">TOPへ戻る</a>
+        </div>
+
         <div class="header">
             <img src="logo.jpg" alt="Logo">
             <h1>素材送付ガイド</h1>
-            <p style="color: var(--sub); font-size: 0.9rem;">三送会・おくる会 編集をご依頼の方へ</p>
+            <p style="color: var(--sub); font-size: 0.8rem;">三送会・おくる会 編集用</p>
         </div>
 
         <div class="step">
-            <div class="step-title"><span class="step-num">STEP 01</span> 素材の選別と整理</div>
+            <div class="step-title">1. 素材の準備</div>
             <ul>
-                <li>・動画はなるべく「横向き」で撮影されたものを選んでください</li>
-                <li>・写真もなるべく高画質な元データをご用意ください</li>
-                <li>・ファイル名に「01」「02」と番号を振ると希望順に編集できます</li>
+                <li>・写真は高画質なものを選別</li>
+                <li>・動画は横向き撮影を推奨</li>
+                <li>・ファイル名に「01_名前」等で番号付け</li>
             </ul>
         </div>
 
         <div class="step">
-            <div class="step-title"><span class="step-num">STEP 02</span> ギガファイル便で送る</div>
-            <ul>
-                <li>・LINEは画質が落ちるため、必ず以下のサイト経由で送ってください</li>
-                <li>・保持期限は最大の<strong>「30日」</strong>に設定をお願いします</li>
-            </ul>
-            <a href="https://gigafile.nu/" target="_blank" class="gigafile-btn">ギガファイル便を開く</a>
+            <div class="step-title">2. アップロード</div>
+            <p style="font-size: 0.85rem; color: var(--sub);">以下のサイトから「30日」期限でアップロードしてください。</p>
+            <div class="giga-box">
+                <a href="https://gigafile.nu/" target="_blank" class="giga-btn">ギガファイル便を開く</a>
+            </div>
         </div>
 
-        <div class="step">
-            <div class="step-title"><span class="step-num">STEP 03</span> LINEでURLを共有</div>
-            <ul>
-                <li>・アップロード後に発行されるURLをコピーしてください</li>
-                <li>・KIZUNA VIDEOの公式LINEにそのまま貼り付けて送信してください</li>
-            </ul>
-        </div>
-
-        <div class="important">
-            <strong>ご注意点</strong><br>
-            著作権の関係上、市販の楽曲を使用する場合は用途によって無音またはフリー音源への差し替えが必要になる場合があります。まずはLINEでご相談ください。
+        <div class="line-report-box">
+            <p style="font-size: 0.85rem; font-weight: 700;">3. LINEでURLを送付</p>
+            <p style="font-size: 0.75rem; color: var(--sub); margin-bottom: 10px;">発行されたURLをコピーして、下のボタンからLINEで送信してください。</p>
+            <a href="https://line.me/R/oaMessage/@494zixmx/?素材のアップロードが完了しました。URLはこちらです：" class="line-btn">LINEを開いてURLを送る</a>
         </div>
     </div>
 </body>
