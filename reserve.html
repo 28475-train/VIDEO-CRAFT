@@ -1,77 +1,31 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIZUNA VIDEO - 三送会・おくる会 編集予約</title>
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESERVE - KIZUNA video</title>
     <style>
-        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; }
+        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.6; display: flex; justify-content: center; padding: 40px 20px; }
-        .form-container { width: 100%; max-width: 440px; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .header img { height: 50px; border-radius: 50%; border: 1px solid var(--border); }
-        .label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; color: var(--sub); }
-        input, select, textarea { width: 100%; padding: 16px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); color: var(--text); font-size: 1rem; outline: none; }
-        .btn-submit { background: var(--text); color: var(--bg); width: 100%; padding: 18px; border-radius: 16px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; }
-        .result-box { display: none; margin-top: 30px; background: rgba(128,128,128,0.05); padding: 25px; border-radius: 20px; border: 1px dashed var(--border); text-align: center; }
-        .btn-line { display: block; background: var(--line); color: white; text-decoration: none; padding: 18px; border-radius: 16px; font-weight: 700; margin-top: 15px; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.7rem; font-weight: 700; }
+        .container { max-width: 700px; margin: 0 auto; padding: 120px 20px 60px; }
+        .input-text { width: 100%; padding: 18px; border-radius: 15px; border: 1px solid var(--border); margin: 10px 0 25px; background: var(--bg); color: var(--text); font-size: 1rem; }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <div class="header">
-            <img src="logo.jpg" alt="Logo">
-            <h1 style="font-size: 1.4rem; margin-top: 15px;">三送会・おくる会 編集予約</h1>
-            <p style="font-size: 0.85rem; color: var(--sub); margin-top: 5px;">部活動やサークルの大切な門出を、最高の映像で。</p>
-        </div>
-
-        <div id="input-form">
-            <label class="label">代表者名</label>
-            <input type="text" id="name" placeholder="例：絆 太郎">
-
-            <label class="label">イベント開催日（使用日）</label>
-            <input type="date" id="event_date">
-
-            <label class="label">団体名・チーム名</label>
-            <input type="text" id="team_name" placeholder="例：〇〇中学校 サッカー部">
-
-            <label class="label">依頼したい内容</label>
-            <textarea id="detail" rows="4" placeholder="例：3年間の軌跡スライドショー、後輩からのメッセージ動画、試合のハイライトなど"></textarea>
-
-            <button onclick="processForm()" class="btn-submit">予約内容をコピーする</button>
-        </div>
-
-        <div id="result-box" class="result-box">
-            <p style="font-size: 0.8rem; color: var(--sub);">内容をコピーしました。LINEに貼り付けて送信してください。</p>
-            <div id="formatted-text" style="text-align: left; background: var(--bg); padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 0.9rem; border: 1px solid var(--border); white-space: pre-wrap;"></div>
-            <a href="https://line.me/R/oaMessage/@494zixmx/" id="line-link" class="btn-line">LINEを開いて送信</a>
-        </div>
+    <nav><div class="nav-inner"><a href="index.html" style="font-weight:900;text-decoration:none;color:var(--text);">KIZUNA video</a><div class="nav-links"><a href="about.html">ABOUT</a><a href="works.html">WORKS</a><a href="guide.html">GUIDE</a><a href="reserve.html">RESERVE</a><a href="download.html">DOWNLOAD</a><div id="google_translate_element"></div></div></div></nav>
+    <div class="container">
+        <h1 style="text-align:center;font-size:3rem;font-weight:800;margin-bottom:40px;">RESERVE</h1>
+        <div style="background:rgba(128,128,128,0.05);padding:25px;border-radius:20px;margin-bottom:30px;"><p>以下の内容をコピーして、LINE公式アカウントまでお送りください。</p></div>
+        <label>制作ジャンル</label><input type="text" class="input-text" placeholder="三送会 / 卒団式 / その他">
+        <label>希望納期</label><input type="text" class="input-text" placeholder="2026/03/10">
+        <label>団体名</label><input type="text" class="input-text">
+        <div style="text-align:center;margin-top:30px;"><a href="https://lin.ee/K6TBvW6" style="background:#06c755;color:#fff;padding:20px 50px;border-radius:40px;text-decoration:none;font-weight:800;display:inline-block;">LINEで制作を依頼する</a></div>
     </div>
-
-    <script>
-        function processForm() {
-            const name = document.getElementById('name').value;
-            const date = document.getElementById('event_date').value;
-            const team = document.getElementById('team_name').value;
-            const detail = document.getElementById('detail').value;
-
-            if(!name || !date) {
-                alert('お名前と開催日を入力してください');
-                return;
-            }
-
-            const text = "【三送会・編集予約】\n代表者：" + name + "\n使用日：" + date + "\n団体名：" + (team || "未記入") + "\n内容：" + (detail || "未記入");
-            
-            navigator.clipboard.writeText(text).then(() => {
-                document.getElementById('input-form').style.display = 'none';
-                document.getElementById('formatted-text').innerText = text;
-                document.getElementById('result-box').style.display = 'block';
-                document.getElementById('line-link').href = "https://line.me/R/oaMessage/@494zixmx/?" + encodeURIComponent(text);
-            });
-        }
-    </script>
+    <script type="text/javascript">function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'ja',includedLanguages:'ja,en,ko,zh-CN',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}</script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
