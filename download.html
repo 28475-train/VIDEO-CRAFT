@@ -58,19 +58,23 @@
     </div>
 
     <script>
-        // 団体別設定データ
         const groupData = {
-            "soccer": { 
-                name: "サッカー部 三送会", 
-                pass: "soccer2026", 
-                fileId: "ここにGoogleドライブのファイルID" 
-            },
-            "basket": { 
-                name: "バスケ部 卒団式", 
-                pass: "basket2026", 
-                fileId: "ここにGoogleドライブのファイルID" 
-            }
-        };
+    "demo": { 
+        name: "テスト用デモチーム", 
+        pass: "1234", 
+        fileId: "1-9V6iU-m1I8p7XW5iW9Xn7pX7X_XXXXX" // ここは後で自分のテスト動画IDを入れる
+    },
+    "soccer": { 
+        name: "サッカー部 三送会", 
+        pass: "soccer2026", 
+        fileId: "..." 
+    },
+    "basket": { 
+        name: "バスケ部 卒団式", 
+        pass: "basket2026", 
+        fileId: "..." 
+    }
+};
 
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
