@@ -21,40 +21,30 @@
             <div class="box">
                 <div id="ui">
                     <input type="password" id="pw" placeholder="パスワードを入力">
-                    <button onclick="checkPassword()" class="btn-auth">認証する</button>
+                    <button onclick="check()" class="btn-auth">認証</button>
                 </div>
                 <a id="dl" href="#" class="btn-dl">動画を保存する</a>
             </div>
             <div class="translate-area"><div id="google_translate_element"></div></div>
         </main>
     </div>
-
     <script src="script.js"></script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script>
-        // パスワード「kizuna2025」をSHA-256でハッシュ化した値
-        // これを見ても元のパスワードはわかりません
-        const targetHash = "9d71c48067468696773562e646279f5835698b6710777553530f2c4224021584";
-        const fileId = "1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm";
-
-        async function checkPassword() {
-            const password = document.getElementById('pw').value;
-            
-            // 入力されたパスワードをハッシュ化
-            const msgUint8 = new TextEncoder().encode(password);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-
-            // 比較
-            if (hashHex === targetHash) {
+        const h = "9d71c48067468696773562e646279f5835698b6710777553530f2c4224021584";
+        const fid = "1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm";
+        async function check() {
+            const p = document.getElementById('pw').value;
+            const m = new TextEncoder().encode(p);
+            const b = await crypto.subtle.digest('SHA-256', m);
+            const x = Array.from(new Uint8Array(b)).map(b => b.toString(16).padStart(2, '0')).join('');
+            if (x === h) {
                 document.getElementById('ui').style.display = 'none';
-                const dlLink = document.getElementById('dl');
-                dlLink.href = "https://drive.google.com/uc?export=download&id=" + fileId;
-                dlLink.style.display = 'block';
+                const d = document.getElementById('dl');
+                d.href = "https://drive.google.com/uc?export=download&id=" + fid;
+                d.style.display = 'block';
             } else {
-                alert("パスワードが正しくありません。");
+                alert("認証失敗");
             }
         }
     </script>
