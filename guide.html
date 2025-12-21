@@ -1,140 +1,80 @@
 <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>素材送付ガイド - KIZUNA VIDEO</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <style>
+        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --border: #d2d2d7; --accent: #0071e3; }
+        @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.8; padding: 40px 20px; display: flex; justify-content: center; opacity: 0; transition: opacity 0.5s; }
+        .guide-container { width: 100%; max-width: 600px; }
+        .header { text-align: center; margin-bottom: 50px; }
+        .header img { height: 60px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 20px; }
+        h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; }
+        .step { margin-bottom: 40px; position: relative; padding-left: 20px; border-left: 2px solid var(--border); }
+        .step-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; }
+        .step-num { color: var(--sub); font-size: 0.8rem; margin-right: 10px; border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; }
+        ul { list-style: none; padding-left: 10px; }
+        li { margin-bottom: 10px; font-size: 0.95rem; color: var(--text); }
+        li strong { color: var(--accent); }
+        .gigafile-btn { display: inline-block; background: var(--text); color: var(--bg); text-decoration: none; padding: 12px 25px; border-radius: 12px; font-weight: 600; margin-top: 15px; font-size: 0.9rem; }
+        .important { background: rgba(255, 0, 0, 0.05); border: 1px solid rgba(255, 0, 0, 0.1); padding: 20px; border-radius: 15px; margin-top: 30px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <script>
+        (function() {
+            const pass = "kizuna2026";
+            const input = prompt("閲覧パスワードを入力してください");
+            if (input === pass) {
+                document.body.style.opacity = "1";
+            } else {
+                alert("パスワードが正しくありません");
+                window.location.href = "index.html";
+            }
+        })();
+    </script>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>GUIDE | KIZUNA VIDEO</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
-
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --bg: #000000;
-            --card: #1c1c1e;
-            --text: #f5f5f7;
-            --sub: #a1a1a6;
-            --border: #38383a;
-        }
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 60px 20px;
-    }
-
-    header {
-        text-align: center;
-        margin-bottom: 60px;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-        margin-bottom: 10px;
-    }
-
-    .guide-step {
-        margin-bottom: 40px;
-        padding: 30px;
-        background: var(--card);
-        border-radius: 24px;
-        position: relative;
-    }
-
-    .step-number {
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-    }
-
-    p {
-        font-size: 1rem;
-        color: var(--sub);
-        margin-bottom: 10px;
-    }
-
-    .btn-home {
-        display: inline-block;
-        margin-top: 40px;
-        padding: 15px 30px;
-        background: var(--text);
-        color: var(--bg);
-        text-decoration: none;
-        border-radius: 12px;
-        font-weight: 600;
-        transition: 0.3s;
-    }
-
-    footer {
-        text-align: center;
-        margin-top: 60px;
-        color: var(--sub);
-        font-size: 0.8rem;
-    }
-</style>
-</head> <body>
-
-<div class="container">
-    <header>
-        <h1>使い方</h1>
-        <p>ご相談から納品までのステップをご案内します。</p>
-    </header>
-
-    <main>
-        <section class="guide-step">
-            <span class="step-number">Step 01</span>
-            <h2>LINEで無料相談</h2>
-            <p>まずはコンタクトページから公式LINEを友だち追加してください。制作したい映像のイメージや納期について、メッセージをお送りください。</p>
-        </section>
-
-        <section class="guide-step">
-            <span class="step-number">Step 02</span>
-            <h2>お見積もりとID発行</h2>
-            <p>内容を確認し、制作費（またはボランティア範囲）のお見積もりを提示します。合意いただけましたら、当サイトのログイン用IDとパスワードを発行します。</p>
-        </section>
-
-        <section class="guide-step">
-            <span class="step-number">Step 03</span>
-            <h2>制作開始・進捗確認</h2>
-            <p>ログインページから発行されたIDでサインインすると、現在の制作状況がバー形式でリアルタイムに確認できます。</p>
-        </section>
-
-        <section class="guide-step">
-            <span class="step-number">Step 04</span>
-            <h2>プレビューと修正</h2>
-            <p>映像が形になりましたら、マイページ上でプレビュー動画を公開します。修正のご希望があればLINEまたはメッセージ機能でお伝えください。</p>
-        </section>
-
-        <section class="guide-step">
-            <span class="step-number">Step 05</span>
-            <h2>最終納品</h2>
-            <p>完成した映像のダウンロードURLをマイページに掲載します。高画質な映像資産として、大切に保管・ご活用ください。</p>
-        </section>
-
-        <div style="text-align: center;">
-            <a href="index.html" class="btn-home">ホームに戻る</a>
+    <div class="guide-container">
+        <div class="header">
+            <img src="logo.jpg" alt="Logo">
+            <h1>素材送付ガイド</h1>
+            <p style="color: var(--sub); font-size: 0.9rem;">三送会・おくる会 編集をご依頼の方へ</p>
         </div>
-    </main>
 
-    <footer>
-        <p>&copy; 2025 KIZUNA VIDEO</p>
-    </footer>
-</div>
-</body> </html>
+        <div class="step">
+            <div class="step-title"><span class="step-num">STEP 01</span> 素材の選別と整理</div>
+            <ul>
+                <li>・動画はなるべく「横向き」で撮影されたものを選んでください</li>
+                <li>・写真もなるべく高画質な元データをご用意ください</li>
+                <li>・ファイル名に「01」「02」と番号を振ると希望順に編集できます</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <div class="step-title"><span class="step-num">STEP 02</span> ギガファイル便で送る</div>
+            <ul>
+                <li>・LINEは画質が落ちるため、必ず以下のサイト経由で送ってください</li>
+                <li>・保持期限は最大の<strong>「30日」</strong>に設定をお願いします</li>
+            </ul>
+            <a href="https://gigafile.nu/" target="_blank" class="gigafile-btn">ギガファイル便を開く</a>
+        </div>
+
+        <div class="step">
+            <div class="step-title"><span class="step-num">STEP 03</span> LINEでURLを共有</div>
+            <ul>
+                <li>・アップロード後に発行されるURLをコピーしてください</li>
+                <li>・KIZUNA VIDEOの公式LINEにそのまま貼り付けて送信してください</li>
+            </ul>
+        </div>
+
+        <div class="important">
+            <strong>ご注意点</strong><br>
+            著作権の関係上、市販の楽曲を使用する場合は用途によって無音またはフリー音源への差し替えが必要になる場合があります。まずはLINEでご相談ください。
+        </div>
+    </div>
+</body>
+</html>
