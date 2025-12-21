@@ -4,116 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESERVE - KIZUNA video</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; --btn-bg: rgba(128,128,128,0.08); }
-        @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; --btn-bg: rgba(255,255,255,0.12); } }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.6; }
-
-        /* ナビゲーション（index共通の2段構成） */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.85); backdrop-filter: blur(25px); z-index: 1000; border-bottom: 1px solid var(--border); }
-        @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.85); } }
-        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 12px 20px; }
-        .nav-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
-        .nav-logo { font-weight: 900; font-size: 1.3rem; text-decoration: none; color: var(--text); }
-        .nav-bottom { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
-        .nav-btn { text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 700; background: var(--btn-bg); padding: 10px 18px; border-radius: 22px; white-space: nowrap; }
-
-        /* コンテンツ */
-        .container { max-width: 700px; margin: 0 auto; padding: 160px 20px 80px; }
-        h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 30px; text-align: center; }
-        
-        /* フォーム形式 */
-        .form-group { margin-bottom: 25px; }
-        label { display: block; font-weight: 700; margin-bottom: 10px; font-size: 0.9rem; }
-        .input-field { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 1rem; }
-        
-        .result-box { background: rgba(128,128,128,0.05); border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-top: 40px; }
-        .result-text { width: 100%; height: 150px; background: transparent; border: none; color: var(--text); font-family: monospace; font-size: 0.9rem; resize: none; margin-bottom: 20px; outline: none; }
-        
-        .btn-copy { width: 100%; padding: 18px; border-radius: 15px; background: var(--text); color: var(--bg); border: none; font-weight: 800; cursor: pointer; font-size: 1rem; margin-bottom: 15px; }
-        .btn-line { display: block; text-align: center; width: 100%; padding: 18px; border-radius: 15px; background: #06c755; color: white; text-decoration: none; font-weight: 800; font-size: 1rem; }
-
-        /* 翻訳セクション */
-        .translate-section { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; }
-        .lang-title { font-size: 0.8rem; font-weight: 800; color: var(--sub); margin-bottom: 15px; }
-        .goog-te-gadget-simple { background: transparent !important; border: 1px solid var(--border) !important; padding: 8px 15px !important; border-radius: 25px !important; }
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
+        .input-field { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); margin-bottom: 15px; font-size: 1rem; }
+        .result-box { background: rgba(128,128,128,0.05); padding: 20px; border-radius: 20px; margin-top: 20px; border: 1px solid var(--border); }
+        .btn-copy { width: 100%; padding: 18px; border-radius: 15px; background: var(--text); color: var(--bg); border: none; font-weight: 800; cursor: pointer; margin-bottom: 10px; }
+        .btn-line { display: block; text-align: center; width: 100%; padding: 18px; border-radius: 15px; background: #06c755; color: white; text-decoration: none; font-weight: 800; }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-inner">
-            <div class="nav-top"><a href="index.html" class="nav-logo">KIZUNA video</a></div>
-            <div class="nav-bottom">
-                <a href="about.html" class="nav-btn">私たちについて</a>
-                <a href="works.html" class="nav-btn">制作実績</a>
-                <a href="guide.html" class="nav-btn">ご利用ガイド</a>
-                <a href="reserve.html" class="nav-btn">制作を依頼する</a>
-                <a href="download.html" class="nav-btn">納品物受取</a>
+    <div id="loader"><svg width="100%" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" class="drawing-text">KIZUNA video</text></svg></div>
+    <div id="content">
+        <nav></nav>
+        <main class="container">
+            <h1 style="font-size:2.5rem; font-weight:900; margin-bottom:30px;">RESERVE</h1>
+            <input type="text" id="genre" class="input-field" placeholder="ジャンル (例: 三送会)" oninput="update()">
+            <input type="text" id="name" class="input-field" placeholder="団体名 / お名前" oninput="update()">
+            <input type="text" id="date" class="input-field" placeholder="希望納期" oninput="update()">
+            <div class="result-box">
+                <textarea id="res" style="width:100%; height:120px; background:transparent; border:none; color:var(--text); resize:none; outline:none; font-family:inherit;" readonly>【制作依頼】&#13;&#10;ジャンル：&#13;&#10;団体名：&#13;&#10;納期：</textarea>
+                <button class="btn-copy" onclick="cp()">コピーしてLINEに貼り付け</button>
+                <a href="https://lin.ee/K6TBvW6" class="btn-line">LINE公式アカウント</a>
             </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        <h1>制作依頼フォーム</h1>
-        <p style="text-align:center; color:var(--sub); margin-bottom:40px;">必要事項を入力して、下の「コピー」ボタンを押し、LINEへ貼り付けて送信してください。</p>
-
-        <div class="form-group">
-            <label>1. 制作ジャンル</label>
-            <input type="text" id="genre" class="input-field" placeholder="例：三送会ムービー" oninput="updateText()">
-        </div>
-        <div class="form-group">
-            <label>2. 団体名・お名前</label>
-            <input type="text" id="name" class="input-field" placeholder="例：KIZUNAサッカー部" oninput="updateText()">
-        </div>
-        <div class="form-group">
-            <label>3. 希望納期</label>
-            <input type="text" id="date" class="input-field" placeholder="例：2026年3月上旬" oninput="updateText()">
-        </div>
-
-        <div class="result-box">
-            <label>送信内容プレビュー</label>
-            <textarea id="resultText" class="result-text" readonly>【制作依頼】
-ジャンル：
-団体名：
-納期：
-よろしくお願いいたします。</textarea>
-            <button class="btn-copy" onclick="copyText()">この内容をコピーする</button>
-            <a href="https://lin.ee/K6TBvW6" class="btn-line">LINEで送信する</a>
-        </div>
-
-        <div class="translate-section">
-            <p class="lang-title">SELECT LANGUAGE (JP / EN / CH)</p>
-            <div id="google_translate_element"></div>
-        </div>
+            <div class="translate-area"><div id="google_translate_element"></div></div>
+        </main>
     </div>
-
     <script>
-        function updateText() {
-            const genre = document.getElementById('genre').value;
-            const name = document.getElementById('name').value;
-            const date = document.getElementById('date').value;
-            const text = `【制作依頼】\nジャンル：${genre}\n団体名：${name}\n納期：${date}\nよろしくお願いいたします。`;
-            document.getElementById('resultText').value = text;
-        }
-
-        function copyText() {
-            const copyTarget = document.getElementById("resultText");
-            copyTarget.select();
-            document.execCommand("Copy");
-            alert("コピーしました！LINEに貼り付けてください。");
-        }
-
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'ja',
-                includedLanguages: 'ja,en,zh-CN',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
+        function update(){ const g=document.getElementById('genre').value; const n=document.getElementById('name').value; const d=document.getElementById('date').value; document.getElementById('res').value=`【制作依頼】\nジャンル：${g}\n団体名：${n}\n納期：${d}\nよろしくお願いいたします。`;}
+        function cp(){ const t=document.getElementById("res"); t.select(); document.execCommand("Copy"); alert("コピーしました！"); }
     </script>
+    <script src="script.js"></script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
