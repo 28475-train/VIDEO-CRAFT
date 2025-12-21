@@ -3,76 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>素材送付ガイド - KIZUNA VIDEO</title>
+    <title>GUIDE - KIZUNA video</title>
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
-        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --border: #d2d2d7; --accent: #0071e3; --line: #06C755; }
+        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.8; padding: 20px; display: flex; justify-content: center; opacity: 0; transition: opacity 0.5s; }
-        .guide-container { width: 100%; max-width: 500px; padding-bottom: 100px; }
-        .nav-header { display: flex; justify-content: flex-start; margin-bottom: 30px; }
-        .back-link { text-decoration: none; color: var(--sub); font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
-        .header { text-align: center; margin-bottom: 40px; }
-        .header img { height: 50px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 15px; }
-        h1 { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; }
-        .step { margin-bottom: 35px; border-left: 2px solid var(--border); padding-left: 15px; }
-        .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
-        ul { list-style: none; font-size: 0.9rem; }
-        li { margin-bottom: 8px; color: var(--text); }
-        .giga-box { background: rgba(128,128,128,0.05); padding: 20px; border-radius: 15px; margin-top: 10px; text-align: center; }
-        .giga-btn { display: inline-block; background: var(--text); color: var(--bg); text-decoration: none; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; }
-        .line-report-box { margin-top: 40px; border: 1px solid var(--border); padding: 20px; border-radius: 15px; }
-        .line-btn { display: block; background: var(--line); color: white; text-decoration: none; padding: 15px; border-radius: 12px; text-align: center; font-weight: 700; margin-top: 10px; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.8; }
+        nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 100; }
+        @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.8); } }
+        .nav-inner { max-width: 900px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+        .rev-date { text-align: right; font-size: 0.8rem; color: var(--sub); margin-bottom: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; text-align: center; font-weight: 800; }
+        h2 { font-size: 1.5rem; border-left: 5px solid var(--accent); padding-left: 15px; margin: 60px 0 30px; font-weight: 800; }
+        h3 { font-size: 1.1rem; margin: 30px 0 15px; font-weight: 700; color: var(--text); }
+        .box { background: rgba(128,128,128,0.05); padding: 35px; border-radius: 28px; margin-bottom: 35px; border: 1px solid var(--border); }
+        .rule-list { list-style: none; font-size: 0.95rem; }
+        .rule-list li { margin-bottom: 15px; padding-left: 1.5em; position: relative; }
+        .rule-list li::before { content: "・"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .url-box { background: var(--bg); border: 1px solid var(--border); padding: 15px; border-radius: 12px; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin-top: 10px; display: block; text-decoration: none; color: var(--accent); }
+        .btn-top { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.85rem; }
     </style>
 </head>
 <body>
-    <script>
-        (function() {
-            const pass = "kizuna2026";
-            const input = prompt("閲覧パスワードを入力してください");
-            if (input === pass) {
-                document.body.style.opacity = "1";
-            } else {
-                alert("パスワードが正しくありません");
-                window.location.href = "index.html";
-            }
-        })();
-    </script>
-
-    <div class="guide-container">
-        <div class="nav-header">
-            <a href="index.html" class="back-link">TOPへ戻る</a>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" style="text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.2rem;">KIZUNA video</a>
+            <a href="index.html" class="btn-top">TOPに戻る</a>
         </div>
+    </nav>
 
-        <div class="header">
-            <img src="logo.jpg" alt="Logo">
-            <h1>素材送付ガイド</h1>
-            <p style="color: var(--sub); font-size: 0.8rem;">三送会・おくる会 編集用</p>
-        </div>
+    <div class="container">
+        <p class="rev-date">最終改訂日：2025/12/21</p>
+        <h1>公式ガイド・納品規定</h1>
 
-        <div class="step">
-            <div class="step-title">1. 素材の準備</div>
-            <ul>
-                <li>・写真は高画質なものを選別</li>
-                <li>・動画は横向き撮影を推奨</li>
-                <li>・ファイル名に「01_名前」等で番号付け</li>
-            </ul>
-        </div>
+        <section>
+            <h2>1. 納品方法（完全オンライン納品）</h2>
+            <div class="box">
+                <p>KIZUNA videoでは、動画の完成後、迅速かつ安全にお届けするために、当サイト独自のダウンロードシステムによる納品を行っております。</p>
+                
+                <h3>納品の流れ</h3>
+                <ul class="rule-list">
+                    <li>動画の完成後、公式LINEにて「団体専用パスワード」を発行・送付いたします。</li>
+                    <li>下記の専用納品ページへアクセスし、パスワードを入力してください。</li>
+                    <li>認証完了後、動画データ（MP4形式）をスマートフォンやPCに保存いただけます。</li>
+                </ul>
 
-        <div class="step">
-            <div class="step-title">2. アップロード</div>
-            <p style="font-size: 0.85rem; color: var(--sub);">以下のサイトから「30日」期限でアップロードしてください。</p>
-            <div class="giga-box">
-                <a href="https://gigafile.nu/" target="_blank" class="giga-btn">ギガファイル便を開く</a>
+                <h3>専用納品ページURL</h3>
+                <a href="https://28475-train.github.io/VIDEO-CRAFT/download.html" class="url-box">
+                    https://28475-train.github.io/VIDEO-CRAFT/download.html
+                </a>
             </div>
-        </div>
+        </section>
 
-        <div class="line-report-box">
-            <p style="font-size: 0.85rem; font-weight: 700;">3. LINEでURLを送付</p>
-            <p style="font-size: 0.75rem; color: var(--sub); margin-bottom: 10px;">発行されたURLをコピーして、下のボタンからLINEで送信してください。</p>
-            <a href="https://line.me/R/oaMessage/@494zixmx/?素材のアップロードが完了しました。URLはこちらです：" class="line-btn">LINEを開いてURLを送る</a>
-        </div>
+        <section>
+            <h2>2. 制作ガイドライン</h2>
+            <div class="box">
+                <h3>素材送付のルール</h3>
+                <ul class="rule-list">
+                    <li>写真は1枚あたり2MB以上の高画質データを推奨いたします。</li>
+                    <li>動画素材は、横向きで撮影されたものを推奨いたします。</li>
+                    <li>素材の送付は、ギガファイル便または公式LINEにて承ります。</li>
+                </ul>
+
+                <h3>修正と再編集</h3>
+                <ul class="rule-list">
+                    <li>初校提出後、2回までの修正（テロップミス、写真入替等）は無料で承ります。</li>
+                    <li>大幅な構成変更やBGMの変更については別途費用が発生する場合がございます。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. プライバシーと安全性</h2>
+            <div class="box">
+                <p style="font-size: 0.95rem; color: var(--sub);">
+                    納品ページはパスワード認証によって保護されており、第三者が無断で動画を視聴することはできません。
+                    発行されたパスワードおよび納品URLの管理は、各チームの代表者様にて厳重に行っていただくようお願いいたします。
+                </p>
+            </div>
+        </section>
+
+        <footer style="text-align: center; margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border);">
+            <p style="font-size: 0.8rem; color: var(--sub);">KIZUNA video 公式ガイドライン<br>&copy; 2025 KIZUNA video. All Rights Reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
