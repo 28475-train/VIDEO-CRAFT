@@ -11,97 +11,29 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.8; }
         nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 100; }
-        @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.8); } }
         .nav-inner { max-width: 900px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
         .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-        .rev-date { text-align: right; font-size: 0.8rem; color: var(--sub); margin-bottom: 20px; }
-        h1 { font-size: 2.2rem; margin-bottom: 10px; text-align: center; font-weight: 800; }
-        h2 { font-size: 1.5rem; border-left: 5px solid var(--accent); padding-left: 15px; margin: 60px 0 30px; font-weight: 800; }
-        h3 { font-size: 1.1rem; margin: 30px 0 15px; font-weight: 700; color: var(--text); }
         .box { background: rgba(128,128,128,0.05); padding: 35px; border-radius: 28px; margin-bottom: 35px; border: 1px solid var(--border); }
-        .free-badge { display: inline-block; background: #ff3b30; color: white; padding: 2px 10px; border-radius: 6px; font-size: 0.75rem; vertical-align: middle; margin-left: 10px; }
-        .step-list { list-style: none; }
-        .step-list li { margin-bottom: 20px; padding: 20px; background: var(--bg); border-radius: 15px; border: 1px solid var(--border); }
-        .giga-link { color: var(--accent); font-weight: 700; text-decoration: none; }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-inner">
-            <a href="index.html" style="text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.2rem;">KIZUNA video</a>
-            <a href="index.html" style="text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.85rem;">TOPに戻る</a>
-        </div>
-    </nav>
-
+    <nav><div class="nav-inner"><a href="index.html" style="text-decoration:none;color:var(--text);font-weight:800;">KIZUNA video</a><a href="index.html" style="text-decoration:none;color:var(--accent);font-size:0.8rem;">TOP</a></div></nav>
     <div class="container">
-        <p class="rev-date">最終改訂日：2025/12/21</p>
-        <h1>KIZUNA video 公式ガイド</h1>
-
-        <section>
-            <h2>制作費用と修正について</h2>
-            <div class="box">
-                <h3>すべての制作工程が無料 <span class="free-badge">FREE</span></h3>
-                <p>KIZUNA videoでは、感動を広く残すため、企画・構成・編集・納品までのすべての工程を完全無料で提供しております。追加料金が発生することは一切ございません。</p>
-                
-                <h3>修正回数は無制限・無料 <span class="free-badge">FREE</span></h3>
-                <p>「テロップの漢字を直したい」「この写真を別のものに変えたい」「音楽のタイミングをずらしたい」など、ご納得いただけるまで何度でも無料で修正を承ります。式典の直前まで、最高のクオリティを追求します。</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>素材の送付方法（ギガファイル便）</h2>
-            <div class="box">
-                <p>大量の写真や高画質な動画を、画質を落とさずに送るために「ギガファイル便」を使用します。会員登録は不要で、スマホからでも簡単に送れます。</p>
-                
-                <h3>ギガファイル便の使い方</h3>
-                <ul class="step-list">
-                    <li>
-                        <b>1. サイトにアクセス</b><br>
-                        <a href="https://gigafile.nu/" target="_blank" class="giga-link">https://gigafile.nu/</a> を開きます。
-                    </li>
-                    <li>
-                        <b>2. 保持期間の設定</b><br>
-                        「保持期間」を最大の「30日」に設定してください。
-                    </li>
-                    <li>
-                        <b>3. ファイルを選択</b><br>
-                        「ファイルを選択」ボタンを押し、スマホのアルバムから写真や動画をまとめて選択します。アップロードが開始されるので、100%になるまで画面を閉じないでください。
-                    </li>
-                    <li>
-                        <b>4. URLをコピーしてLINEへ</b><br>
-                        アップロードが完了すると専用のURLが発行されます。そのURLをコピーして、KIZUNA videoの公式LINEに貼り付けて送信してください。
-                    </li>
-                </ul>
-                <p style="font-size: 0.85rem; color: var(--sub); margin-top: 15px;">※枚数が多い場合は、数回に分けて送っていただいても構いません。</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>オンライン納品について</h2>
-            <div class="box">
-                <p>完成した動画は、当サイトの専用ページからダウンロード形式で納品いたします。DVD等の物理メディアの配送は行っておりません。オンライン納品に特化することで、スピード納品と完全無料を実現しています。</p>
-                
-                <h3>納品場所</h3>
-                <p style="background: var(--bg); padding: 10px; border-radius: 8px; font-family: monospace; font-size: 0.8rem; margin-top: 10px;">
-                    https://28475-train.github.io/VIDEO-CRAFT/download.html
-                </p>
-                <p style="margin-top: 10px;">公式LINEからお送りするパスワードを入力して受け取ってください。</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>規約と免責事項</h2>
-            <div class="box" style="font-size: 0.85rem; color: var(--sub);">
-                <h3>著作権について</h3>
-                <p>制作した動画は、各チーム内での上映や鑑賞を目的としています。BGMを含む著作権の取り扱いについては、上映会場（ホテルや体育館）のルールに従ってください。</p>
-                <h3>データの取り扱い</h3>
-                <p>お預かりした素材は納品から90日後に安全に削除いたします。再編集が必要な場合は、保管期間内にご連絡ください。</p>
-            </div>
-        </section>
-
-        <footer style="text-align: center; margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--border);">
-            <p style="font-size: 0.8rem; color: var(--sub);">&copy; 2025 KIZUNA video. All Rights Reserved.</p>
-        </footer>
+        <p style="text-align:right;font-size:0.8rem;color:var(--sub);">最終改訂日：2025/12/21</p>
+        <h1 style="text-align:center;margin-bottom:40px;">ご利用ガイド</h1>
+        <div class="box">
+            <h2 style="border-left:4px solid var(--accent);padding-left:15px;margin-bottom:20px;">完全無料・修正無制限</h2>
+            <p>技術向上のための活動につき、制作費は一切不要です。また、ご納得いただけるまで何度でも無料で修正を承ります。</p>
+        </div>
+        <div class="box">
+            <h2 style="border-left:4px solid var(--accent);padding-left:15px;margin-bottom:20px;">ギガファイル便での素材送付</h2>
+            <p>1. <a href="https://gigafile.nu/" style="color:var(--accent);">ギガファイル便</a>にアクセス。<br>2. 保持期間を100日に設定。<br>3. 素材をアップロードし、発行されたURLを公式LINEへ送信してください。</p>
+        </div>
+        <div class="box">
+            <h2 style="border-left:4px solid var(--accent);padding-left:15px;margin-bottom:20px;">オンライン納品</h2>
+            <p>完成した動画は最短納期で制作し、専用ページにて納品いたします。</p>
+            <a href="download.html" style="display:block;background:var(--accent);color:white;text-decoration:none;padding:15px;border-radius:12px;text-align:center;margin-top:20px;font-weight:700;">納品ページへ移動</a>
+        </div>
     </div>
 </body>
 </html>
