@@ -3,82 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOWNLOAD - KIZUNA VIDEO</title>
+    <title>DOWNLOAD - KIZUNA video</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
-        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; }
+        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; text-align: center; padding: 20px; line-height: 1.6; }
-        .container { max-width: 500px; margin: 0 auto; padding-top: 20px; }
-        .nav-top { text-align: left; margin-bottom: 20px; }
-        .back-link { text-decoration: none; color: var(--sub); font-size: 0.85rem; font-weight: 600; }
-        .header img { height: 50px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 10px; }
-        h1 { font-size: 1.4rem; margin-bottom: 5px; }
-        .info-box { width: 100%; padding: 40px 20px; background: rgba(128,128,128,0.05); border-radius: 24px; margin: 20px 0; border: 1px solid var(--border); }
-        .input-group { position: relative; width: 100%; margin-bottom: 15px; }
-        input { width: 100%; padding: 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); color: var(--text); text-align: center; font-size: 1rem; outline: none; }
-        .toggle-btn { position: absolute; right: 15px; top: 16px; background: none; border: none; color: var(--sub); font-size: 0.8rem; cursor: pointer; font-weight: 600; }
-        .btn { width: 100%; padding: 18px; border-radius: 16px; border: none; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 1rem; display: block; }
-        .btn-auth { background: var(--text); color: var(--bg); }
-        .btn-url { background: var(--accent); color: white; margin-top: 20px; display: none; }
-        .line-box { margin-top: 50px; padding: 25px; border: 1px solid var(--border); border-radius: 20px; text-align: center; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; text-align: center; padding: 20px; }
+        .container { max-width: 500px; margin: 0 auto; padding-top: 40px; }
+        input { width: 100%; padding: 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); color: var(--text); text-align: center; margin-bottom: 20px; }
+        .btn { width: 100%; padding: 18px; border-radius: 16px; border: none; font-weight: 700; cursor: pointer; text-decoration: none; display: block; background: var(--text); color: var(--bg); }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="nav-top"><a href="index.html" class="back-link">TOPへ戻る</a></div>
-        <div class="header"><img src="logo.jpg" alt="Logo"></div>
-        <h1 id="group-name">Loading...</h1>
-        <div class="info-box"><p id="status-text" style="font-size: 0.9rem; color: var(--sub);">パスワードを入力してください</p></div>
+        <h1 id="group-name">DOWNLOAD</h1>
+        <p id="status-text" style="color:var(--sub);margin:20px 0;">パスワードを入力してください</p>
         <div id="auth-ui">
-            <div class="input-group">
-                <input type="password" id="pass-input" placeholder="Password">
-                <button type="button" class="toggle-btn" onclick="togglePass()" id="toggle-txt">表示</button>
-            </div>
-            <button onclick="checkAuth()" class="btn btn-auth">認証して動画URLを発行</button>
+            <input type="password" id="pass-input" placeholder="Password">
+            <button onclick="checkAuth()" class="btn">認証してダウンロード</button>
         </div>
-        <a id="video-url-btn" href="#" class="btn btn-url">動画をダウンロード（保存）する</a>
-        <div class="line-box">
-            <p style="font-size: 0.8rem; color: var(--sub);">パスワードは各種団体QRコードに記載、<br>または管理者のみにお問い合わせください。</p>
-            <a href="https://line.me/R/ti/p/@494zixmx" style="display: block; background: var(--line); color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; margin-top: 15px;">公式LINEで確認する</a>
-        </div>
+        <a id="video-url-btn" href="#" class="btn" style="display:none;background:var(--accent);color:white;">動画をダウンロードする</a>
     </div>
     <script>
-        const groupData = {
-            "demo": { name: "テスト用デモチーム", pass: "1234", fileId: "1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm" },
-            "soccer": { name: "サッカー部 三送会", pass: "soccer2026", fileId: "ここにファイルID" },
-            "basket": { name: "バスケ部 卒団式", pass: "basket2026", fileId: "ここにファイルID" }
-        };
+        const groupData = { "demo": { name: "テスト用プロジェクト", pass: "1234", fileId: "1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm" } };
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
-        const autoPass = params.get('p'); 
-        const config = groupData[id] || { name: "Memorial Movie", pass: "2026", fileId: "" };
+        const config = groupData[id] || { name: "KIZUNA video", pass: "2026", fileId: "" };
         document.getElementById('group-name').innerText = config.name;
-        window.onload = function() {
-            if (autoPass) {
-                document.getElementById('pass-input').value = autoPass;
-                checkAuth(); 
-            }
-        };
-        function togglePass() {
-            const input = document.getElementById('pass-input');
-            const btn = document.getElementById('toggle-txt');
-            input.type = (input.type === 'password') ? 'text' : 'password';
-            btn.innerText = (input.type === 'password') ? '表示' : '隠す';
-        }
         function checkAuth() {
             const input = document.getElementById('pass-input').value;
             if (input === config.pass) {
-                const dlUrl = "https://drive.google.com/uc?export=download&id=" + config.fileId;
                 document.getElementById('auth-ui').style.display = 'none';
-                document.getElementById('status-text').innerText = "認証に成功しました。下のボタンから保存してください。";
-                document.getElementById('status-text').style.color = "#06C755";
+                document.getElementById('status-text').innerText = "認証完了";
                 const urlBtn = document.getElementById('video-url-btn');
-                urlBtn.href = dlUrl;
+                urlBtn.href = "https://drive.google.com/uc?export=download&id=" + config.fileId;
                 urlBtn.style.display = 'block';
-            } else {
-                alert("パスワードが正しくありません。");
-            }
+            } else { alert("パスワードが違います"); }
         }
     </script>
 </body>
