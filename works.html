@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORKS - KIZUNA video</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <style>
+        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
+        @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; }
+        nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 100; }
+        .nav-inner { max-width: 1000px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .work-card { background: rgba(128,128,128,0.05); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: 0.3s; }
+        .work-card:hover { transform: translateY(-5px); }
+        .work-img { width: 100%; height: 180px; background: #333; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; }
+        .work-info { padding: 20px; }
+        .tag { font-size: 0.7rem; background: var(--accent); color: white; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <nav><div class="nav-inner"><a href="index.html" style="text-decoration:none;color:var(--text);font-weight:800;">KIZUNA video</a><a href="index.html" style="text-decoration:none;color:var(--accent);font-size:0.8rem;">TOP</a></div></nav>
+    <div class="container">
+        <h1 style="text-align:center;">WORKS</h1>
+        <p style="text-align:center;color:var(--sub);margin-top:10px;">これまでの制作事例（ジャンル不問）</p>
+        <div class="grid">
+            <div class="work-card">
+                <div class="work-img">Coming Soon</div>
+                <div class="work-info">
+                    <span class="tag">Memorial</span>
+                    <h3>三送会メモリアルムービー</h3>
+                    <p style="font-size:0.85rem;color:var(--sub);margin-top:5px;">思い出の写真をエモーショナルに演出。</p>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="work-img">Coming Soon</div>
+                <div class="work-info">
+                    <span class="tag">Event</span>
+                    <h3>式典オープニング映像</h3>
+                    <p style="font-size:0.85rem;color:var(--sub);margin-top:5px;">期待感を高めるダイナミックな演出。</p>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="work-img">Coming Soon</div>
+                <div class="work-info">
+                    <span class="tag">Promotion</span>
+                    <h3>技術紹介ショート動画</h3>
+                    <p style="font-size:0.85rem;color:var(--sub);margin-top:5px;">視覚効果を多用した最新の編集技術。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
