@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>KIZUNA VIDEO | 映像制作</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; --loader-bg: #ffffff; }
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>KIZUNA VIDEO | 映像制作</title>
 
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<style>
+    :root {
+        --bg: #ffffff;
+        --card: #f5f5f7;
+        --text: #1d1d1f;
+        --sub: #86868b;
+        --accent: #0071e3;
+        --line: #06C755;
+        --border: #d2d2d7;
+        --nav-bg: rgba(255, 255, 255, 0.8);
+        --loader-bg: #ffffff;
+    }
+
+    /* ダークモード（OS設定） */
     @media (prefers-color-scheme: dark) {
         :root {
             --bg: #000000;
@@ -10,10 +27,12 @@
             --sub: #a1a1a6;
             --accent: #0a84ff;
             --border: #38383a;
+            --nav-bg: rgba(0, 0, 0, 0.8);
             --loader-bg: #000000;
         }
     }
 
+    /* 手動ダークモード（夜間自動切替用） */
     .dark-theme {
         --bg: #000000;
         --card: #1c1c1e;
@@ -21,6 +40,7 @@
         --sub: #a1a1a6;
         --accent: #0a84ff;
         --border: #38383a;
+        --nav-bg: rgba(0, 0, 0, 0.8);
         --loader-bg: #000000;
     }
 
@@ -33,9 +53,53 @@
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        padding-top: 48px;
         transition: background-color 0.5s, color 0.5s;
     }
 
+    /* 共通ナビゲーション */
+    .nav-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 48px;
+        background: var(--nav-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 9999;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .nav-logo {
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: var(--text);
+        letter-spacing: -0.02em;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin-left: 20px;
+        opacity: 0.8;
+        transition: 0.3s;
+    }
+
+    /* ローディング画面 */
     #loader {
         position: fixed;
         inset: 0;
@@ -71,15 +135,7 @@
         transition: width 1s cubic-bezier(0.65, 0, 0.35, 1);
     }
 
-    .pr-msg {
-        font-size: 0.9rem;
-        color: var(--sub);
-        margin-top: 20px;
-        font-weight: 500;
-        opacity: 0;
-        transition: 0.5s;
-    }
-
+    /* コンテンツ */
     .container {
         max-width: 1000px;
         margin: 0 auto;
@@ -107,13 +163,12 @@
 
     .tile-link:hover {
         transform: scale(1.02);
-        background: var(--bg);
         border-color: var(--border);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     }
 
     .category-tag {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         font-weight: 700;
         color: var(--accent);
         letter-spacing: 0.1em;
@@ -122,30 +177,14 @@
         text-transform: uppercase;
     }
 
-    .tile-link h2 {
-        font-size: clamp(1.8rem, 5vw, 3.5rem);
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        margin-bottom: 12px;
-    }
-
-    .tile-link p {
-        font-size: clamp(1rem, 2vw, 1.2rem);
-        color: var(--sub);
-    }
-
     .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     footer {
         text-align: center;
         margin-top: 80px;
-        padding: 40px 0 60px;
+        padding: 40px 0;
         border-top: 1px solid var(--border);
-    }
-
-    .footer-nav {
-        margin-bottom: 20px;
     }
 
     .footer-nav a {
@@ -153,16 +192,6 @@
         text-decoration: none;
         font-size: 0.8rem;
         margin: 0 10px;
-        transition: color 0.3s;
-    }
-
-    .footer-nav a:hover {
-        color: var(--text);
-    }
-
-    .copyright {
-        color: var(--sub);
-        font-size: 0.75rem;
     }
 
     @media (min-width: 768px) {
@@ -172,12 +201,23 @@
 </style>
 </head> <body>
 
+<nav class="nav-bar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">KIZUNA VIDEO</a>
+        <div class="nav-links">
+            <a href="about.html">ABOUT</a>
+            <a href="login.html">LOGIN</a>
+            <a href="contact.html">CONTACT</a>
+        </div>
+    </div>
+</nav>
+
 <div id="loader">
     <div id="loader-clock" class="loader-clock">00:00:00</div>
     <div class="loader-bar-bg">
         <div id="loader-bar" class="loader-bar-fill"></div>
     </div>
-    <div id="pr-msg" class="pr-msg">Welcome</div>
+    <p id="pr-msg" style="margin-top:20px; font-size:0.9rem; color:var(--sub); font-weight:500;"></p>
 </div>
 
 <div class="container">
@@ -196,7 +236,7 @@
         <a href="login.html" class="tile-link reveal">
             <span class="category-tag">Client Portal</span>
             <h2>LOGIN</h2>
-            <p>スプレッドシート連携。制作状況の確認と納品動画の視聴はこちら。</p>
+            <p>制作状況のリアルタイム確認と、完成動画の視聴はこちら。</p>
         </a>
 
         <a href="contact.html" class="tile-link reveal" style="border: 2px solid var(--line); background: transparent;">
@@ -207,22 +247,19 @@
     </main>
 
     <footer class="reveal">
-        <nav class="footer-nav">
+        <div class="footer-nav">
             <a href="guide.html">使い方</a>
             <a href="privacy.html">プライバシーポリシー</a>
-        </nav>
-        <p class="copyright">&copy; 2025 KIZUNA VIDEO All Rights Reserved.</p>
+        </div>
+        <p style="color: var(--sub); font-size: 0.75rem; margin-top: 20px;">&copy; 2025 KIZUNA VIDEO All Rights Reserved.</p>
     </footer>
 </div>
 
 <script>
     function checkTheme() {
         const hour = new Date().getHours();
-        if (hour >= 18 || hour < 6) {
-            document.body.classList.add('dark-theme');
-        } else {
-            document.body.classList.remove('dark-theme');
-        }
+        if (hour >= 18 || hour < 6) { document.body.classList.add('dark-theme'); }
+        else { document.body.classList.remove('dark-theme'); }
     }
 
     function updateTime() {
@@ -240,25 +277,15 @@
     updateTime();
     checkTheme();
 
-    const prMessages = [
-        "誰でも歓迎。あなたの物語を。",
-        "一瞬を、一生の宝物に。",
-        "夜の編集も、最高の一本のために。",
-        "お気軽にご相談ください。"
-    ];
+    const prMessages = ["あなたの物語を形に。", "一瞬を、一生の宝物に。", "想いを、資産へ。"];
 
     window.addEventListener('load', () => {
         const bar = document.getElementById('loader-bar');
         const loader = document.getElementById('loader');
         const pr = document.getElementById('pr-msg');
-        
         pr.innerText = prMessages[Math.floor(Math.random() * prMessages.length)];
         
-        setTimeout(() => { 
-            bar.style.width = '100%'; 
-            pr.style.opacity = '1';
-        }, 100);
-
+        setTimeout(() => { bar.style.width = '100%'; }, 100);
         setTimeout(() => {
             loader.style.opacity = '0';
             setTimeout(() => { 
