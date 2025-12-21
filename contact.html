@@ -20,12 +20,16 @@
         font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
 
     .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 60px 20px;
+        width: 100%;
+        max-width: 500px;
+        padding: 40px 20px;
     }
 
     header {
@@ -33,35 +37,28 @@
         margin-bottom: 40px;
     }
 
-    h1 {
-        font-size: 2.2rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-        margin-bottom: 10px;
-    }
-
     .contact-box {
         background: var(--card);
-        border-radius: 28px;
-        padding: 40px 20px;
+        border-radius: 32px;
+        padding: 50px 30px;
         text-align: center;
-        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
     .qr-area {
-        margin: 20px auto;
-        width: 180px;
-        height: 180px;
-        background: #fff;
-        padding: 10px;
-        border-radius: 18px;
+        margin: 30px auto;
+        width: 200px;
+        height: 200px;
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 24px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .qr-area img {
-        max-width: 100%;
+        width: 100%;
         height: auto;
     }
 
@@ -70,42 +67,17 @@
         background: var(--line);
         color: #ffffff;
         text-decoration: none;
-        padding: 18px;
-        border-radius: 16px;
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-top: 25px;
+        padding: 20px;
+        border-radius: 18px;
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin-top: 30px;
         transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .line-button:active {
         transform: scale(0.96);
         opacity: 0.9;
-    }
-
-    .info-section {
-        padding: 20px;
-        text-align: left;
-    }
-
-    .info-row {
-        margin-bottom: 20px;
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 15px;
-    }
-
-    .info-label {
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: var(--sub);
-        text-transform: uppercase;
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    .info-value {
-        font-size: 1rem;
-        font-weight: 500;
     }
 
     .back-home {
@@ -115,60 +87,34 @@
         color: var(--sub);
         text-decoration: none;
         font-size: 0.9rem;
-        font-weight: 600;
-    }
-
-    footer {
-        text-align: center;
-        margin-top: 60px;
-        color: var(--sub);
-        font-size: 0.8rem;
+        font-weight: 500;
     }
 </style>
 </head> <body>
 
 <div class="container">
     <header>
-        <h1>Contact</h1>
-        <p style="color: var(--sub);">映像制作に関するご相談はこちら</p>
+        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Contact</h1>
+        <p style="color: var(--sub); margin-top: 10px;">ご相談・お見積もりは公式LINEまで</p>
     </header>
 
     <main>
         <div class="contact-box">
-            <span style="font-size: 0.75rem; font-weight: 700; color: var(--line); letter-spacing: 0.1em;">OFFICIAL LINE</span>
-            <h2 style="margin-top: 10px; font-size: 1.5rem;">LINE相談・お見積もり</h2>
+            <span style="font-size: 0.75rem; font-weight: 800; color: var(--line); letter-spacing: 0.15em; text-transform: uppercase;">LINE Support</span>
+            <h2 style="margin: 15px 0; font-size: 1.6rem;">KIZUNA VIDEO公式</h2>
             
             <div class="qr-area">
                 <img src="M_494zixmx_GW.png" alt="LINE QR Code">
             </div>
             
-            <p style="font-size: 0.9rem; color: var(--sub); padding: 0 10px;">
-                スマホの方は下のボタンから追加、PCの方は上のQRコードをスキャンしてください。
+            <p style="font-size: 0.9rem; color: var(--sub); line-height: 1.6;">
+                スマートフォンの方は下のボタンから、<br>PCの方はQRコードをスキャンしてください。
             </p>
 
             <a href="[https://lin.ee/0812yEw](https://lin.ee/0812yEw)" class="line-button">LINEで友だち追加</a>
         </div>
 
-        <div class="info-section">
-            <div class="info-row">
-                <span class="info-label">対応内容</span>
-                <p class="info-value">新規制作のご相談、お見積もり、納品後の修正依頼</p>
-            </div>
-            <div class="info-row">
-                <span class="info-label">ID発行の流れ</span>
-                <p class="info-value">LINEでのヒアリング完了後、マイページ用のログインIDを発行します。</p>
-            </div>
-            <div class="info-row">
-                <span class="info-label">返信の目安</span>
-                <p class="info-value">通常1時間以内（10:00 - 22:00）</p>
-            </div>
-        </div>
-
         <a href="index.html" class="back-home">ホームに戻る</a>
     </main>
-
-    <footer>
-        <p>&copy; 2025 KIZUNA VIDEO All Rights Reserved.</p>
-    </footer>
 </div>
 </body> </html>
