@@ -1,93 +1,34 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WORKS - KIZUNA video</title>
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
         :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.6; }
-        
-        nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 100; }
-        @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.8); } }
-        .nav-inner { max-width: 1000px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .back-link { text-decoration: none; color: var(--accent); font-weight: 700; font-size: 0.85rem; }
-
-        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
-        h1 { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 10px; }
-        .sub-title { text-align: center; color: var(--sub); margin-bottom: 60px; font-size: 1rem; }
-
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.7rem; font-weight: 700; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 120px 20px 60px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .card { background: rgba(128,128,128,0.05); border-radius: 24px; border: 1px solid var(--border); overflow: hidden; transition: transform 0.3s ease; }
-        .card:hover { transform: translateY(-8px); }
-        .card-img { width: 100%; height: 200px; background: #222; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; position: relative; }
-        .card-img::after { content: "SAMPLE VIDEO"; font-size: 0.7rem; opacity: 0.4; }
-        
+        .card { background: rgba(128,128,128,0.05); border-radius: 25px; border: 1px solid var(--border); overflow: hidden; }
+        .card-img { height: 200px; background: #222; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.8rem; }
         .card-body { padding: 25px; }
-        .tag { display: inline-block; padding: 4px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; background: var(--accent); color: #fff; margin-bottom: 12px; }
-        h3 { font-size: 1.2rem; margin-bottom: 10px; }
-        p { font-size: 0.85rem; color: var(--sub); line-height: 1.7; }
-
-        footer { text-align: center; padding: 100px 0 60px; color: var(--sub); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 80px; }
+        .tag { background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; display: inline-block; }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-inner">
-            <div style="font-weight: 800;">KIZUNA video</div>
-            <a href="index.html" class="back-link">TOPに戻る</a>
-        </div>
-    </nav>
-
+    <nav><div class="nav-inner"><a href="index.html" style="font-weight:900;text-decoration:none;color:var(--text);">KIZUNA video</a><div class="nav-links"><a href="about.html">ABOUT</a><a href="works.html">WORKS</a><a href="guide.html">GUIDE</a><a href="reserve.html">RESERVE</a><a href="download.html">DOWNLOAD</a><div id="google_translate_element"></div></div></div></nav>
     <div class="container">
-        <h1>WORKS</h1>
-        <p class="sub-title">私たちの技術を注ぎ込んだ、制作実績の一部をご紹介します。</p>
-
+        <h1 style="text-align:center;font-size:3rem;margin-bottom:60px;font-weight:800;">WORKS</h1>
         <div class="grid">
-            <div class="card">
-                <div class="card-img">Coming Soon</div>
-                <div class="card-body">
-                    <span class="tag">三送会動画</span>
-                    <h3>三送会メモリアル</h3>
-                    <p>先輩方への感謝を込めたダイジェスト映像。共に歩んだ日々をドラマチックな構成で振り返ります。</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img">Coming Soon</div>
-                <div class="card-body">
-                    <span class="tag">シーン別動画</span>
-                    <h3>ハイライトセレクション</h3>
-                    <p>特定の大会や合宿、練習風景など、印象的なシーンを切り取ったショートムービー制作。</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img">Coming Soon</div>
-                <div class="card-body">
-                    <span class="tag">思い出ムービー</span>
-                    <h3>絆 - Memories</h3>
-                    <p>日常のオフショットや笑顔を繋ぎ、温かい雰囲気で仕上げるドキュメンタリースタイルの映像作品。</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img">Coming Soon</div>
-                <div class="card-body">
-                    <span class="tag">卒団式動画</span>
-                    <h3>卒団記念オープニング</h3>
-                    <p>式典の始まりを告げる、インパクト重視の映像。旅立つ者たちの決意と成長を力強く表現します。</p>
-                </div>
-            </div>
+            <div class="card"><div class="card-img">Coming Soon</div><div class="card-body"><span class="tag">三送会</span><h3>Memorial Movie</h3><p>感謝の気持ちを映像で綴ります。</p></div></div>
+            <div class="card"><div class="card-img">Coming Soon</div><div class="card-body"><span class="tag">卒団式</span><h3>Graduation Film</h3><p>旅立ちを祝う迫力の演出。</p></div></div>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 KIZUNA video
-    </footer>
+    <script type="text/javascript">function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'ja',includedLanguages:'ja,en,ko,zh-CN',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}</script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
