@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIZUNA VIDEO - 優先予約フォーム</title>
+    <title>KIZUNA VIDEO - 三送会・おくる会 編集予約</title>
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
         :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.6; display: flex; justify-content: center; padding: 60px 20px; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.6; display: flex; justify-content: center; padding: 40px 20px; }
         .form-container { width: 100%; max-width: 440px; }
-        .header { text-align: center; margin-bottom: 40px; }
-        .header img { height: 50px; border-radius: 50%; margin-bottom: 15px; border: 1px solid var(--border); }
-        .label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; color: var(--sub); text-align: left; }
-        input, select, textarea { width: 100%; padding: 16px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); color: var(--text); font-size: 1rem; outline: none; transition: 0.2s; }
-        input:focus { border-color: var(--accent); }
-        .btn-submit { background: var(--text); color: var(--bg); width: 100%; padding: 18px; border-radius: 16px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; margin-top: 10px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header img { height: 50px; border-radius: 50%; border: 1px solid var(--border); }
+        .label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; color: var(--sub); }
+        input, select, textarea { width: 100%; padding: 16px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); color: var(--text); font-size: 1rem; outline: none; }
+        .btn-submit { background: var(--text); color: var(--bg); width: 100%; padding: 18px; border-radius: 16px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; }
         .result-box { display: none; margin-top: 30px; background: rgba(128,128,128,0.05); padding: 25px; border-radius: 20px; border: 1px dashed var(--border); text-align: center; }
         .btn-line { display: block; background: var(--line); color: white; text-decoration: none; padding: 18px; border-radius: 16px; font-weight: 700; margin-top: 15px; }
     </style>
@@ -25,54 +24,51 @@
     <div class="form-container">
         <div class="header">
             <img src="logo.jpg" alt="Logo">
-            <h1>優先予約メンバー登録</h1>
-            <p style="font-size: 0.9rem; color: var(--sub); margin-top: 10px;">3月からの受付枠を先行して確保します。</p>
+            <h1 style="font-size: 1.4rem; margin-top: 15px;">三送会・おくる会 編集予約</h1>
+            <p style="font-size: 0.85rem; color: var(--sub); margin-top: 5px;">部活動やサークルの大切な門出を、最高の映像で。</p>
         </div>
 
         <div id="input-form">
-            <label class="label">お名前（フルネーム）</label>
+            <label class="label">代表者名</label>
             <input type="text" id="name" placeholder="例：絆 太郎">
 
-            <label class="label">撮影希望時期</label>
-            <select id="season">
-                <option value="">選択してください</option>
-                <option value="2026年3月">2026年3月</option>
-                <option value="2026年4月">2026年4月</option>
-                <option value="2026年5月">2026年5月</option>
-                <option value="それ以降">それ以降</option>
-            </select>
+            <label class="label">イベント開催日（使用日）</label>
+            <input type="date" id="event_date">
 
-            <label class="label">撮影プラン・内容</label>
-            <textarea id="detail" rows="4" placeholder="例：家族写真、七五三、ウェディングの相談など"></textarea>
+            <label class="label">団体名・チーム名</label>
+            <input type="text" id="team_name" placeholder="例：〇〇中学校 サッカー部">
 
-            <button onclick="processForm()" class="btn-submit">内容を確認してコピー</button>
+            <label class="label">依頼したい内容</label>
+            <textarea id="detail" rows="4" placeholder="例：3年間の軌跡スライドショー、後輩からのメッセージ動画、試合のハイライトなど"></textarea>
+
+            <button onclick="processForm()" class="btn-submit">予約内容をコピーする</button>
         </div>
 
         <div id="result-box" class="result-box">
-            <p style="font-size: 0.8rem; color: var(--sub);">以下の内容をコピーしました。<br>LINEに貼り付けて送信してください。</p>
+            <p style="font-size: 0.8rem; color: var(--sub);">内容をコピーしました。LINEに貼り付けて送信してください。</p>
             <div id="formatted-text" style="text-align: left; background: var(--bg); padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 0.9rem; border: 1px solid var(--border); white-space: pre-wrap;"></div>
-            <a href="https://line.me/R/oaMessage/@494zixmx/" id="line-link" class="btn-line">LINEで送信する</a>
+            <a href="https://line.me/R/oaMessage/@494zixmx/" id="line-link" class="btn-line">LINEを開いて送信</a>
         </div>
     </div>
 
     <script>
         function processForm() {
             const name = document.getElementById('name').value;
-            const season = document.getElementById('season').value;
+            const date = document.getElementById('event_date').value;
+            const team = document.getElementById('team_name').value;
             const detail = document.getElementById('detail').value;
 
-            if(!name || !season) {
-                alert('お名前と時期を選択してください');
+            if(!name || !date) {
+                alert('お名前と開催日を入力してください');
                 return;
             }
 
-            const text = "【優先予約メンバー登録】\nお名前：" + name + "\n希望時期：" + season + "\n内容：" + (detail || "未記入");
+            const text = "【三送会・編集予約】\n代表者：" + name + "\n使用日：" + date + "\n団体名：" + (team || "未記入") + "\n内容：" + (detail || "未記入");
             
             navigator.clipboard.writeText(text).then(() => {
                 document.getElementById('input-form').style.display = 'none';
                 document.getElementById('formatted-text').innerText = text;
                 document.getElementById('result-box').style.display = 'block';
-                // LINEリンクに入力内容を自動でセット
                 document.getElementById('line-link').href = "https://line.me/R/oaMessage/@494zixmx/?" + encodeURIComponent(text);
             });
         }
