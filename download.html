@@ -1,103 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOWNLOAD - KIZUNA video</title>
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
         :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.6; }
-        
-        /* ナビゲーション */
-        nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 100; }
-        @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.8); } }
-        .nav-inner { max-width: 800px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .back-link { text-decoration: none; color: var(--accent); font-weight: 700; font-size: 0.85rem; }
-
-        .container { max-width: 500px; margin: 0 auto; padding: 80px 20px 60px; text-align: center; }
-        h1 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.02em; }
-        .status-msg { font-size: 0.9rem; color: var(--sub); margin-bottom: 40px; }
-
-        /* 入力フォーム */
-        .auth-box { background: rgba(128,128,128,0.05); padding: 40px 30px; border-radius: 30px; border: 1px solid var(--border); margin-bottom: 40px; }
-        input[type="password"] { width: 100%; padding: 18px; border-radius: 15px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 1rem; text-align: center; margin-bottom: 20px; outline: none; transition: 0.3s; }
-        input[type="password"]:focus { border-color: var(--accent); }
-        
-        /* ボタン */
-        .btn { width: 100%; padding: 18px; border-radius: 15px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.3s; display: block; text-decoration: none; }
-        .btn-auth { background: var(--text); color: var(--bg); }
-        .btn-dl { background: var(--accent); color: white; display: none; }
-        
-        /* WORKSへの誘導 */
-        .works-lead { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
-        .btn-works { background: transparent; color: var(--text); border: 1px solid var(--border); margin-top: 10px; }
-        .btn-works:hover { background: rgba(128,128,128,0.1); }
-        .btn:active { transform: scale(0.98); }
-
-        footer { margin-top: 60px; font-size: 0.75rem; color: var(--sub); }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; text-align: center; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.7rem; font-weight: 700; }
+        .container { max-width: 500px; margin: 0 auto; padding: 140px 20px 60px; }
+        .box { background: rgba(128,128,128,0.05); padding: 50px 30px; border-radius: 40px; border: 1px solid var(--border); }
+        input { width: 100%; padding: 18px; border-radius: 15px; border: 1px solid var(--border); margin-bottom: 25px; text-align: center; font-size: 1rem; background: var(--bg); color: var(--text); }
+        .btn-auth { width: 100%; padding: 20px; border-radius: 15px; background: var(--text); color: var(--bg); border: none; font-weight: 800; cursor: pointer; font-size: 1rem; }
+        .btn-dl { width: 100%; padding: 20px; border-radius: 15px; background: var(--accent); color: white; text-decoration: none; font-weight: 800; display: none; font-size: 1.1rem; }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-inner">
-            <div style="font-weight: 800;">KIZUNA video</div>
-            <a href="index.html" class="back-link">TOPに戻る</a>
-        </div>
-    </nav>
-
+    <nav><div class="nav-inner"><a href="index.html" style="font-weight:900;text-decoration:none;color:var(--text);">KIZUNA video</a><div class="nav-links"><a href="about.html">ABOUT</a><a href="works.html">WORKS</a><a href="guide.html">GUIDE</a><a href="reserve.html">RESERVE</a><a href="download.html">DOWNLOAD</a><div id="google_translate_element"></div></div></div></nav>
     <div class="container">
-        <h1 id="group-name">DOWNLOAD</h1>
-        <p id="status-text" class="status-msg">発行されたパスワードを入力してください</p>
-
-        <div class="auth-box">
-            <div id="auth-ui">
-                <input type="password" id="pass-input" placeholder="Password" autofocus>
-                <button onclick="checkAuth()" class="btn btn-auth">認証する</button>
-            </div>
-            <a id="video-url-btn" href="#" class="btn btn-dl">動画を保存する</a>
-
-            <div class="works-lead">
-                <p style="font-size: 0.8rem; color: var(--sub);">他の制作事例もチェックする</p>
-                <a href="works.html" class="btn btn-works">制作実績（WORKS）を見る</a>
-            </div>
+        <h1 style="font-size:3rem;font-weight:800;margin-bottom:20px;">DOWNLOAD</h1>
+        <p style="color:var(--sub);margin-bottom:40px;">パスワードを入力して動画を受け取ってください</p>
+        <div class="box">
+            <div id="auth-area"><input type="password" id="pw" placeholder="Password"><button onclick="checkPw()" class="btn-auth">認証する</button></div>
+            <a id="dl-link" href="#" class="btn-dl">動画を保存する (Google Drive)</a>
         </div>
-
-        <footer>
-            &copy; 2025 KIZUNA video
-        </footer>
     </div>
-
     <script>
-        const groupData = {
-            "2025": { name: "KIZUNA video 納品口", pass: "kizuna2025", fileId: "1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm" }
-        };
-
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
-        const config = groupData[id] || groupData["2025"];
-
-        document.getElementById('group-name').innerText = config.name;
-
-        function checkAuth() {
-            const input = document.getElementById('pass-input').value;
-            const statusText = document.getElementById('status-text');
-            const authUi = document.getElementById('auth-ui');
-            const dlBtn = document.getElementById('video-url-btn');
-
-            if (input === config.pass) {
-                authUi.style.display = 'none';
-                statusText.innerText = "認証に成功しました。下のボタンから保存してください。";
-                statusText.style.color = "var(--accent)";
-                dlBtn.href = "https://drive.google.com/uc?export=download&id=" + config.fileId;
-                dlBtn.style.display = 'block';
-            } else {
-                alert("パスワードが正しくありません。");
-                document.getElementById('pass-input').value = "";
-            }
-        }
+        const config = {"2025": {pass: "kizuna2025", id: "1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm"}};
+        function checkPw(){const p=document.getElementById('pw').value; if(p===config["2025"].pass){document.getElementById('auth-area').style.display='none'; const l=document.getElementById('dl-link'); l.href="https://drive.google.com/uc?export=download&id="+config["2025"].id; l.style.display='block';}else{alert("Incorrect Password");}}
+        function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'ja',includedLanguages:'ja,en,ko,zh-CN',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}
     </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
