@@ -1,39 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GUIDE - KIZUNA video</title>
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
         :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.8; }
-        nav { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 100; }
-        .nav-inner { max-width: 900px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-        .box { background: rgba(128,128,128,0.05); padding: 35px; border-radius: 28px; margin-bottom: 35px; border: 1px solid var(--border); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.7rem; font-weight: 700; }
+        .container { max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+        .box { background: rgba(128,128,128,0.05); padding: 35px; border-radius: 25px; border: 1px solid var(--border); margin-bottom: 30px; }
     </style>
 </head>
 <body>
-    <nav><div class="nav-inner"><a href="index.html" style="text-decoration:none;color:var(--text);font-weight:800;">KIZUNA video</a><a href="index.html" style="text-decoration:none;color:var(--accent);font-size:0.8rem;">TOP</a></div></nav>
+    <nav><div class="nav-inner"><a href="index.html" style="font-weight:900;text-decoration:none;color:var(--text);">KIZUNA video</a><div class="nav-links"><a href="about.html">ABOUT</a><a href="works.html">WORKS</a><a href="guide.html">GUIDE</a><a href="reserve.html">RESERVE</a><a href="download.html">DOWNLOAD</a><div id="google_translate_element"></div></div></div></nav>
     <div class="container">
-        <p style="text-align:right;font-size:0.8rem;color:var(--sub);">最終改訂日：2025/12/21</p>
-        <h1 style="text-align:center;margin-bottom:40px;">ご利用ガイド</h1>
-        <div class="box">
-            <h2 style="border-left:4px solid var(--accent);padding-left:15px;margin-bottom:20px;">完全無料・修正無制限</h2>
-            <p>技術向上のための活動につき、制作費は一切不要です。また、ご納得いただけるまで何度でも無料で修正を承ります。</p>
-        </div>
-        <div class="box">
-            <h2 style="border-left:4px solid var(--accent);padding-left:15px;margin-bottom:20px;">ギガファイル便での素材送付</h2>
-            <p>1. <a href="https://gigafile.nu/" style="color:var(--accent);">ギガファイル便</a>にアクセス。<br>2. 保持期間を100日に設定。<br>3. 素材をアップロードし、発行されたURLを公式LINEへ送信してください。</p>
-        </div>
-        <div class="box">
-            <h2 style="border-left:4px solid var(--accent);padding-left:15px;margin-bottom:20px;">オンライン納品</h2>
-            <p>完成した動画は最短納期で制作し、専用ページにて納品いたします。</p>
-            <a href="download.html" style="display:block;background:var(--accent);color:white;text-decoration:none;padding:15px;border-radius:12px;text-align:center;margin-top:20px;font-weight:700;">納品ページへ移動</a>
-        </div>
+        <h1 style="font-size:3rem;font-weight:800;margin-bottom:40px;">GUIDE</h1>
+        <div class="box"><h3>ギガファイル便の活用</h3><p>大容量の動画素材は、ギガファイル便で「保持期間100日」に設定してアップロードし、発行されたURLをLINEへ送信してください。</p></div>
+        <div class="box"><h3>修正無制限</h3><p>私たちは技術向上のために活動しています。お客様が100%満足されるまで、何度でも無料で修正を承ります。</p></div>
     </div>
+    <script type="text/javascript">function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'ja',includedLanguages:'ja,en,ko,zh-CN',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}</script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
