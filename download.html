@@ -15,13 +15,13 @@
         .back-link { text-decoration: none; color: var(--sub); font-size: 0.85rem; font-weight: 600; }
         .header img { height: 50px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 10px; }
         h1 { font-size: 1.4rem; margin-bottom: 5px; }
-        .video-wrapper { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 20px; margin: 20px 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--border); }
+        .info-box { width: 100%; padding: 40px 20px; background: rgba(128,128,128,0.05); border-radius: 20px; margin: 20px 0; border: 1px solid var(--border); }
         .input-group { position: relative; width: 100%; margin-bottom: 15px; }
         input { width: 100%; padding: 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); color: var(--text); text-align: center; font-size: 1rem; outline: none; }
         .toggle-btn { position: absolute; right: 15px; top: 16px; background: none; border: none; color: var(--sub); font-size: 0.8rem; cursor: pointer; font-weight: 600; }
         .btn { width: 100%; padding: 18px; border-radius: 16px; border: none; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 1rem; display: block; }
         .btn-auth { background: var(--text); color: var(--bg); }
-        .btn-dl { background: var(--accent); color: white; margin-top: 20px; display: none; }
+        .btn-url { background: var(--accent); color: white; margin-top: 20px; display: none; }
         .line-box { margin-top: 50px; padding: 25px; border: 1px solid var(--border); border-radius: 20px; }
     </style>
 </head>
@@ -34,10 +34,9 @@
             <img src="logo.jpg" alt="Logo">
         </div>
         <h1 id="group-name">Loading...</h1>
-        <p id="status-text" style="font-size: 0.9rem; color: var(--sub);">動画を視聴・保存</p>
         
-        <div class="video-wrapper" id="video-area">
-            <p id="video-placeholder" style="color: white; font-size: 0.8rem;">読み込み中...</p>
+        <div class="info-box" id="display-area">
+            <p id="status-text" style="font-size: 0.9rem; color: var(--sub);">パスワードを入力してください</p>
         </div>
 
         <div id="auth-ui">
@@ -45,14 +44,14 @@
                 <input type="password" id="pass-input" placeholder="Password">
                 <button type="button" class="toggle-btn" onclick="togglePass()" id="toggle-txt">表示</button>
             </div>
-            <button onclick="checkAuth()" class="btn btn-auth">認証して再生</button>
+            <button onclick="checkAuth()" class="btn btn-auth">認証して動画URLを発行</button>
         </div>
 
-        <a id="dl-link" href="#" class="btn btn-dl" download>動画をスマホに保存する</a>
+        <a id="video-url-btn" href="#" class="btn btn-url">動画をダウンロード（保存）する</a>
 
         <div class="line-box">
             <p style="font-size: 0.85rem; font-weight: 600;">パスワードをお忘れですか？</p>
-            <p style="font-size: 0.75rem; color: var(--sub); margin-top: 5px;">公式LINEでチーム名を送信してください。<br>自動返信でパスワードをお届けします。</p>
+            <p style="font-size: 0.75rem; color: var(--sub); margin-top: 5px;">公式LINEでチーム名を送信してください。</p>
             <a href="https://line.me/R/ti/p/@494zixmx" style="display: block; background: var(--line); color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; margin-top: 15px;">LINEで確認する</a>
         </div>
     </div>
@@ -63,16 +62,6 @@
                 name: "テスト用デモチーム", 
                 pass: "1234", 
                 fileId: "1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm" 
-            },
-            "soccer": { 
-                name: "サッカー部 三送会", 
-                pass: "soccer2026", 
-                fileId: "ここにファイルIDを入れる" 
-            },
-            "basket": { 
-                name: "バスケ部 卒団式", 
-                pass: "basket2026", 
-                fileId: "ここにファイルIDを入れる" 
             }
         };
 
@@ -87,8 +76,6 @@
             if (autoPass) {
                 document.getElementById('pass-input').value = autoPass;
                 checkAuth(); 
-            } else {
-                document.getElementById('video-placeholder').innerText = "認証後にプレイヤーが表示されます";
             }
         };
 
@@ -110,17 +97,12 @@
                 const dlUrl = "https://drive.google.com/uc?export=download&id=" + config.fileId;
                 
                 document.getElementById('auth-ui').style.display = 'none';
-                document.getElementById('status-text').innerText = "認証に成功しました";
+                document.getElementById('status-text').innerText = "認証に成功しました。下のボタンから保存してください。";
                 document.getElementById('status-text').style.color = "#06C755";
                 
-                document.getElementById('video-area').innerHTML = 
-                    '<video controls width="100%" height="100%" style="background:#000;">' +
-                    '<source src="' + dlUrl + '" type="video/mp4">' +
-                    '</video>';
-                
-                const dlBtn = document.getElementById('dl-link');
-                dlBtn.href = dlUrl;
-                dlBtn.style.display = 'block';
+                const urlBtn = document.getElementById('video-url-btn');
+                urlBtn.href = dlUrl;
+                urlBtn.style.display = 'block';
             } else {
                 alert("パスワードが正しくありません。");
             }
