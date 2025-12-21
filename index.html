@@ -7,12 +7,12 @@
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="feed.xml">
     <style>
-        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; --btn-bg: rgba(128,128,128,0.1); }
-        @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; --btn-bg: rgba(255,255,255,0.1); } }
+        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; --btn-bg: rgba(128,128,128,0.08); }
+        @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; --btn-bg: rgba(255,255,255,0.12); } }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; overflow-x: hidden; }
 
-        /* 手書き風イントロ */
+        /* 手書きアニメーション */
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 1s; }
         .drawing-text { fill: none; stroke: #fff; stroke-width: 0.8; stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: draw 2.8s forwards ease-in-out; font-size: 45px; font-weight: 800; }
         @keyframes draw { to { stroke-dashoffset: 0; fill: #fff; stroke-width: 0; } }
@@ -22,29 +22,30 @@
         .ready #content { opacity: 1; visibility: visible; }
 
         /* 2段ボタンナビゲーション */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.8); backdrop-filter: blur(25px); z-index: 1000; border-bottom: 1px solid var(--border); }
-        @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.8); } }
-        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 20px; }
-        .nav-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--border); margin-bottom: 10px; }
-        .nav-logo { font-weight: 900; font-size: 1.3rem; text-decoration: none; color: var(--text); }
-        .nav-bottom { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
-        .nav-btn { text-decoration: none; color: var(--text); font-size: 0.7rem; font-weight: 700; background: var(--btn-bg); padding: 8px 16px; border-radius: 20px; white-space: nowrap; transition: 0.3s; }
-        .nav-btn:hover { background: var(--accent); color: white; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.85); backdrop-filter: blur(25px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.85); } }
+        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 12px 20px; }
+        .nav-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+        .nav-logo { font-weight: 900; font-size: 1.3rem; text-decoration: none; color: var(--text); letter-spacing: -0.03em; }
+        .nav-bottom { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
+        .nav-btn { text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 700; background: var(--btn-bg); padding: 10px 18px; border-radius: 22px; white-space: nowrap; transition: 0.2s ease; border: 1px solid transparent; }
+        .nav-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
 
-        /* 多言語UI調整 */
-        .goog-te-gadget-simple { background: transparent !important; border: none !important; padding: 0 !important; font-size: 0.75rem !important; }
+        /* 翻訳パーツ */
+        .goog-te-gadget-simple { background: transparent !important; border: 1px solid var(--border) !important; padding: 4px 8px !important; border-radius: 12px !important; font-size: 0.7rem !important; }
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
 
-        /* ヒーローエリア */
-        .hero { max-width: 1100px; margin: 0 auto; padding: 180px 20px 80px; text-align: center; }
-        .hero-img { width: 140px; height: 140px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 30px; object-fit: cover; }
-        h1 { font-size: clamp(2.8rem, 9vw, 5.5rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1; margin-bottom: 25px; }
-        .hero-sub { color: var(--sub); font-size: 1.25rem; max-width: 700px; margin: 0 auto 50px; line-height: 1.5; }
-        .btn-main { display: inline-block; padding: 22px 60px; background: var(--accent); color: white; text-decoration: none; border-radius: 45px; font-weight: 800; font-size: 1.2rem; box-shadow: 0 10px 25px rgba(0,113,227,0.3); }
+        /* ヒーローセクション */
+        .hero { max-width: 1100px; margin: 0 auto; padding: 200px 20px 100px; text-align: center; }
+        .hero-img { width: 130px; height: 130px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 35px; object-fit: cover; }
+        h1 { font-size: clamp(2.8rem, 10vw, 5rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1.1; margin-bottom: 25px; }
+        .hero-sub { color: var(--sub); font-size: 1.3rem; max-width: 750px; margin: 0 auto 50px; line-height: 1.5; font-weight: 500; }
+        .btn-main { display: inline-block; padding: 22px 60px; background: var(--accent); color: white; text-decoration: none; border-radius: 45px; font-weight: 800; font-size: 1.2rem; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(0,113,227,0.3); }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,113,227,0.4); }
 
-        footer { text-align: center; padding: 80px 0; border-top: 1px solid var(--border); margin-top: 100px; }
-        .copyright { font-size: 0.7rem; color: var(--sub); margin-top: 25px; }
+        footer { text-align: center; padding: 100px 0 60px; border-top: 1px solid var(--border); margin-top: 100px; }
+        .copyright { font-size: 0.75rem; color: var(--sub); margin-top: 30px; font-weight: 600; letter-spacing: 0.05em; }
     </style>
 </head>
 <body>
@@ -61,11 +62,11 @@
                     <div id="google_translate_element"></div>
                 </div>
                 <div class="nav-bottom">
-                    <a href="about.html" class="nav-btn">ABOUT</a>
-                    <a href="works.html" class="nav-btn">WORKS</a>
-                    <a href="guide.html" class="nav-btn">GUIDE</a>
-                    <a href="reserve.html" class="nav-btn">RESERVE</a>
-                    <a href="download.html" class="nav-btn">DOWNLOAD</a>
+                    <a href="about.html" class="nav-btn">私たちについて</a>
+                    <a href="works.html" class="nav-btn">制作実績</a>
+                    <a href="guide.html" class="nav-btn">ご利用ガイド</a>
+                    <a href="reserve.html" class="nav-btn">制作を依頼する</a>
+                    <a href="download.html" class="nav-btn">納品物受取</a>
                 </div>
             </div>
         </nav>
@@ -73,15 +74,15 @@
         <div class="hero">
             <header>
                 <img src="logo.jpg" alt="Logo" class="hero-img">
-                <h1>Crafting<br>Your Story.</h1>
-                <p class="hero-sub">技術を研ぎ澄まし、心に刻まれる映像を。プロフェッショナルな編集を、あなたの思い出に。</p>
-                <a href="reserve.html" class="btn-main">今すぐ制作を依頼する</a>
+                <h1>一生に、一度の<br>感動を形に。</h1>
+                <p class="hero-sub">映像技術を研ぎ澄まし、あなたの記憶を最高の一本へ。現在は技術向上のため、完全無料で制作を承っています。</p>
+                <a href="reserve.html" class="btn-main">今すぐ申し込む</a>
             </header>
         </div>
 
         <footer>
-            <a href="https://lin.ee/K6TBvW6"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="LINE" height="44"></a>
-            <p class="copyright">&copy; 2025 KIZUNA video. All Rights Reserved.</p>
+            <a href="https://lin.ee/K6TBvW6"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="LINE" height="48"></a>
+            <p class="copyright">&copy; 2025 KIZUNA VIDEO PROJECT.</p>
         </footer>
     </div>
 
