@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>確認完了 - KIZUNA VIDEO</title>
+    <style>
+        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --line: #06C755; }
+        @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; } }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; margin: 0; }
+        .box { padding: 40px 20px; }
+        .btn-line { display: inline-block; background: var(--line); color: white; text-decoration: none; padding: 20px 40px; border-radius: 18px; font-weight: 700; font-size: 1.1rem; margin-top: 25px; transition: 0.3s; box-shadow: 0 10px 20px rgba(6,199,85,0.2); }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1 style="font-size: 1.5rem;">ご確認ありがとうございました</h1>
+        <p style="margin-top: 20px; font-size: 0.95rem; line-height: 1.6;">
+            下のボタンからLINEを開き、<br>「確認しました」とメッセージを送ってください。
+        </p>
+        <a href="https://line.me/R/oaMessage/@968shnny/?確認しました" id="line-button" class="btn-line">
+            LINEで報告して戻る
+        </a>
+    </div>
+
+    <script>
+        document.getElementById('line-button').addEventListener('click', function() {
+            // LINEを起動した0.5秒後に、元の画面をトップページへ戻す
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
