@@ -35,9 +35,7 @@
         letter-spacing: -0.05em;
         line-height: 1;
         margin-bottom: 10px;
-        background: linear-gradient(180deg, var(--text) 0%, var(--sub) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: var(--text);
     }
 
     h1 {
@@ -53,13 +51,7 @@
         line-height: 1.6;
     }
 
-    .timer-text {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--accent);
-        margin-top: 20px;
-    }
-
+    /* リンクボタンの修正 */
     .btn-home {
         display: inline-block;
         padding: 16px 32px;
@@ -69,11 +61,25 @@
         border-radius: 14px;
         font-weight: 700;
         font-size: 1rem;
+        border: none;
+        cursor: pointer;
         transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-home:hover {
+        opacity: 0.9;
+        transform: scale(1.02);
     }
 
     .btn-home:active {
         transform: scale(0.96);
+    }
+
+    .timer-text {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--accent);
+        margin-top: 30px;
     }
 
     footer {
@@ -89,7 +95,7 @@
 <div class="container">
     <div class="error-code">404</div>
     <h1>ページが見つかりません</h1>
-    <p>お探しのページは移動したか、<br>削除された可能性があります。</p>
+    <p>指定されたページは存在しないか、<br>URLが間違っている可能性があります。</p>
     
     <a href="index.html" class="btn-home">ホームへ戻る</a>
     
@@ -101,6 +107,7 @@
 </footer>
 
 <script>
+    // 自動で戻る処理
     let timeLeft = 5;
     const timerElement = document.getElementById('timer');
 
@@ -108,10 +115,15 @@
         timeLeft--;
         if (timeLeft <= 0) {
             clearInterval(countdown);
-            window.location.href = 'index.html';
+            window.location.href = 'index.html'; // ここでホームへ移動
         } else {
             timerElement.innerText = timeLeft + "秒後に自動で戻ります";
         }
     }, 1000);
+
+    // ボタンのクリック動作をJavaScriptでも念のため補強
+    document.querySelector('.btn-home').addEventListener('click', function(e) {
+        window.location.href = 'index.html';
+    });
 </script>
 </body> </html>
