@@ -12,18 +12,17 @@
         body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; text-align: center; padding: 20px; line-height: 1.6; }
         .container { max-width: 500px; margin: 0 auto; padding-top: 20px; }
         .nav-top { text-align: left; margin-bottom: 20px; }
-        .back-btn { text-decoration: none; color: var(--sub); font-size: 0.85rem; font-weight: 600; }
-        .header img { height: 50px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 20px; }
-        h1 { font-size: 1.4rem; margin-bottom: 10px; }
+        .back-link { text-decoration: none; color: var(--sub); font-size: 0.85rem; font-weight: 600; }
+        .header img { height: 50px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 10px; }
+        h1 { font-size: 1.4rem; margin-bottom: 5px; }
         .video-wrapper { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 20px; margin: 20px 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--border); }
         .input-group { position: relative; width: 100%; margin-bottom: 15px; }
         input { width: 100%; padding: 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); color: var(--text); text-align: center; font-size: 1rem; outline: none; }
         .toggle-btn { position: absolute; right: 15px; top: 16px; background: none; border: none; color: var(--sub); font-size: 0.8rem; cursor: pointer; font-weight: 600; }
-        .btn { width: 100%; padding: 18px; border-radius: 16px; border: none; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 1rem; display: block; transition: 0.2s; }
+        .btn { width: 100%; padding: 18px; border-radius: 16px; border: none; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 1rem; display: block; }
         .btn-auth { background: var(--text); color: var(--bg); }
         .btn-dl { background: var(--accent); color: white; margin-top: 20px; display: none; }
         .line-box { margin-top: 50px; padding: 25px; border: 1px solid var(--border); border-radius: 20px; }
-        .btn-line { background: var(--line); color: white; margin-top: 15px; }
     </style>
 </head>
 <body>
@@ -31,14 +30,14 @@
         <div class="nav-top">
             <a href="index.html" class="back-link">TOPへ戻る</a>
         </div>
-
-        <div class="header"><img src="logo.jpg" alt="Logo"></div>
-        
+        <div class="header">
+            <img src="logo.jpg" alt="Logo">
+        </div>
         <h1 id="group-name">Loading...</h1>
-        <p id="status-text" style="font-size: 0.9rem; color: var(--sub);">パスワードを入力して動画を視聴・保存</p>
-
+        <p id="status-text" style="font-size: 0.9rem; color: var(--sub);">動画を視聴・保存</p>
+        
         <div class="video-wrapper" id="video-area">
-            <p id="video-placeholder" style="color: white; font-size: 0.8rem;">認証後にプレイヤーが表示されます</p>
+            <p id="video-placeholder" style="color: white; font-size: 0.8rem;">読み込み中...</p>
         </div>
 
         <div id="auth-ui">
@@ -53,12 +52,13 @@
 
         <div class="line-box">
             <p style="font-size: 0.85rem; font-weight: 600;">パスワードをお忘れですか？</p>
-            <p style="font-size: 0.75rem; color: var(--sub); margin-top: 5px;">公式LINEでチーム名を送信すると<br>自動でパスワードが届きます。</p>
-            <a href="https://line.me/R/ti/p/@494zixmx" class="btn btn-line">LINEで確認する</a>
+            <p style="font-size: 0.75rem; color: var(--sub); margin-top: 5px;">公式LINEでチーム名を送信してください。<br>自動返信でパスワードをお届けします。</p>
+            <a href="https://line.me/R/ti/p/@494zixmx" style="display: block; background: var(--line); color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; margin-top: 15px;">LINEで確認する</a>
         </div>
     </div>
 
     <script>
+        // 団体別設定データ
         const groupData = {
             "soccer": { 
                 name: "サッカー部 三送会", 
@@ -74,9 +74,19 @@
 
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
+        const autoPass = params.get('p'); 
         const config = groupData[id] || { name: "Memorial Movie", pass: "2026", fileId: "" };
 
         document.getElementById('group-name').innerText = config.name;
+
+        window.onload = function() {
+            if (autoPass) {
+                document.getElementById('pass-input').value = autoPass;
+                checkAuth(); 
+            } else {
+                document.getElementById('video-placeholder').innerText = "認証後にプレイヤーが表示されます";
+            }
+        };
 
         function togglePass() {
             const input = document.getElementById('pass-input');
@@ -108,7 +118,7 @@
                 dlBtn.href = dlUrl;
                 dlBtn.style.display = 'block';
             } else {
-                alert("パスワードが正しくありません");
+                alert("パスワードが正しくありません。");
             }
         }
     </script>
