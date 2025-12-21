@@ -1,100 +1,13 @@
-承知いたしました。これまでに作成した「お知らせ」「料金プラン」「オプション」「制作ステップ」「ギャラリー」「簡易カート」に、最新の「GAS連携（ログイン・進捗確認機能）」をすべて統合した、index.htmlの完全版コードです。
-
-ご提示いただいたGASのURLをあらかじめ組み込んであります。
-
-[2025-11-30]の指示に基づき、装飾用の記号は使用せず、txtのみで記述します。
-
-index.html（全部入り・最新GAS連携版）
 <!DOCTYPE html>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>KIZUNA VIDEO | 映像制作</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; --nav-bg: rgba(255, 255, 255, 0.8); }
-
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --bg: #000000;
-            --card: #1c1c1e;
-            --text: #f5f5f7;
-            --sub: #a1a1a6;
-            --accent: #0a84ff;
-            --border: #38383a;
-            --nav-bg: rgba(0, 0, 0, 0.8);
-        }
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-        padding-top: 48px;
-    }
-
-    .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
-
-    /* ナビゲーション */
-    .nav-bar {
-        position: fixed; top: 0; left: 0; width: 100%; height: 48px;
-        background: var(--nav-bg); backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px); z-index: 9999;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .nav-container {
-        max-width: 1000px; margin: 0 auto; height: 100%;
-        display: flex; justify-content: space-between; align-items: center; padding: 0 20px;
-    }
-
-    .nav-logo { font-weight: 700; font-size: 0.9rem; text-decoration: none; color: var(--text); }
-    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 500; margin-left: 20px; opacity: 0.8; }
-
-    /* アニメーション */
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.2, 1, 0.3, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-
-    /* 各セクション */
-    section { margin-bottom: 100px; }
-    .section-title { font-size: 0.8rem; color: var(--sub); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 25px; display: block; }
-
-    /* 料金カード */
-    .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .price-card {
-        background: var(--card); border-radius: 32px; padding: 40px 30px;
-        transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1); border: 1px solid transparent;
-    }
-    .price-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--border); }
-    .btn-select {
-        width: 100%; padding: 15px; border-radius: 14px; border: none;
-        background: var(--text); color: var(--bg); font-weight: 700; cursor: pointer; margin-top: 20px;
-    }
-
-    /* ギャラリー */
-    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-    .gallery-item {
-        aspect-ratio: 16/9; background: var(--card); border-radius: 16px; overflow: hidden;
-        cursor: pointer; position: relative;
-    }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-    .gallery-item:hover img { transform: scale(1.05); }
-
-    /* カートUI */
-    #cart-ui {
-        position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(150%);
-        width: 90%; max-width: 400px; background: var(--bg); border-radius: 28px;
-        padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); z-index: 10001;
-        transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1); border: 1px solid var(--border);
-    }
-    #cart-ui.show { transform: translateX(-50%) translateY(0); }
-</style>
-</head> <body>
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>KIZUNA VIDEO | 映像制作</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; --nav-bg: rgba(255, 255, 255, 0.8); } @media (prefers-color-scheme: dark) { :root { --bg: #000000; --card: #1c1c1e; --text: #f5f5f7; --sub: #a1a1a6; --accent: #0a84ff; --border: #38383a; --nav-bg: rgba(0, 0, 0, 0.8); } } * { margin: 0; padding: 0; box-sizing: border-box; } body { background-color: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; padding-top: 48px; } .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; } .nav-bar { position: fixed; top: 0; left: 0; width: 100%; height: 48px; background: var(--nav-bg); backdrop-filter: blur(20px); z-index: 9999; border-bottom: 1px solid var(--border); } .nav-container { max-width: 1000px; margin: 0 auto; height: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; } .nav-logo { font-weight: 700; font-size: 0.9rem; text-decoration: none; color: var(--text); } .nav-links a { text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 500; margin-left: 20px; opacity: 0.8; } .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.2, 1, 0.3, 1); } .reveal.active { opacity: 1; transform: translateY(0); } section { margin-bottom: 100px; } .section-title { font-size: 0.8rem; color: var(--sub); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 25px; display: block; } .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; } .gallery-item { aspect-ratio: 16/9; background: var(--card); border-radius: 16px; overflow: hidden; } .gallery-item img { width: 100%; height: 100%; object-fit: cover; } </style> </head> <body>
 
 <nav class="nav-bar">
     <div class="nav-container">
         <a href="index.html" class="nav-logo">KIZUNA VIDEO</a>
         <div class="nav-links">
             <a href="about.html">ABOUT</a>
+            <a href="price.html">PRICE</a>
             <a href="login.html">LOGIN</a>
             <a href="contact.html">CONTACT</a>
         </div>
@@ -114,102 +27,79 @@ index.html（全部入り・最新GAS連携版）
                 <span style="background: var(--line); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800;">受付中</span>
                 <p style="font-size: 0.9rem; font-weight: 600;">現在、2026年1月分のご依頼を承っております。</p>
             </div>
-            <a href="contact.html" style="font-size: 0.8rem; color: var(--accent); text-decoration: none; font-weight: 700;">詳しく見る</a>
         </div>
     </section>
 
     <section class="reveal">
         <span class="section-title">Price Plans</span>
-        <div class="price-grid">
-            <div class="price-card">
-                <span style="font-size: 0.7rem; color: var(--accent); font-weight: 800; letter-spacing: 0.1em;">BASIC</span>
-                <h3 style="margin: 10px 0;">ショート動画</h3>
-                <p style="font-size: 0.8rem; color: var(--sub); margin-bottom: 20px;">SNSや記録用の短い映像編集。</p>
-                <div style="font-size: 1.8rem; font-weight: 800;">¥15,000<span style="font-size: 0.8rem; font-weight: 400; color: var(--sub);"> /本</span></div>
-                <button class="btn-select" onclick="addToCart('ショート動画', 15000)">選択する</button>
-            </div>
-            <div class="price-card" style="border: 2px solid var(--accent);">
-                <span style="font-size: 0.7rem; color: var(--accent); font-weight: 800; letter-spacing: 0.1em;">RECOMMEND</span>
-                <h3 style="margin: 10px 0;">シネマティック編集</h3>
-                <p style="font-size: 0.8rem; color: var(--sub); margin-bottom: 20px;">映画のような質感と物語性を重視。</p>
-                <div style="font-size: 1.8rem; font-weight: 800;">¥45,000<span style="font-size: 0.8rem; font-weight: 400; color: var(--sub);"> /本</span></div>
-                <button class="btn-select" style="background: var(--accent); color: white;" onclick="addToCart('シネマティック編集', 45000)">選択する</button>
-            </div>
-        </div>
-        
-        <div style="margin-top: 30px; background: var(--card); border-radius: 24px; padding: 25px;">
-            <span class="section-title" style="margin-bottom: 15px;">Options</span>
-            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem;">
-                <span>4K高画質納品</span><span>+¥10,000</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem;">
-                <span>特急仕上げ（3日以内）</span><span>+¥15,000</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="reveal">
-        <span class="section-title">Production Steps</span>
-        <div style="max-width: 500px; margin: 0 auto;">
-            <div style="display: flex; gap: 20px; margin-bottom: 30px;">
-                <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); opacity: 0.3;">01</div>
-                <div><h4>LINE相談</h4><p style="font-size: 0.8rem; color: var(--sub);">プランの決定と詳細をヒアリングします。</p></div>
-            </div>
-            <div style="display: flex; gap: 20px; margin-bottom: 30px;">
-                <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); opacity: 0.3;">02</div>
-                <div><h4>制作開始</h4><p style="font-size: 0.8rem; color: var(--sub);">進捗はマイページでいつでも確認可能です。</p></div>
-            </div>
-            <div style="display: flex; gap: 20px;">
-                <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); opacity: 0.3;">03</div>
-                <div><h4>納品</h4><p style="font-size: 0.8rem; color: var(--sub);">完成データをダウンロードいただけます。</p></div>
-            </div>
+        <div style="background: var(--card); border-radius: 32px; padding: 50px 30px; text-align: center; border: 1px solid var(--border);">
+            <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 15px;">シンプルで分かりやすい料金体系</h3>
+            <p style="color: var(--sub); font-size: 1rem; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                用途に合わせた2つのプランと、柔軟なオプションをご用意。<br>まずはシミュレーターでお見積もりをご確認ください。
+            </p>
+            <a href="price.html" style="display: inline-block; padding: 18px 40px; background: var(--accent); color: white; text-decoration: none; border-radius: 16px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,113,227,0.2);">
+                プランの詳細・見積もり
+            </a>
         </div>
     </section>
 
     <section class="reveal">
         <span class="section-title">Gallery</span>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="thumb1.jpg" alt="Work 1"></div>
-            <div class="gallery-item"><img src="thumb2.jpg" alt="Work 2"></div>
-            <div class="gallery-item"><img src="thumb3.jpg" alt="Work 3"></div>
-            <div class="gallery-item"><img src="thumb4.jpg" alt="Work 4"></div>
+            <div class="gallery-item"><img src="thumb1.jpg" alt=""></div>
+            <div class="gallery-item"><img src="thumb2.jpg" alt=""></div>
         </div>
     </section>
 
-    <footer class="reveal" style="text-align: center; color: var(--sub); font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 40px;">
+    <footer style="text-align: center; color: var(--sub); font-size: 0.75rem; padding-top: 40px;">
         &copy; 2025 KIZUNA VIDEO
     </footer>
 </div>
 
-<div id="cart-ui">
-    <h4 id="cart-name" style="margin-bottom: 5px;">プランを選択</h4>
-    <p id="cart-price" style="font-size: 0.9rem; color: var(--sub); margin-bottom: 20px;">お見積もりをご案内します</p>
-    <a id="cart-link" href="contact.html" style="display: block; width: 100%; padding: 16px; background: var(--line); color: white; text-align: center; border-radius: 14px; text-decoration: none; font-weight: 700;">この内容でLINE相談</a>
-    <button onclick="closeCart()" style="width: 100%; background: none; border: none; color: var(--sub); font-size: 0.75rem; margin-top: 15px; cursor: pointer;">キャンセル</button>
-</div>
-
 <script>
-    // 設定：あなたのGASのURL
-    const GAS_URL = "[https://script.google.com/macros/s/AKfycbw9nwkUF7jNO6RVpOpYrZfTykyXGBRbT7grGqQCInzn_DK-BvhLH1clCD53nvWbBY5-OQ/exec](https://script.google.com/macros/s/AKfycbw9nwkUF7jNO6RVpOpYrZfTykyXGBRbT7grGqQCInzn_DK-BvhLH1clCD53nvWbBY5-OQ/exec)";
-
-    // スクロールで表示させるアニメーション
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('active');
         });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body> </html>
 
-    // カート機能
-    function addToCart(name, price) {
-        document.getElementById('cart-name').innerText = name;
-        document.getElementById('cart-price').innerText = "概算見積: ¥" + price.toLocaleString();
-        document.getElementById('cart-link').href = "contact.html?plan=" + encodeURIComponent(name);
-        document.getElementById('cart-ui').classList.add('show');
-    }
+2. price.html（独立した料金ページの全コード）
+<!DOCTYPE html>
 
-    function closeCart() {
-        document.getElementById('cart-ui').classList.remove('show');
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>PRICE | KIZUNA VIDEO</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; } @media (prefers-color-scheme: dark) { :root { --bg: #000000; --card: #1c1c1e; --text: #f5f5f7; --sub: #a1a1a6; --border: #38383a; } } * { margin: 0; padding: 0; box-sizing: border-box; } body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; } .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; } .back-link { text-decoration: none; color: var(--sub); font-size: 0.85rem; font-weight: 600; margin-bottom: 40px; display: block; } .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 50px; } .plan-card { background: var(--card); border-radius: 28px; padding: 40px 30px; text-align: left; } .price-num { font-size: 2.5rem; font-weight: 800; margin: 15px 0; } .option-box { background: var(--card); border-radius: 24px; padding: 30px; margin-top: 40px; } .calc-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid var(--border); } .total-box { text-align: right; margin-top: 25px; font-size: 1.5rem; font-weight: 800; } .btn-line { display: block; width: 100%; padding: 20px; background: var(--line); color: white; text-align: center; border-radius: 16px; text-decoration: none; font-weight: 700; margin-top: 30px; } </style> </head> <body> <div class="container"> <a href="index.html" class="back-link">← ホームに戻る</a> <h1 style="font-size: 2.5rem; margin-bottom: 40px; text-align: center;">Price Plans</h1>
+
+    <div class="plan-grid">
+        <div class="plan-card">
+            <p style="color: var(--accent); font-weight: 700;">BASIC</p>
+            <h3>ショート動画</h3>
+            <div class="price-num">¥15,000</div>
+            <p style="font-size: 0.85rem; color: var(--sub);">SNSや記念記録に最適な、短尺の高品質編集プラン。</p>
+        </div>
+        <div class="plan-card" style="border: 2px solid var(--accent);">
+            <p style="color: var(--accent); font-weight: 700;">PREMIUM</p>
+            <h3>シネマティック編集</h3>
+            <div class="price-num">¥45,000</div>
+            <p style="font-size: 0.85rem; color: var(--sub);">映画のような質感とストーリー性を追求した本格プラン。</p>
+        </div>
+    </div>
+
+    <div class="option-box">
+        <h3 style="margin-bottom: 15px;">Options シミュレーター</h3>
+        <div class="calc-row"><span>4K高画質納品 (+¥10,000)</span><input type="checkbox" id="opt1" value="10000" onchange="updateTotal()"></div>
+        <div class="calc-row"><span>特急制作 3日以内 (+¥15,000)</span><input type="checkbox" id="opt2" value="15000" onchange="updateTotal()"></div>
+        <div class="total-box">概算合計: <span id="total-val">¥0</span></div>
+        <a href="[https://lin.ee/0812yEw](https://lin.ee/0812yEw)" class="btn-line">この内容でLINE相談する</a>
+    </div>
+</div>
+<script>
+    function updateTotal() {
+        let total = 0;
+        if(document.getElementById('opt1').checked) total += 10000;
+        if(document.getElementById('opt2').checked) total += 15000;
+        document.getElementById('total-val').innerText = "¥" + total.toLocaleString();
     }
 </script>
 </body> </html>
