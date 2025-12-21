@@ -3,32 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>確認完了 - KIZUNA VIDEO</title>
+    <title>KIZUNA VIDEO - 確認</title>
     <style>
-        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --line: #06C755; }
+        :root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; }
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; } }
         body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; margin: 0; }
-        .box { padding: 40px 20px; }
-        .btn-line { display: inline-block; background: var(--line); color: white; text-decoration: none; padding: 20px 40px; border-radius: 18px; font-weight: 700; font-size: 1.1rem; margin-top: 25px; transition: 0.3s; box-shadow: 0 10px 20px rgba(6,199,85,0.2); }
+        .box { padding: 40px 20px; max-width: 400px; }
+        .copy-area { background: rgba(128,128,128,0.1); padding: 15px; border-radius: 12px; margin: 20px 0; cursor: pointer; border: 1px dashed var(--sub); position: relative; }
+        .copy-area:active { background: rgba(128,128,128,0.2); }
+        .copy-label { font-size: 0.7rem; color: var(--sub); margin-bottom: 5px; display: block; }
+        .btn-line { display: inline-block; background: var(--line); color: white; text-decoration: none; padding: 20px 40px; border-radius: 18px; font-weight: 700; font-size: 1.1rem; margin-top: 15px; transition: 0.3s; width: 100%; box-shadow: 0 10px 20px rgba(6,199,85,0.2); }
     </style>
 </head>
 <body>
     <div class="box">
-        <h1 style="font-size: 1.5rem;">ご確認ありがとうございました</h1>
-        <p style="margin-top: 20px; font-size: 0.95rem; line-height: 1.6;">
-            下のボタンからLINEを開き、<br>「確認しました」とメッセージを送ってください。
+        <h1 style="font-size: 1.5rem;">KIZUNA VIDEO</h1>
+        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+            下の文字をタップしてコピーし、<br>LINEで送信してください。
         </p>
-        <a href="https://line.me/R/oaMessage/@968shnny/?確認しました" id="line-button" class="btn-line">
-            LINEで報告して戻る
+        
+        <div class="copy-area" onclick="copyText()">
+            <span class="copy-label">タップしてコピー</span>
+            <strong id="target-text">確認しました</strong>
+        </div>
+
+        <a href="https://line.me/R/oaMessage/@494zixmx/?確認しました" id="line-button" class="btn-line">
+            LINEを起動して報告
         </a>
+        
+        <p style="margin-top: 20px; font-size: 0.75rem; color: var(--sub);">
+            送信後、自動的にメインページへ移動します。
+        </p>
     </div>
 
     <script>
+        function copyText() {
+            const text = document.getElementById('target-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('コピーしました！LINEに貼り付けて送ってください。');
+            });
+        }
+
         document.getElementById('line-button').addEventListener('click', function() {
-            // LINEを起動した0.5秒後に、元の画面をトップページへ戻す
+            // LINE起動の0.8秒後にトップへ戻る（コピーしたものを貼る時間を考慮）
             setTimeout(function() {
                 window.location.href = 'index.html';
-            }, 500);
+            }, 800);
         });
     </script>
 </body>
