@@ -10,49 +10,69 @@
         @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; } }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; text-align: center; padding: 40px 20px; }
-        .auth-container { max-width: 400px; margin: 0 auto; }
+        .container { max-width: 500px; margin: 0 auto; }
         .header img { height: 50px; border-radius: 50%; margin-bottom: 20px; }
-        input { width: 100%; padding: 15px; margin: 20px 0; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); color: var(--text); text-align: center; font-size: 1.2rem; letter-spacing: 0.3em; }
-        .btn-auth { background: var(--text); color: var(--bg); width: 100%; padding: 15px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; }
-        .line-box { margin-top: 40px; padding: 20px; border: 1px solid var(--border); border-radius: 20px; }
+        .video-wrapper { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 20px; margin: 20px 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); text-align: center; margin-bottom: 10px; font-size: 1rem; }
+        .btn-auth { width: 100%; padding: 15px; border-radius: 12px; background: var(--text); color: var(--bg); font-weight: 700; border: none; cursor: pointer; }
+        .line-box { margin-top: 40px; padding: 20px; border: 1px solid var(--border); border-radius: 20px; font-size: 0.8rem; }
         .btn-line { display: block; background: var(--line); color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; margin-top: 15px; }
-        #video-content { display: none; }
     </style>
 </head>
 <body>
-    <div id="auth-screen" class="auth-container">
+    <div class="container">
         <div class="header"><img src="logo.jpg" alt="Logo"></div>
-        <h1>Memorial Movie</h1>
-        <p style="font-size: 0.9rem; color: var(--sub); margin-top: 10px;">視聴パスワードを入力してください</p>
         
-        <input type="password" id="pass-input" placeholder="****">
-        <button onclick="checkPass()" class="btn-auth">動画を視聴する</button>
+        <h1 id="group-name">Loading...</h1>
+        <p style="font-size: 0.9rem; color: var(--sub); margin-top: 10px;">動画視聴パスワードを入力してください</p>
+
+        <div class="video-wrapper" id="video-area">
+            <p style="color: white; font-size: 0.8rem;">認証が必要です</p>
+        </div>
+
+        <div id="auth-box">
+            <input type="password" id="pass-input" placeholder="Password">
+            <button onclick="checkAuth()" class="btn-auth">認証して再生</button>
+        </div>
 
         <div class="line-box">
-            <p style="font-size: 0.8rem;">パスワードをお持ちでない方へ</p>
-            <p style="font-size: 0.75rem; color: var(--sub); margin-top: 5px;">公式LINEを友だち追加すると、<br>自動返信でパスワードが届きます。</p>
-            <a href="https://line.me/R/ti/p/@494zixmx" class="btn-line">公式LINEでパスワードを受け取る</a>
+            <p>パスワードをお持ちでない方は、公式LINEに<br><strong id="keyword-text">チーム名</strong>と送信してください。</p>
+            <a href="https://line.me/R/ti/p/@494zixmx" id="line-link" class="btn-line">公式LINEで確認する</a>
         </div>
-    </div>
-
-    <div id="video-content">
-        <div class="header"><img src="logo.jpg" alt="Logo"></div>
-        <h1>Enjoy the Movie</h1>
-        <div style="width:100%; max-width:600px; margin:20px auto; aspect-ratio:16/9; background:#000; display:flex; align-items:center; justify-content:center; color:white; border-radius:20px;">
-            ここにYouTube埋め込みコード
-        </div>
-        <p style="margin-top:20px; color:var(--sub);">ご卒業おめでとうございます</p>
-        <a href="index.html" style="display:inline-block; margin-top:30px; color:var(--text); text-decoration:none; font-size:0.8rem;">TOPへ戻る</a>
     </div>
 
     <script>
-        function checkPass() {
+        // 団体ごとの設定
+        const groupSettings = {
+            "soccer": { 
+                name: "サッカー部 三送会", 
+                pass: "soccer2026", 
+                video: "https://www.youtube.com/embed/XXXXXX",
+                keyword: "サッカー部"
+            },
+            "basket": { 
+                name: "バスケットボール部 卒団式", 
+                pass: "basket2026", 
+                video: "https://www.youtube.com/embed/YYYYYY",
+                keyword: "バスケ部"
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const config = groupSettings[id] || { name: "Memorial Video", pass: "kizuna", video: "", keyword: "チーム名" };
+
+        document.getElementById('group-name').innerText = config.name;
+        document.getElementById('keyword-text').innerText = "「" + config.keyword + "」";
+        document.getElementById('line-link').href = "https://line.me/R/oaMessage/@494zixmx/?" + encodeURIComponent(config.keyword);
+
+        function checkAuth() {
             const input = document.getElementById('pass-input').value;
-            if (input === "2026") { // LINEで教えるパスワード
-                document.getElementById('auth-screen').style.display = 'none';
-                document.getElementById('video-content').style.display = 'block';
+            if(input === config.pass) {
+                document.getElementById('auth-box').style.display = 'none';
+                document.getElementById('video-area').innerHTML = '<iframe width="100%" height="100%" src="'+config.video+'" frameborder="0" allowfullscreen></iframe>';
             } else {
-                alert("パスワードが違います");
+                alert("パスワードが正しくありません");
             }
         }
     </script>
