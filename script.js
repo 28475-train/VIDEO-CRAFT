@@ -2,9 +2,9 @@ function toggleRuby() { document.body.classList.toggle('show-ruby'); }
 
 function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: 'ja', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element'); }
 
-function renderMenus() { const topNav = document.getElementById('top-nav'); const bottomNav = document.getElementById('bottom-nav');
+function renderNav() { const top = document.getElementById('top-nav'); const bottom = document.getElementById('bottom-nav'); const current = window.location.pathname.split("/").pop() || 'index.html';
 
-const menuItems = [
+const items = [
     { name: 'About', url: 'about.html' },
     { name: 'Works', url: 'works.html' },
     { name: 'Price', url: 'price.html' },
@@ -14,30 +14,27 @@ const menuItems = [
     { name: 'Download', url: 'download.html' }
 ];
 
-const currentPage = window.location.pathname.split("/").pop() || 'index.html';
+const menuHtml = items.map(i => `
+    <a href="${i.url}" class="nav-item ${current === i.url ? 'active' : ''}">${i.name}</a>
+`).join('');
 
-const menuContent = `
-<div class="nav-inner">
-    <div class="nav-row-1">
-        <a href="index.html" class="site-title">KIZUNA VIDEO</a>
-        <button onclick="toggleRuby()" class="ruby-toggle">ふりがな ON/OFF</button>
-    </div>
-    <div class="nav-row-2">
-        ${menuItems.map(item => `
-            <a href="${item.url}" class="nav-item ${currentPage === item.url ? 'active' : ''}">${item.name}</a>
-        `).join('')}
-    </div>
-</div>`;
-
-if (topNav) topNav.innerHTML = menuContent;
-if (bottomNav) bottomNav.innerHTML = `
-<div class="nav-inner" style="padding: 15px;">
-    <div class="nav-row-2" style="justify-content: center;">
-        ${menuItems.map(item => `
-            <a href="${item.url}" class="nav-item ${currentPage === item.url ? 'active' : ''}" style="font-size: 11px; padding: 8px 12px;">${item.name}</a>
-        `).join('')}
-    </div>
-</div>`;
+if (top) {
+    top.innerHTML = `
+    <div class="nav-inner">
+        <div class="nav-row-1">
+            <a href="index.html" class="logo">KIZUNA VIDEO</a>
+            <button onclick="toggleRuby()" class="ruby-btn">ふりがな ON/OFF</button>
+        </div>
+        <div class="nav-row-2">${menuHtml}</div>
+    </div>`;
 }
 
-document.addEventListener('DOMContentLoaded', renderMenus);
+if (bottom) {
+    bottom.innerHTML = `
+    <div class="nav-inner">
+        <div class="nav-row-2" style="justify-content: center;">${menuHtml}</div>
+    </div>`;
+}
+}
+
+document.addEventListener('DOMContentLoaded', renderNav);
