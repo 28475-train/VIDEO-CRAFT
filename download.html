@@ -1,52 +1,29 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOWNLOAD - KIZUNA video</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .box { background: rgba(128,128,128,0.05); padding: 40px 20px; border-radius: 25px; border: 1px solid var(--border); max-width: 400px; margin: 0 auto; }
-        input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; text-align: center; background: var(--bg); color: var(--text); }
-        .btn-auth { width: 100%; padding: 15px; border-radius: 12px; background: var(--text); color: var(--bg); border: none; font-weight: 800; cursor: pointer; }
-        .btn-dl { width: 100%; padding: 15px; border-radius: 12px; background: var(--accent); color: white; text-decoration: none; font-weight: 800; display: none; text-align: center; }
-    </style>
-</head>
-<body>
-    <div id="loader"><svg width="100%" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" class="drawing-text">KIZUNA video</text></svg></div>
-    <div id="content">
-        <nav></nav>
-        <main class="container">
-            <h1 style="font-size:2.5rem; font-weight:900; margin-bottom:40px;">DOWNLOAD</h1>
-            <div class="box">
-                <div id="ui">
-                    <input type="password" id="pw" placeholder="パスワードを入力">
-                    <button onclick="check()" class="btn-auth">認証</button>
-                </div>
-                <a id="dl" href="#" class="btn-dl">動画を保存する</a>
-            </div>
-            <div class="translate-area"><div id="google_translate_element"></div></div>
-        </main>
+
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>DOWNLOAD | KIZUNA VIDEO</title> <link rel="stylesheet" href="style.css"> </head> <body> <nav id="top-nav" class="top-nav"></nav>
+
+<main class="container">
+    <h1>DOWNLOAD</h1>
+    
+    <div class="card">
+        <h2><ruby>納品<rt>のうひん</rt></ruby>データの<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>り</h2>
+        <p>完成した動画は、以下の方法で安全にお届けします。すべて無料でご利用いただけます。</p>
+        
+        <div style="margin-top:20px;">
+            <p><strong>1. 高画質データ送信</strong><br>ギガファイル便などのダウンロードURLをLINEでお送りします。スマホやパソコンに保存して、いつでも再生可能です。</p>
+        </div>
+        
+        <div style="margin-top:20px;">
+            <p><strong>2. LINEでの直接送付</strong><br>短い動画や、手軽にスマホで確認したい場合は、LINEのトークルームへ直接お送りすることも可能です。</p>
+        </div>
     </div>
-    <script src="script.js"></script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script>
-        const h = "9d71c48067468696773562e646279f5835698b6710777553530f2c4224021584";
-        const fid = "1_36LTJ4ziezHNIZtFOvKr--c9ajtKmjm";
-        async function check() {
-            const p = document.getElementById('pw').value;
-            const m = new TextEncoder().encode(p);
-            const b = await crypto.subtle.digest('SHA-256', m);
-            const x = Array.from(new Uint8Array(b)).map(b => b.toString(16).padStart(2, '0')).join('');
-            if (x === h) {
-                document.getElementById('ui').style.display = 'none';
-                const d = document.getElementById('dl');
-                d.href = "https://drive.google.com/uc?export=download&id=" + fid;
-                d.style.display = 'block';
-            } else {
-                alert("認証失敗");
-            }
-        }
-    </script>
-</body>
-</html>
+
+    <div class="card">
+        <h3><ruby>保存期間<rt>ほぞんきかん</rt></ruby>について</h3>
+        <p>サーバー上のダウンロード期限は通常7〜14日間です。期限が切れる前に保存をお願いします。万が一、期限が切れてしまった場合はLINEで再送をご依頼ください。</p>
+    </div>
+</main>
+
+<nav id="bottom-nav" class="bottom-nav"></nav>
+<script src="script.js"></script>
+</body> </html>
