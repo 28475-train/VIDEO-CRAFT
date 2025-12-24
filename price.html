@@ -1,89 +1,18 @@
 <!DOCTYPE html>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>PRICE | KIZUNA VIDEO</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; } @media (prefers-color-scheme: dark) { :root { --bg: #000000; --card: #1c1c1e; --text: #f5f5f7; --sub: #a1a1a6; --border: #38383a; } } * { margin: 0; padding: 0; box-sizing: border-box; } body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.6; } .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; } .back-link { text-decoration: none; color: var(--sub); font-size: 0.85rem; font-weight: 600; margin-bottom: 40px; display: block; }
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>PRICE | KIZUNA VIDEO</title> <link rel="stylesheet" href="style.css"> </head> <body> <nav id="top-nav" class="top-nav"></nav> <main class="container"> <h1>PRICE</h1> <div class="card"> <span class="status-tag">ボランティア活動</span> <h2 style="text-align:center;">制作費用</h2> <span class="price-free">0円</span> <p style="text-align:center; font-weight:800;">追加料金は一切ありません</p> </div>
 
-    .option-section { margin-top: 40px; }
-    .option-item { background: var(--card); padding: 15px 20px; border-radius: 18px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    
-    .copy-area { background: var(--card); border-radius: 20px; padding: 25px; margin-top: 40px; border: 1px dashed var(--border); }
-    #copy-text { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 15px; width: 100%; font-size: 0.9rem; margin-bottom: 15px; min-height: 150px; color: var(--text); }
-    
-    .btn-copy { width: 100%; padding: 15px; background: var(--text); color: var(--bg); border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-bottom: 10px; }
-    .btn-line { display: block; width: 100%; padding: 20px; background: var(--line); color: white; text-align: center; border-radius: 16px; text-decoration: none; font-weight: 700; font-size: 1.1rem; }
-    
-    .policy-section { background: var(--card); border-radius: 24px; padding: 30px; margin-top: 60px; font-size: 0.9rem; }
-</style>
-</head> <body> <div class="container"> <a href="index.html" class="back-link">← ホームに戻る</a>
-
-    <h1 style="text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 40px;">お申し込み準備</h1>
-
-    <div class="option-section">
-        <h3 style="margin-bottom: 15px; font-size: 1rem;">1. 追加オプションを選択（すべて無料）</h3>
-        <div id="option-list">
-            <div class="option-item"><span>4K高画質納品</span><input type="checkbox" class="opt-check" value="4K高画質納品" onchange="generateText()"></div>
-            <div class="option-item"><span>修正無制限</span><input type="checkbox" class="opt-check" value="修正無制限" onchange="generateText()"></div>
-            <div class="option-item"><span>テロップ全箇所挿入</span><input type="checkbox" class="opt-check" value="テロップ全箇所挿入" onchange="generateText()"></div>
-            <div class="option-item"><span>カラーグレーディング</span><input type="checkbox" class="opt-check" value="カラーグレーディング" onchange="generateText()"></div>
-            <div class="option-item"><span>BGMライセンス取得</span><input type="checkbox" class="opt-check" value="BGMライセンス取得" onchange="generateText()"></div>
-        </div>
+    <div class="card">
+        <h3>無料の理由</h3>
+        <p>私たちはプロの制作会社ではありません。映像制作が好きなメンバーによるボランティアユニットです。現在は実績を積み、スキルを磨く期間としているため、すべての制作を無料で承っています。</p>
+        <p style="margin-top:15px; color:var(--accent); font-weight:800;">実績公開は「任意」です</p>
+        <p>サンプルとしてサイトに掲載させていただける方は大歓迎ですが、非公開を希望される場合でも料金は変わりません。安心してご相談ください。</p>
     </div>
 
-    <div class="copy-area">
-        <h3 style="margin-bottom: 15px; font-size: 1rem;">2. 以下の文章をコピーしてください</h3>
-        <textarea id="copy-text" readonly></textarea>
-        <button class="btn-copy" onclick="copyToClipboard()">文章をコピーする</button>
-        <p id="copy-msg" style="text-align: center; font-size: 0.8rem; color: var(--accent); height: 1.2rem;"></p>
+    <div class="card" style="text-align:center;">
+        <a href="contact.html" class="btn-line">無料で申し込む・相談する</a>
     </div>
-
-    <div style="margin-top: 30px;">
-        <h3 style="margin-bottom: 15px; font-size: 1rem;">3. 公式LINEに送信して申し込み完了</h3>
-        <a href="[https://lin.ee/0812yEw](https://lin.ee/0812yEw)" class="btn-line" onclick="sendCompleteMessage()">公式LINEを開く</a>
-    </div>
-
-    <div class="policy-section">
-        <p style="font-weight: 800; margin-bottom: 10px;">写真の取り扱いと無料の理由</p>
-        <p style="color: var(--sub); font-size: 0.8rem;">お預かりした素材は制作完了後、速やかに完全削除いたします。実績公開を許可いただける方を対象に、現在すべてのオプションを無料で提供しております。</p>
-    </div>
-</div>
-
-<script>
-    function generateText() {
-        const checks = document.querySelectorAll('.opt-check:checked');
-        let optionsText = "";
-        checks.forEach(c => {
-            optionsText += "・" + c.value + "\n";
-        });
-        if(optionsText === "") optionsText = "・なし\n";
-
-        const now = new Date();
-        const timeStr = now.getFullYear() + "/" + (now.getMonth()+1) + "/" + now.getDate();
-
-        const text = "【制作申し込み】\n" +
-                     "申し込み日: " + timeStr + "\n" +
-                     "希望プラン: オールインワン制作（無料）\n" +
-                     "選択オプション:\n" + optionsText +
-                     "\n" +
-                     "上記の内容で映像制作を申し込みます。\n" +
-                     "素材の送付方法などの詳細を教えてください。";
-        
-        document.getElementById('copy-text').value = text;
-    }
-
-    async function copyToClipboard() {
-        const text = document.getElementById('copy-text');
-        try {
-            await navigator.clipboard.writeText(text.value);
-            document.getElementById('copy-msg').innerText = "コピーしました！そのままLINEに貼り付けてください。";
-        } catch (err) {
-            document.getElementById('copy-msg').innerText = "コピーに失敗しました。手動で選択してコピーしてください。";
-        }
-    }
-
-    function sendCompleteMessage() {
-        alert("公式LINEへ移動します。コピーした文章を貼り付けて送信してください。送信をもって申し込み完了となります。");
-    }
-
-    // 初期表示
-    generateText();
-</script>
+</main>
+<nav id="bottom-nav" class="bottom-nav"></nav>
+<script src="script.js"></script>
 </body> </html>
