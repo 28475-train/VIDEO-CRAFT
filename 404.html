@@ -1,3 +1,163 @@
 <!DOCTYPE html>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <link rel="icon" href="logo.jpg"> <script> window.location.replace("index.html"); </script> </head> <body> <p>Redirecting to Home...</p> </body> </html>
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Media Offline - 404 Not Found</title> <link rel="icon" href="logo.jpg"> <style> :root { --edit-bg: #1e1e1e; --panel-bg: #2d2d2d; --accent: #0071e3; --text-gray: #a1a1a6; --error-red: #ff453a; }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--edit-bg);
+        color: #fff;
+        font-family: "SF Pro Text", "Helvetica Neue", sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* プレビューエリア（メイン） */
+    .preview-area {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        position: relative;
+        border-bottom: 2px solid #111;
+    }
+
+    .media-offline-screen {
+        text-align: center;
+        border: 2px solid var(--error-red);
+        padding: 40px;
+        background: rgba(255, 69, 58, 0.1);
+    }
+
+    .offline-text {
+        color: var(--error-red);
+        font-size: 3rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        margin-bottom: 10px;
+    }
+
+    .error-code {
+        font-family: monospace;
+        color: #fff;
+        font-size: 1.2rem;
+    }
+
+    /* タイムラインエリア（下部） */
+    .timeline-area {
+        height: 30%;
+        background-color: var(--panel-bg);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--text-gray);
+        border-bottom: 1px solid #444;
+        padding-bottom: 5px;
+    }
+
+    .track {
+        height: 40px;
+        background: #3d3d3d;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .clip {
+        position: absolute;
+        left: 10%;
+        width: 40%;
+        height: 100%;
+        background: var(--accent);
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .clip.missing {
+        background: #555;
+        left: 55%;
+        width: 20%;
+        border: 1px dashed var(--error-red);
+    }
+
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: auto;
+        padding-bottom: 20px;
+    }
+
+    .btn-home {
+        background: var(--accent);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        transition: opacity 0.2s;
+    }
+
+    .btn-home:hover {
+        opacity: 0.8;
+    }
+
+    .redirect-notice {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        font-size: 11px;
+        color: var(--text-gray);
+    }
+</style>
+<script>
+    // 5秒後に自動でホームへ戻る
+    setTimeout(function() {
+        window.location.replace("index.html");
+    }, 5000);
+</script>
+</head> <body>
+
+<div class="preview-area">
+    <div class="media-offline-screen">
+        <div class="offline-text">Media Offline</div>
+        <div class="error-code">ERROR: 404_PAGE_NOT_FOUND</div>
+    </div>
+    <div class="redirect-notice">Auto Re-linking in 5s...</div>
+</div>
+
+<div class="timeline-area">
+    <div class="timeline-header">
+        <span>00:04:04:00</span>
+        <span>Sequence 01</span>
+    </div>
+    
+    <div class="track">
+        <div class="clip">Opening_Shot.mp4</div>
+        <div class="clip missing">Missing_File.html</div>
+    </div>
+
+    <div class="track">
+        <div class="clip" style="background: #2ecc71; width: 60%;">BGM_Main_Track.wav</div>
+    </div>
+
+    <div class="controls">
+        <a href="index.html" class="btn-home">HOMEへ戻る (Relink)</a>
+    </div>
+</div>
+</body> </html>
