@@ -1,8 +1,8 @@
 :root { --bg: #fbfbfd; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --nav-bg: rgba(255, 255, 255, 0.85); --card: #ffffff; --border: rgba(0, 0, 0, 0.1); --line: #06C755; }
 
-{ margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+{ margin: 0; padding: 0; box-sizing: border-box; }
 
-body { background-color: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.8; padding-top: 130px; padding-bottom: 110px; }
+body { background-color: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.8; padding-top: 130px; padding-bottom: 110px; }
 
 rt { display: none; font-size: 0.6em; color: var(--accent); font-weight: bold; } body.show-ruby rt { display: block; }
 
@@ -10,34 +10,24 @@ nav { position: fixed; width: 100%; background: var(--nav-bg); backdrop-filter: 
 
 .top-nav { top: 0; border-bottom: 1px solid var(--border); } .bottom-nav { bottom: 0; border-top: 1px solid var(--border); }
 
-.nav-inner { max-width: 1000px; margin: 0 auto; padding: 12px 20px; }
-
-.nav-row-1 { display: flex; justify-content: space-between; align-items: center; }
-
-.logo-link { text-decoration: none; color: var(--text); font-weight: 900; font-size: 1.4rem; }
+.nav-inner { max-width: 1000px; margin: 0 auto; padding: 12px 20px; } .nav-row-1 { display: flex; justify-content: space-between; align-items: center; } .logo-link { text-decoration: none; color: var(--text); font-weight: 900; font-size: 1.4rem; }
 
 .ruby-toggle { background: var(--text); color: #fff; border: none; padding: 7px 15px; border-radius: 20px; font-size: 10px; font-weight: 800; cursor: pointer; }
 
 .nav-row-2 { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; scrollbar-width: none; } .nav-row-2::-webkit-scrollbar { display: none; }
 
-.nav-item { text-decoration: none; color: var(--sub); background: rgba(0,0,0,0.05); padding: 10px 18px; border-radius: 12px; font-size: 13px; font-weight: 800; white-space: nowrap; transition: 0.2s; }
+.nav-item { text-decoration: none; color: var(--sub); background: rgba(0,0,0,0.05); padding: 10px 18px; border-radius: 12px; font-size: 13px; font-weight: 800; white-space: nowrap; }
 
 .nav-item.active { background: var(--accent); color: #fff; }
 
 .container { max-width: 800px; margin: 0 auto; padding: 20px; }
 
-h1 { font-size: 2.5rem; font-weight: 900; text-align: center; margin-bottom: 15px; }
+h1 { font-size: 2.6rem; font-weight: 900; text-align: center; margin-bottom: 40px; }
 
-.hero-sub { text-align: center; color: var(--sub); font-weight: 600; margin-bottom: 50px; }
+.card { background: var(--card); padding: 40px 30px; border-radius: 30px; border: 1px solid var(--border); margin-bottom: 25px; }
 
-.card { background: var(--card); padding: 40px 25px; border-radius: 30px; border: 1px solid var(--border); margin-bottom: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+.card h2 { font-size: 1.5rem; margin-bottom: 20px; font-weight: 800; }
 
-.btn-main { display: block; background: var(--accent); color: #fff; padding: 22px; border-radius: 20px; text-decoration: none; font-weight: 800; text-align: center; font-size: 1.1rem; margin-bottom: 15px; }
+.btn-line { display: block; background: var(--line); color: #fff; padding: 22px; border-radius: 20px; text-decoration: none; font-weight: 800; text-align: center; font-size: 1.1rem; }
 
-.btn-line { display: block; background: var(--line); color: #fff; padding: 20px; border-radius: 20px; text-decoration: none; font-weight: 800; text-align: center; }
-
-.qr-box { text-align: center; margin: 30px 0; } .qr-img { width: 180px; border-radius: 15px; border: 1px solid var(--border); }
-
-#google_translate_element { text-align: center; margin-top: 60px; }
-
-@media (max-width: 600px) { h1 { font-size: 1.8rem; } body { padding-top: 135px; } }
+.status-tag { display: inline-block; background: #e8e8ed; color: var(--sub); padding: 4px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin-bottom: 10px; }
