@@ -1,3 +1,42 @@
 <!DOCTYPE html>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>CONTACT | KIZUNA VIDEO</title> <link rel="stylesheet" href="style.css"> </head> <body> <nav id="top-nav" class="top-nav"></nav> <main class="container"> <h1>CONTACT</h1> <div class="card" style="text-align:center;"> <p style="margin-bottom:30px; font-weight:800; font-size:1.3rem;">お<ruby>問<rt>と</rt></ruby>い<ruby>合<rt>あ</rt></ruby>わせは公式LINEへ</p> <a href="https://lin.ee/0812yEw" class="btn-line" style="font-size:1.4rem; padding:35px;">LINEで<ruby>直接相談<rt>ちょくせつそうだん</rt></ruby></a> <p style="margin-top:20px; color:var(--sub); font-size:0.8rem;">タップするとLINEが<ruby>起動<rt>きどう</rt></ruby>します</p> </div> </main> <nav id="bottom-nav" class="bottom-nav"></nav> <script src="script.js"></script> </body> </html>
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>CONTACT | KIZUNA VIDEO</title> <link rel="stylesheet" href="style.css"> </head> <body> <nav id="top-nav" class="top-nav"></nav> <main class="container"> <h1>CONTACT</h1> <p style="text-align:center; color:var(--sub); margin-bottom:40px;">ご希望の内容を入力してください</p>
+
+    <div class="card">
+        <div class="form-group">
+            <label>動画の種類</label>
+            <select id="v-type" class="form-input">
+                <option value="三送会・卒団式">三送会・卒団式</option>
+                <option value="部活動の記録">部活動の記録</option>
+                <option value="結婚式・お祝い">結婚式・お祝い</option>
+                <option value="その他">その他</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>希望納期（目安）</label>
+            <input type="date" id="v-date" class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label>制作実績としての公開</label>
+            <select id="v-public" class="form-input">
+                <option value="公開してもよい">公開してもよい（実績協力）</option>
+                <option value="公開NG（非公開）">公開NG（プライバシー重視）</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>備考・ご要望</label>
+            <textarea id="v-memo" class="form-input" rows="4" placeholder="（例）3分くらいの動画にしたい、この曲を使ってほしい、など"></textarea>
+        </div>
+
+        <button onclick="sendLineOrder()" class="btn-line-submit">
+            LINEで注文内容を送る
+        </button>
+        <p style="text-align:center; font-size:0.75rem; color:var(--sub); margin-top:15px;">ボタンを押すとLINEアプリが起動し、入力内容が送信画面にセットされます</p>
+    </div>
+</main>
+<nav id="bottom-nav" class="bottom-nav"></nav>
+<script src="script.js"></script>
+</body> </html>
