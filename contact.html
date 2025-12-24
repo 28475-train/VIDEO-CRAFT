@@ -1,120 +1,35 @@
 <!DOCTYPE html>
 
-<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>CONTACT | KIZUNA VIDEO</title> <style> :root { --bg: #ffffff; --card: #f5f5f7; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --line: #06C755; --border: #d2d2d7; }
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>CONTACT - KIZUNA video</title> <link rel="stylesheet" href="style.css"> </head> <body> <nav></nav> <main class="container center"> <h1><ruby>問<rt>と</rt></ruby>い<ruby>合<rt>あ</rt></ruby>わせ</h1> <p class="sub-text">ご<ruby>相談<rt>そうだん</rt></ruby>やご<ruby>依頼<rt>いらい</rt></ruby>は<ruby>公式<rt>こうしき</rt></ruby>LINEにて<ruby>受付<rt>うけつけ</rt></ruby>しております。</p>
 
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --bg: #000000;
-            --card: #1c1c1e;
-            --text: #f5f5f7;
-            --sub: #a1a1a6;
-            --border: #38383a;
-        }
-    }
+    <div class="card">
+        <h3><ruby>公式<rt>こうしき</rt></ruby>LINE</h3>
+        <p style="font-size: 0.9rem; color: var(--sub); margin-top: 10px;">スマホの<ruby>場合<rt>ばあい</rt></ruby>は下のボタンをタップ、<br>パソコンの<ruby>場合<rt>ばあい</rt></ruby>はQRコードを読み取ってください。</p>
+        
+        <img src="qr.jpg" alt="LINE QRコード" class="qr-img">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        <a href="[https://lin.ee/0812yEw](https://lin.ee/0812yEw)" class="btn-main btn-line">LINEで友だち追加</a>
+    </div>
 
-    body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
+    <div id="google_translate_element"></div>
+</main>
+<script src="script.js"></script>
+<script src="//[translate.google.com/translate_a/element.js?cb=googleTranslateElementInit](https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit)"></script>
+</body> </html>
 
-    .container {
-        width: 100%;
-        max-width: 500px;
-        padding: 40px 20px;
-    }
+index.html（トップページ例：デザイン統一版）
 
-    header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
+<!DOCTYPE html>
 
-    .contact-box {
-        background: var(--card);
-        border-radius: 32px;
-        padding: 50px 30px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
+<html lang="ja"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>KIZUNA video</title> <link rel="stylesheet" href="style.css"> </head> <body> <nav></nav> <main class="container center"> <img src="logo.jpg" class="page-logo" style="width:100px; border-radius:50%;"> <h1 style="margin-top:20px;"><ruby>絆<rt>きずな</rt></ruby>を、<ruby>形<rt>かたち</rt></ruby>にする。</h1> <p class="sub-text"><ruby>映像制作<rt>えいぞうせいさく</rt></ruby>ユニット KIZUNA video</p>
 
-    .qr-area {
-        margin: 30px auto;
-        width: 200px;
-        height: 200px;
-        background: #ffffff;
-        padding: 15px;
-        border-radius: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    <div class="card">
+        <a href="contact.html" class="btn-main">ご<ruby>依頼<rt>いらい</rt></ruby>・お<ruby>見積<rt>みつ</rt></ruby>もり</a>
+        <a href="works.html" class="btn-main" style="background:var(--text);">制作実績を見る</a>
+    </div>
 
-    .qr-area img {
-        width: 100%;
-        height: auto;
-    }
-
-    .line-button {
-        display: block;
-        background: var(--line);
-        color: #ffffff;
-        text-decoration: none;
-        padding: 20px;
-        border-radius: 18px;
-        font-size: 1.2rem;
-        font-weight: 800;
-        margin-top: 30px;
-        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .line-button:active {
-        transform: scale(0.96);
-        opacity: 0.9;
-    }
-
-    .back-home {
-        display: block;
-        text-align: center;
-        margin-top: 40px;
-        color: var(--sub);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-    }
-</style>
-</head> <body>
-
-<div class="container">
-    <header>
-        <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em;">Contact</h1>
-        <p style="color: var(--sub); margin-top: 10px;">ご相談・お見積もりは公式LINEまで</p>
-    </header>
-
-    <main>
-        <div class="contact-box">
-            <span style="font-size: 0.75rem; font-weight: 800; color: var(--line); letter-spacing: 0.15em; text-transform: uppercase;">LINE Support</span>
-            <h2 style="margin: 15px 0; font-size: 1.6rem;">KIZUNA VIDEO公式</h2>
-            
-            <div class="qr-area">
-                <img src="M_494zixmx_GW.png" alt="LINE QR Code">
-            </div>
-            
-            <p style="font-size: 0.9rem; color: var(--sub); line-height: 1.6;">
-                スマートフォンの方は下のボタンから、<br>PCの方はQRコードをスキャンしてください。
-            </p>
-
-            <a href="[https://lin.ee/0812yEw](https://lin.ee/0812yEw)" class="line-button">LINEで友だち追加</a>
-        </div>
-
-        <a href="index.html" class="back-home">ホームに戻る</a>
-    </main>
-</div>
+    <div id="google_translate_element"></div>
+</main>
+<script src="script.js"></script>
+<script src="//[translate.google.com/translate_a/element.js?cb=googleTranslateElementInit](https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit)"></script>
 </body> </html>
