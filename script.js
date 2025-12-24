@@ -1,48 +1,43 @@
-function toggleRuby() { const isShow = document.body.classList.toggle('show-ruby'); localStorage.setItem('ruby-pref', isShow); }
+function toggleRuby() { document.body.classList.toggle('show-ruby'); }
 
-function loadRubyPref() { if (localStorage.getItem('ruby-pref') === 'true') { document.body.classList.add('show-ruby'); } }
+function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: 'ja', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element'); }
 
-function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: 'ja', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element'); }
-
-function initNavigation() { const nav = document.querySelector('nav'); if (!nav) return;
+function renderMenus() { const topNav = document.getElementById('top-nav'); const bottomNav = document.getElementById('bottom-nav');
 
 const menuItems = [
-    { label: 'About', url: 'about.html' },
-    { label: 'Works', url: 'works.html' },
-    { label: 'Price', url: 'price.html' },
-    { label: 'Flow', url: 'flow.html' },
-    { label: 'Guide', url: 'guide.html' },
-    { label: 'Contact', url: 'contact.html' },
-    { label: 'Download', url: 'download.html' }
+    { name: 'About', url: 'about.html' },
+    { name: 'Works', url: 'works.html' },
+    { name: 'Price', url: 'price.html' },
+    { name: 'Flow', url: 'flow.html' },
+    { name: 'Guide', url: 'guide.html' },
+    { name: 'Contact', url: 'contact.html' },
+    { name: 'Download', url: 'download.html' }
 ];
 
-const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+const currentPage = window.location.pathname.split("/").pop() || 'index.html';
 
-const menuHtml = menuItems.map(item => {
-    const activeClass = item.url === currentPath ? 'style="background:var(--accent); color:#fff;"' : '';
-    return `<a href="${item.url}" class="nav-item" ${activeClass}>${item.label}</a>`;
-}).join('');
-
-nav.innerHTML = `
+const menuContent = `
 <div class="nav-inner">
-    <div class="nav-top">
-        <a href="index.html" class="nav-title">KIZUNA VIDEO</a>
-        <button onclick="toggleRuby()" class="ruby-toggle-btn">ふりがな ON/OFF</button>
+    <div class="nav-row-1">
+        <a href="index.html" class="site-title">KIZUNA VIDEO</a>
+        <button onclick="toggleRuby()" class="ruby-toggle">ふりがな ON/OFF</button>
     </div>
-    <div class="nav-bottom">
-        ${menuHtml}
+    <div class="nav-row-2">
+        ${menuItems.map(item => `
+            <a href="${item.url}" class="nav-item ${currentPage === item.url ? 'active' : ''}">${item.name}</a>
+        `).join('')}
+    </div>
+</div>`;
+
+if (topNav) topNav.innerHTML = menuContent;
+if (bottomNav) bottomNav.innerHTML = `
+<div class="nav-inner" style="padding: 15px;">
+    <div class="nav-row-2" style="justify-content: center;">
+        ${menuItems.map(item => `
+            <a href="${item.url}" class="nav-item ${currentPage === item.url ? 'active' : ''}" style="font-size: 11px; padding: 8px 12px;">${item.name}</a>
+        `).join('')}
     </div>
 </div>`;
 }
 
-function setupScrollAnimation() { const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } }); }, { threshold: 0.1 });
-
-document.querySelectorAll('.card, h1, .hero-sub').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-    observer.observe(el);
-});
-}
-
-document.addEventListener('DOMContentLoaded', () => { initNavigation(); loadRubyPref(); setupScrollAnimation(); });
+document.addEventListener('DOMContentLoaded', renderMenus);
