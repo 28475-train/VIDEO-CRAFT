@@ -2,42 +2,38 @@ function toggleRuby() { document.body.classList.toggle('show-ruby'); }
 
 function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: 'ja', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element'); }
 
-function createNavigation() { const topNav = document.getElementById('top-nav'); const bottomNav = document.getElementById('bottom-nav'); const currentPath = window.location.pathname.split("/").pop() || 'index.html';
+function renderGlobalNav() { const top = document.getElementById('top-nav'); const bottom = document.getElementById('bottom-nav'); const current = window.location.pathname.split("/").pop() || 'index.html';
 
-const menuData = [
-    { label: 'About', url: 'about.html' },
-    { label: 'Works', url: 'works.html' },
-    { label: 'Price', url: 'price.html' },
-    { label: 'Flow', url: 'flow.html' },
-    { label: 'Guide', url: 'guide.html' },
-    { label: 'Contact', url: 'contact.html' },
-    { label: 'Download', url: 'download.html' }
+const menu = [
+    { n: 'About', u: 'about.html' },
+    { n: 'Works', u: 'works.html' },
+    { n: 'Price', u: 'price.html' },
+    { n: 'Flow', u: 'flow.html' },
+    { n: 'Guide', u: 'guide.html' },
+    { n: 'Contact', u: 'contact.html' },
+    { n: 'Download', u: 'download.html' }
 ];
 
-const menuContent = `
+const html = menu.map(m => `
+    <a href="${m.u}" class="nav-item ${current === m.u ? 'active' : ''}">${m.n}</a>
+`).join('');
+
+const topContent = `
 <div class="nav-inner">
     <div class="nav-row-1">
-        <a href="index.html" class="site-logo">KIZUNA VIDEO</a>
-        <button onclick="toggleRuby()" class="ruby-toggle-btn">ふりがな ON/OFF</button>
+        <a href="index.html" class="logo-link">KIZUNA VIDEO</a>
+        <button onclick="toggleRuby()" class="ruby-toggle">ふりがな ON/OFF</button>
     </div>
-    <div class="nav-row-2">
-        ${menuData.map(m => `
-            <a href="${m.url}" class="nav-item ${currentPath === m.url ? 'active' : ''}">${m.label}</a>
-        `).join('')}
-    </div>
+    <div class="nav-row-2">${html}</div>
 </div>`;
 
-if (topNav) topNav.innerHTML = menuContent;
-if (bottomNav) {
-    bottomNav.innerHTML = `
-    <div class="nav-inner" style="padding: 10px;">
-        <div class="nav-row-2" style="justify-content: center;">
-            ${menuData.map(m => `
-                <a href="${m.url}" class="nav-item ${currentPath === m.url ? 'active' : ''}" style="font-size:11px; padding:8px 12px;">${m.label}</a>
-            `).join('')}
-        </div>
-    </div>`;
-}
+const bottomContent = `
+<div class="nav-inner" style="padding:10px;">
+    <div class="nav-row-2" style="justify-content:center;">${html}</div>
+</div>`;
+
+if (top) top.innerHTML = topContent;
+if (bottom) bottom.innerHTML = bottomContent;
 }
 
-document.addEventListener('DOMContentLoaded', createNavigation);
+document.addEventListener('DOMContentLoaded', renderGlobalNav);
