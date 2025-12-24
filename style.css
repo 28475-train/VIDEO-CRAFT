@@ -1,3 +1,80 @@
-:root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; --btn-bg: rgba(128,128,128,0.08); } @media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; --btn-bg: rgba(255,255,255,0.12); } }
+:root { --bg: #ffffff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; --border: #d2d2d7; --btn-bg: rgba(128,128,128,0.08); }
 
-{ margin: 0; padding: 0; box-sizing: border-box; } body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; overflow-x: hidden; } rt { display: none; font-size: 0.6em; color: var(--accent); } body.show-ruby rt { display: block; } #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 1s; } .drawing-text { fill: none; stroke: #fff; stroke-width: 0.8; stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: draw 2.8s forwards ease-in-out; font-size: 40px; font-weight: 800; } @keyframes draw { to { stroke-dashoffset: 0; fill: #fff; stroke-width: 0; } } #content { opacity: 0; visibility: hidden; transition: opacity 1.5s 3.2s; } .ready #content { opacity: 1; visibility: visible; } nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.85); backdrop-filter: blur(25px); z-index: 1000; border-bottom: 1px solid var(--border); } @media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.85); } } .nav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 15px; } .nav-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-bottom: 8px; } .nav-logo { font-weight: 900; font-size: 1.2rem; text-decoration: none; color: var(--text); } .nav-bottom { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; } .nav-btn { text-decoration: none; color: var(--text); font-size: 0.65rem; font-weight: 700; background: var(--btn-bg); padding: 8px 12px; border-radius: 18px; white-space: nowrap; } .container { max-width: 800px; margin: 0 auto; padding: 140px 20px 80px; text-align: center; } .input-field { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); margin-bottom: 15px; font-size: 1rem; } .btn-copy, .btn-auth { width: 100%; padding: 18px; border-radius: 15px; background: var(--text); color: var(--bg); border: none; font-weight: 800; cursor: pointer; } .btn-line { display: block; text-align: center; padding: 18px; border-radius: 15px; background: #06c755; color: white; text-decoration: none; font-weight: 800; margin-top: 10px; } .btn-dl { display: block; padding: 18px; border-radius: 15px; background: var(--accent); color: white; text-decoration: none; font-weight: 800; text-align: center; } .btn-toggle-ruby { padding: 6px 12px; border-radius: 15px; border: 1px solid var(--accent); background: transparent; color: var(--accent); font-weight: 800; cursor: pointer; } .btn-toggle-ruby.active { background: var(--accent); color: white; } .box { background: rgba(128,128,128,0.05); padding: 40px 20px; border-radius: 25px; border: 1px solid var(--border); max-width: 400px; margin: 0 auto; } .translate-area { margin-top: 50px; padding: 20px; border-top: 1px solid var(--border); }
+@media (prefers-color-scheme: dark) { :root { --bg: #000000; --text: #f5f5f7; --border: #38383a; --btn-bg: rgba(255,255,255,0.12); } }
+
+{ margin: 0; padding: 0; box-sizing: border-box; }
+
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.5; overflow-x: hidden; }
+
+rt { display: none; font-size: 0.6em; color: var(--accent); }
+
+body.show-ruby rt { display: block; }
+
+#loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 1s ease-out; }
+
+.loader-logo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; opacity: 0; transform: scale(0.8); animation: logoFade 1.5s 0.5s forwards ease-out; }
+
+@keyframes logoFade { to { opacity: 1; transform: scale(1); } }
+
+.drawing-text { fill: none; stroke: #fff; stroke-width: 0.8; stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: draw 2.5s 1s forwards ease-in-out; font-size: 32px; font-weight: 800; }
+
+@keyframes draw { to { stroke-dashoffset: 0; fill: #fff; stroke-width: 0; } }
+
+#content { opacity: 0; transition: opacity 1.5s 4s; }
+
+.ready #content { opacity: 1; }
+
+nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--border); }
+
+@media (prefers-color-scheme: dark) { nav { background: rgba(0,0,0,0.85); } }
+
+.nav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 15px; }
+
+.nav-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+
+.nav-logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+
+.nav-logo-img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+
+.nav-title { font-weight: 900; font-size: 1.1rem; }
+
+.nav-bottom { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
+
+.nav-btn { text-decoration: none; color: var(--text); font-size: 0.7rem; font-weight: 700; background: var(--btn-bg); padding: 8px 14px; border-radius: 20px; white-space: nowrap; transition: 0.2s; }
+
+.nav-btn:hover { background: var(--border); }
+
+.btn-toggle-ruby { padding: 6px 12px; border-radius: 15px; border: 1px solid var(--accent); background: transparent; color: var(--accent); font-size: 0.7rem; font-weight: 800; cursor: pointer; }
+
+.btn-toggle-ruby.active { background: var(--accent); color: white; }
+
+.container { max-width: 800px; margin: 0 auto; padding: 160px 20px 80px; }
+
+.translate-area { margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); text-align: center; }
+
+script.js（多言語とアクセシビリティの制御）
+
+const GAS_URL = "https://script.google.com/macros/s/AKfycbzFlhCuwaJenjoOJAKrLa-VLvAfDWpQyqwtQgmDte5is0MLdCpJ9NMWq_rvGC84nObX/exec";
+
+function toggleRuby() { document.body.classList.toggle('show-ruby'); const isActive = document.body.classList.contains('show-ruby'); const btns = document.querySelectorAll('.btn-toggle-ruby'); btns.forEach(btn => { btn.innerText = isActive ? "よみがな：ON" : "よみがな：OFF"; btn.classList.toggle('active', isActive); }); localStorage.setItem('ruby', isActive); }
+
+function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: 'ja', includedLanguages: 'ja,en,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element'); }
+
+document.addEventListener('DOMContentLoaded', () => { const navHTML = <div class="nav-inner"> <div class="nav-top"> <a href="index.html" class="nav-logo-area"> <img src="logo.jpg" class="nav-logo-img" alt="logo"> <span class="nav-title">KIZUNA video</span> </a> <button class="btn-toggle-ruby" onclick="toggleRuby()">よみがな：OFF</button> </div> <div class="nav-bottom"> <a href="about.html" class="nav-btn">ABOUT</a> <a href="works.html" class="nav-btn">WORKS</a> <a href="guide.html" class="nav-btn">GUIDE</a> <a href="reserve.html" class="nav-btn">RESERVE</a> <a href="download.html" class="nav-btn">DOWNLOAD</a> </div> </div>;
+
+const nav = document.querySelector('nav');
+if (nav) nav.innerHTML = navHTML;
+
+if (localStorage.getItem('ruby') === 'true') {
+    toggleRuby();
+}
+
+setTimeout(() => {
+    document.body.classList.add('ready');
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) loader.style.opacity = '0';
+        setTimeout(() => { if(loader) loader.style.display = 'none'; }, 1000);
+    }, 3000);
+}, 500);
+});
